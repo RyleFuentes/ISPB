@@ -68,4 +68,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 =======
 # ISPB
 Repository for an inventory system project (ongoing)
+<<<<<<< HEAD
 >>>>>>> 0759ec2 (Initial commit)
+=======
+
+asdas
+>>>>>>> 05eec91 (ryle)
