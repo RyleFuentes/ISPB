@@ -1,3 +1,10 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
 .fixed-top{
     top: 60px;
     left: 0;
