@@ -4,6 +4,8 @@ namespace App\Livewire\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 #[Layout('components.layouts.app')]
@@ -25,7 +27,16 @@ class Register extends Component
         $validated = $this->validate(
         );
 
+        $add = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
 
+        if($add)
+        {
+            return $this->redirect('/', navigate:true);
+        }
 
 
     }

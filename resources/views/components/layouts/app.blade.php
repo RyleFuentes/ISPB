@@ -64,6 +64,7 @@
                             <li class="nav-item">
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                             </li>
+                            <livewire:components.logout />
                         </ul>
                     </div>
                     <div class="col border border-danger scrollable">
@@ -74,7 +75,7 @@
         @endauth
 
         @guest
-            <div class="col ">
+            <div class="container">
                 {{ $slot }}
             </div>
         @endguest

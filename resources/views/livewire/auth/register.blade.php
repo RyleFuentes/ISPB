@@ -7,28 +7,28 @@
             <h3 class='text-center'>Register</h3>
             <form wire:submit='register'class="form">
                 <div class="form-floating mt-3">
-                    <input type="text" wire:model='name' id="Name" placeholder="name" class="form-control">
+                    <input type="text" wire:model.live='name' id="Name" placeholder="name" class="form-control">
                     <label for="name">Name</label>
                 </div>
                 @error('name')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
                 <div class="form-floating mt-3">
-                    <input type="email" id="email" wire:model='email' placeholder="user@mail.com" class="form-control">
+                    <input type="email" id="email" wire:model.live='email' placeholder="user@mail.com" class="form-control">
                     <label for="email">Email</label>
                 </div>
                 @error('email')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
                 <div class="form-floating mt-3">
-                    <input type="password" id="password" wire:model='password' placeholder="" class="form-control">
+                    <input type="password" id="password" wire:model.live='password' placeholder="" class="form-control">
                     <label for="password">Password</label>
                 </div>
                 @error('password')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
                 <div class="form-floating mt-3">
-                    <input type="password" wire:model='password_confirmation' id="pass_con" placeholder="" class="form-control">
+                    <input type="password" wire:model.live='password_confirmation' id="pass_con" placeholder="" class="form-control">
                     <label for="pass_con">Confirm Password</label>
                 </div>
                 @error('password_confirmation')

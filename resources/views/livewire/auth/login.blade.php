@@ -3,25 +3,24 @@
         <div class="container">
             Hello world
         </div>
-        <div class="container p-3" style="background-color: hsl(0, 0%, 0%, .3)">
+        <div class="container rounded p-3" style="background-color: hsl(0, 0%, 0%, .3)">
             <h3 class='text-center'>LOGIN</h3>
-            <form action="" class="form">
+            <form wire:submit='authenticate' class="form">
+                
                 <div class="form-floating mt-3">
-                    <input type="text" id="Name" placeholder="name" class="form-control">
-                    <label for="name">Name</label>
+                    <input type="text" wire:model='email' id="email" placeholder="name" class="form-control">
+                    <label for="email">Email</label>
                 </div>
+                @error('email')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
                 <div class="form-floating mt-3">
-                    <input type="text" id="Name" placeholder="name" class="form-control">
-                    <label for="name">Email</label>
+                    <input type="password" wire:model='password' id="password" placeholder="name" class="form-control">
+                    <label for="password">Password</label>
                 </div>
-                <div class="form-floating mt-3">
-                    <input type="text" id="Name" placeholder="name" class="form-control">
-                    <label for="name">Password</label>
-                </div>
-                <div class="form-floating mt-3">
-                    <input type="text" id="Name" placeholder="name" class="form-control">
-                    <label for="name">Confirm Password</label>
-                </div>
+                @error('password')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
 
                 <div class="form-group  mt-3">
                     <button class="btn w-100 btn-outline-dark">Login</button>
