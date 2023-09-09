@@ -27,11 +27,13 @@
                   <a class="nav-link" href="#">Link</a>
                 </li>
               </ul>
-              <ul class="navbar-nav d-flex" role="search">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">JonahLynn</a>
-                </li>
-              </ul>
+              @auth 
+                <ul class="navbar-nav d-flex">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">JonahLynn</a>
+                  </li>
+                </ul>
+              @endauth
             </div>
           </div>
         </nav>

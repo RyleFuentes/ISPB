@@ -1,10 +1,11 @@
 <div class="" style="">
     <div class="d-flex shadow-lg">
-        <div class="container rounded p-5 border border-dark border-end-0 text-light" style="backdrop-filter: blur(5px); height: 50vh;">
+        <div class="container rounded p-5 border border-dark border-end-0 text-light" style="backdrop-filter: blur(7px); height: 70vh;">
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur architecto doloribus, perspiciatis fuga incidunt repellat earum accusamus, ab cumque tempora maiores sit quibusdam exercitationem aperiam accusantium. Delectus eaque tempora pariatur.</p>
         </div>
-        <div class="container rounded p-5 border border-dark border-start-0 d-flex flex-column justify-content-center align-content-center" style="backdrop-filter: blur(5px); height: 50vh;">
-            <h3 class='text-center text-light'>LOGIN</h3>
+        <div class="container rounded p-5 border border-dark border-start-0 d-flex flex-column justify-content-center align-content-center" style="backdrop-filter: blur(7px); height: 70vh;">
+        <br>    
+        <h3 class='text-light display-2'>L<small>OGIN</small></h3>
             <form wire:submit='authenticate' class="form">
                 
                 <div class="form-floating mt-3">
