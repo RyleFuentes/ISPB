@@ -11,7 +11,7 @@
     </head>
     <body>
 
-      <div style="background-image: url('{{ asset('images/Sprinkle.svg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 100vh;">
+      <div style="background-image: url('{{ asset('images/Sprinkle.svg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 100vh; background-attachment: fixed;">
         <nav class="navbar navbar-expand-lg bg-dark shadow sticky-top">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">ISPB</a>
