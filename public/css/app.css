@@ -1,12 +1,10 @@
-*
-{
+* {
     box-sizing: border-box;
     margin: 0;
 }
 
-
 .fixed-top{
-    top: 60px;
+    top: 55px;
     left: 0;
     overflow: auto;
     height: 100%;
@@ -14,4 +12,10 @@
 
 .scrollable{
     margin-left: 27%;
+    padding: 0;
+}
+
+.bg-image{
+    background-image: url('images/Sprinkle.svg');
+    
 }
