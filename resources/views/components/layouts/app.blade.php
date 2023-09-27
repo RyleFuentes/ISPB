@@ -6,9 +6,11 @@
 
         <title>{{ $title ?? 'ISPB' }}</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script data-navigate-track defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css')}}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script data-navigate-track src="{{asset('https://code.jquery.com/jquery-3.7.1.js')}}" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     </head>
     <body  style="background-image: url('{{ asset('images/Sprinkle.svg') }}'); background-size: cover; background-repeat: repeat; height: 100vh;">
       
@@ -51,7 +53,7 @@
                 <div class="container rounded bg-dark p-3 mt-2">
                   <ul class="nav flex-column d-flex text-center">
                       <li class="nav-item m-3">
-                          <a class="nav-link active text-white" aria-current="page" href="{{route('dashboard')}}">ISPB</a>
+                          <a class="nav-link active text-white"  aria-current="page" href="{{route('dashboard')}}">ISPB</a>
                       </li>
                       <li class="nav-item m-3">
                           <a class="nav-link text-white" href="#">Employee</a>
@@ -80,6 +82,13 @@
           </div>
         @endguest
       </div>
+
+
+
+
+
+      @stack('dismiss-add-brand-script')
+
 
     </body>
 </html>
