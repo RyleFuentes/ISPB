@@ -31,41 +31,26 @@
                 <form action="">
                     <div class="form-group mt-2">
 
-                        <input type="image" src="" alt="" class="form-control">
+                        <input type="file" accept="image/png, image/jpg" id="image" class="form-control">
                     </div>
 
                     <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="name">
                         <label for="name">Product Name</label>
                     </div>
-
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="name">
-                        <label for="name">Product Name</label>
-                    </div>
-
                     <div class="form-floating mt-2">
                         <input type="number" class="form-control" placeholder="..." id="quantity">
                         <label class="text-dark" for="quantity">Quantity</label>
                     </div>
 
-                    <div class="form-group mt-2">
-                        <div>
-                            <input type="text" class="text-dark form-control" wire:model.live='brand_chosen' disabled>
-                        </div>
-
-                        <div class="dropdown mt-2">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Brands
-                            </a>
-                          
-                            <ul class="dropdown-menu">
-                                @foreach ($brands as $brand)
-                                    <li><a wire:model='brand_chosen' class="dropdown-item " href="#" >{{$brand->brand_name}}</a></li>
-                                @endforeach
-    
-                            </ul>
-                          </div>
+                    <div class="form-group   mt-2 ">
+                        <label for="Dropdown">Select Class</label>
+                        <select class="form-select  " >
+                            <option value="">Select a brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </form>
             </div>
