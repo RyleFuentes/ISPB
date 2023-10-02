@@ -24,7 +24,7 @@ class Login extends Component
         if(Auth::attempt($validated))
         {
             request()->session()->regenerate();
-            return $this->redirect('dashboard', navigate:true);
+            return redirect()->route('dashboard');
         }
         
     }

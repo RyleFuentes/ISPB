@@ -12,5 +12,12 @@ class Product extends Model
 
     protected $guarded = [
         'product_id',
+         
     ];
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brandID', 'brand_id');
+    }
+    
 }

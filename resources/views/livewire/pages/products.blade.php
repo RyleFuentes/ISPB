@@ -23,38 +23,24 @@
 
     @if (!$addProduct)
         <div class="container mt-2 rounded " style="height: 100vh; background: hsl(39, 100%, 50%, .3)">
+            <div class="container">
 
-        </div>
-    @else
-        <div class="container p-3 d-flex justify-content-center align-items-center mt-2 rounded">
-            <div class="container p-5 rounded bg-dark ">
-                <form action="">
-                    <div class="form-group mt-2">
-
-                        <input type="file" accept="image/png, image/jpg" id="image" class="form-control">
+                @foreach ($products as $product)
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{Storage::url($product->product_image)}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">Product name: {{$product->product_name}}</p>
+                            <p class="card-text">Quantity: {{$product->quantity}}</p>
+                            <p class="card-text">Retail Price: {{$product->retail_price}}</p>
+                            <p class="card-text">Wholesale Price: {{$product->wholesale_price}}</p>
+                            <p class="card-text">Brand: {{optional($product->brand)->brand_name}}.</p>
+                        </div>
                     </div>
-
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="name">
-                        <label for="name">Product Name</label>
-                    </div>
-                    <div class="form-floating mt-2">
-                        <input type="number" class="form-control" placeholder="..." id="quantity">
-                        <label class="text-dark" for="quantity">Quantity</label>
-                    </div>
-
-                    <div class="form-group   mt-2 ">
-                        <label for="Dropdown">Select Class</label>
-                        <select class="form-select  " >
-                            <option value="">Select a brand</option>
-                            @foreach ($brands as $brand)
-                                <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </form>
+                @endforeach
             </div>
         </div>
+    @else
+        @include('livewire.components.add_products_component')
     @endif
 
 

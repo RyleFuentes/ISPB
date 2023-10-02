@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('brandID')->references('brand_id')->on('brand');
             $table->string('product_name');
             $table->integer('quantity');
+            $table->decimal('retail_price');
+            $table->decimal('wholesale_price');
             $table->string('product_image');
             $table->timestamps();
         });
