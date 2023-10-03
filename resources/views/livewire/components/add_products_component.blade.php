@@ -52,14 +52,13 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
 
-                <div class="form-group mt-2 "> 
-                    <label for="Dropdown">Select Class</label> <select class="form-select"
-                        wire:model="brand_id">
+                <div class="form-group mt-2 ">
+                    <label for="Dropdown">Select Class</label> <select class="form-select" wire:model="brand_id">
                         <option value="">Select a brand</option>
                         @foreach ($brands as $brand)
                             <option value="{{ $brand->brand_id }}">{{ $brand->brand_name }}</option>
                         @endforeach
-                    </select> 
+                    </select>
                 </div>
 
                 @error('brand_id')
@@ -71,12 +70,15 @@
                 </div>
             </form>
         </div>
+        @if ($product_image)
+            <div class="col">
 
-        <div class="col">
-            @if ($product_image)
-                <img src="{{$product_image->temporaryUrl()}}" alt="">
-            @endif
-        </div>
+
+                <div class="mb-5">Image Preview</div>
+                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="">
+
+            </div>
+        @endif
 
     </div>
 </div>
