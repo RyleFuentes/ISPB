@@ -1,4 +1,4 @@
-<div class="container p-3 mt-5 bg-info rounded">
+<div class="container p-3  rounded">
     <div class="row  ">
         <div class="col p-5 rounded bg-dark">
             <form wire:submit='addNewProduct'>

@@ -50,7 +50,11 @@ class Products extends Component
             'brandID' => $this->brand_id
         ]);
 
-       
+       if($store)
+       {
+        return redirect()->route('products')->with('success', 'You have successfully added a new product');
+        $this->reset('product_name', 'product_qty', 'product_retail_price', 'product_wholesale_price', 'product_image', 'brand_id');
+       }
 
     }
 
