@@ -73,7 +73,9 @@
         </div>
 
         <div class="col">
-            image is here
+            @if ($product_image)
+                <img src="{{$product_image->temporaryUrl()}}" alt="">
+            @endif
         </div>
 
     </div>
