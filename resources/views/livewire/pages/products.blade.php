@@ -34,6 +34,11 @@
                             <p class="card-text">Retail Price: {{$product->retail_price}}</p>
                             <p class="card-text">Wholesale Price: {{$product->wholesale_price}}</p>
                             <p class="card-text">Brand: {{optional($product->brand)->brand_name}}.</p>
+
+                            <div>
+                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-warning">Edit</button>
+                            </div>
                         </div>
                     </div>
                 @endforeach
