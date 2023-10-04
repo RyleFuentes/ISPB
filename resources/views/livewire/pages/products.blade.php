@@ -1,6 +1,6 @@
 <div>
 
-    <div class="container rounded p-3 " style="background: hsl(0, 0%, 0%, .7)">
+    <div class="container rounded p-3 " style="background-color: #6b3fa2;">
         <div class="container-fluid d-flex ">
             <div class="container">
 

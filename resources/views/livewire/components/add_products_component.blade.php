@@ -1,5 +1,5 @@
 <div class="container p-3  rounded">
-    <div class="row  ">
+    <div class="row">
         <div class="col p-5 rounded bg-dark">
             <form wire:submit='addNewProduct'>
                 <div class="form-group mt-2">
@@ -71,11 +71,19 @@
             </form>
         </div>
         @if ($product_image)
+            <div class="col bg-dark">
+
+
+                <div class="mb-5">Image Preview</div>
+                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview" style="height: 450px; width: 450px; object-fit: cover;">
+
+            </div>
+        @else
             <div class="col">
 
 
                 <div class="mb-5">Image Preview</div>
-                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="">
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
 
             </div>
         @endif
