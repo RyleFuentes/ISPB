@@ -22,6 +22,7 @@
 
     <div class="container mt-2 rounded p-3 ">
         <table class="table">
+
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -33,26 +34,49 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                            @if ($user->role == 0)
-                                <span class="text-danger">Admin</span>
-                            @else
-                                <span class="text-warning">Inventory Clerk</span>
-                            @endif
-                        </td>
-                        <td>
-                            <button wire:click='edit_user({{$user->id}})' class="btn btn-success">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                    @if ($editing)
+                        <tr>
+                            <th scope="row">{{ $user->id }}</th>
+                            <td><input type="text" class="form-control" value="{{ $user->name }}"></td>
+                            <td><input type="email" class="form-control" value="{{ $user->email }}"></td>
+                            <td>
+                                <select class="form-select" aria-label="Default select example" wire:model='edit_role'>
+                                    <option selected>Open this select menu</option>
+                                    <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>Admin</option>
+                                    <option value="1" {{ $edit_role == 1 ? 'selected' : '' }}>Inventory Clerk
+                                    </option>
+                                </select>
+
+                            </td>
+                            <td>
+                                <button wire:click='cancel_edit' class="btn btn-warning">Cancel</button>
+                                <button class="btn btn-success">save</button>
+                            </td>
+                        </tr>
+                    @else
+                        <tr>
+                            <th scope="row">{{ $user->id }}</th>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>
+                                @if ($user->role == 0)
+                                    <span class="text-danger">Admin</span>
+                                @else
+                                    <span class="text-warning">Inventory Clerk</span>
+                                @endif
+                            </td>
+                            <td>
+                                <button wire:click='edit_user({{ $user->id }})'
+                                    class="btn btn-success">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
 
 
             </tbody>
         </table>
+
     </div>
 </div>
