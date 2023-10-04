@@ -56,7 +56,7 @@
                           <a class="nav-link active text-white"  aria-current="page" href="{{route('dashboard')}}">ISPB</a>
                       </li>
                       <li class="nav-item m-3">
-                          <a class="nav-link text-white" href="#">Employee</a>
+                          <a class="nav-link text-white" href="{{route('users')}}">User Management</a>
                       </li>
                       <li class="nav-item m-3">
                           <a class="nav-link text-white" href="{{route('products')}}">Products</a>
