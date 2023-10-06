@@ -65,21 +65,20 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 text-end">
                     <button type="submit" class="btn btn-danger">Test</button>
                 </div>
             </form>
         </div>
         @if ($product_image)
-            <div class="col bg-dark">
-
+            <div class="col bg-dark d-flex align-content-center">
 
                 <div class="mb-5">Image Preview</div>
                 <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview" style="height: 450px; width: 450px; object-fit: cover;">
 
             </div>
         @else
-            <div class="col">
+            <div class="col d-flex flex-column justify-content-center align-items-center">
 
 
                 <div class="mb-5">Image Preview</div>

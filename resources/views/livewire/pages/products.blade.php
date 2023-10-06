@@ -4,11 +4,12 @@
         <div class="container-fluid d-flex ">
             <div class="container">
 
-                <form>
-                    <div class="form-floating w-50">
+                <form class="d-flex">
+                    <div class="form-floating px-1 w-50">
                         <input type="text" id="search" class="form-control " placeholder="...">
                         <label for="search">Search</label>
                     </div>
+                    <input class="btn btn-outline-primary" type="submit">
                 </form>
             </div>
 

@@ -14,10 +14,18 @@
     background-image: url('images/Sprinkle.svg');
 }
 
-.logo{
-    display: none;
+.snav-link .bi {
+    display: none;  
 }
 
-.logo:hover {
-    display: block;
+.snav-item:hover .nav-link .bi {
+    display: inline-block; 
+}
+
+.snav-link {
+    border-bottom: 2px solid transparent;  
+    transition: border-color 0.3s ease;   
+}
+.snav-item:hover .nav-link {
+    border-color: #000000;  
 }
