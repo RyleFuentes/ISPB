@@ -20,31 +20,33 @@
           <div class="container-fluid bg-white" >
             <div class="row" >
               <div class="col-lg-3 col-sm-4 bg-white">
-                <nav class="navbar navbar-expand-sm rounded p-3 mt-2" style="background-color: #B9A394;">
+                <nav class="navbar navbar-expand-sm rounded p-3 mt-2" style="background-color: #B9A394; ">
                   <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav" >
-                      <ul class="navbar-nav d-flex flex-column text-center">
-                        <li class="nav-item m-3">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+                        <ul class="navbar-nav d-flex flex-column text-center">
+                          <li class="nav-item m-3">
                             <a class="nav-link active" style="color: #010304;"  aria-current="page" href="{{route('dashboard')}}">
                               <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 80px;">
                             </a>
-                        </li>
-                        <li class="nav-item m-3">
+                          </li>
+                          <li class="nav-item m-3">
                             <a class="nav-link text-white" href="#"><i class="logo bi bi-people"></i> Employee</a>
-                        </li>
-                        <li class="nav-item m-3">
+                          </li>
+                          <li class="nav-item m-3">
                             <a class="nav-link text-white" href="{{route('products')}}">Products</a>
-                        </li>
-                        <li class="nav-item m-3">
+                          </li>
+                          <li class="nav-item m-3">
                             <a class="nav-link text-white" href="#">Orders</a>
-                        </li>
-                        <li class="nav-item" style="cursor: pointer;">
-                          <livewire:components.logout />
-                        </li>
-                      </ul>
+                          </li>
+                          <li class="nav-item m-3" style="cursor: pointer;">
+                            <livewire:components.logout />
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </nav>
