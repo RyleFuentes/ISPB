@@ -34,24 +34,39 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    @if ($editing)
+                    @if ($editing == true && $user->id == $editing_id)
                         <tr>
-                            <th scope="row">{{ $user->id }}</th>
-                            <td><input type="text" class="form-control" value="{{ $user->name }}"></td>
-                            <td><input type="email" class="form-control" value="{{ $user->email }}"></td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example" wire:model='edit_role'>
-                                    <option selected>Open this select menu</option>
-                                    <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>Admin</option>
-                                    <option value="1" {{ $edit_role == 1 ? 'selected' : '' }}>Inventory Clerk
-                                    </option>
-                                </select>
+                            <form >
+                                <th  scope="row">{{ $user->id }}</th>
 
-                            </td>
-                            <td>
-                                <button wire:click='cancel_edit' class="btn btn-warning">Cancel</button>
-                                <button class="btn btn-success">save</button>
-                            </td>
+                                <td><input wire:model='edit_name' type="text" class="form-control"
+                                        value="{{ $user->name }}"></td>
+                                @error('edit_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <td><input wire:model='edit_email' type="email" class="form-control"
+                                        value="{{ $user->email }}"></td>
+                                @error('edit_email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <td>
+                                    <select class="form-select" aria-label="Default select example"
+                                        wire:model='edit_role'>
+                                        <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>Admin</option>
+                                        <option value="1" {{ $edit_role == 1 ? 'selected' : '' }}>Inventory Clerk
+                                        </option>
+                                    </select>
+
+                                </td>
+                                @error('edit_role')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <td>
+                                    <button wire:click='cancel_edit' class="btn btn-warning">Cancel</button>
+                                    <button wire:click='save_edit({{$user->id}})' class="btn btn-success">Save</button>
+                                </td>
+                            </form>
+
                         </tr>
                     @else
                         <tr>
