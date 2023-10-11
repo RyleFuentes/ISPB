@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-#[Layout('components.layouts.app')]
+#[Layout('index')]
 #[Title('Register')]
 class Register extends Component
 {

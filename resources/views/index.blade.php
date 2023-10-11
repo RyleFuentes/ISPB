@@ -5,17 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ $title ?? 'ISPB' }}</title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.css">
-        <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
         @auth
-            @include('layout.navbar')
             @include('layout.sidebar')
         @endauth
 
-        {{$slot}}
+        <div class="container">
+            {{$slot}}
+        </div>
         
+        <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     </body>
 </html>

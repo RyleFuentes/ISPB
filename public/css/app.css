@@ -3,3 +3,12 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+
+.form-control {
+    color: #808080;
+    border-bottom-color: rgba(0,0,0,.42);
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+  }
