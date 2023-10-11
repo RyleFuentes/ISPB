@@ -72,7 +72,7 @@
                                 </td>
                                 <td class="d-flex justify-content-evenly">
                                     <button wire:click='edit_user({{ $user->id }})' class="btn btn-success mx-1">Edit</button>
-                                    <button class="btn btn-danger mx-1">Delete</button>
+                                    <button wire:click='delete_user({{$user->id}})' class="btn btn-danger mx-1">Delete</button>
                                 </td>
                             </tr>
                         @endif

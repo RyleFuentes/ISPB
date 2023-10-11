@@ -33,7 +33,7 @@
               @auth 
                 <ul class="navbar-nav d-flex">
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="#">JonahLynn</a>
+                    <a class="nav-link text-white" href="#">{{ auth()->user()->name}}</a>
                   </li>
                   <li class="nav-item">
 
@@ -62,7 +62,7 @@
                           <a class="nav-link text-white" href="{{route('products')}}">Products</a>
                       </li>
                       <li class="nav-item m-3">
-                          <a class="nav-link text-white" href="#">Orders</a>
+                          <a class="nav-link text-white" href="{{route('orders')}}">Orders</a>
                       </li>
                       
                   </ul>
