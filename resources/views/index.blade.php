@@ -10,14 +10,9 @@
 
     </head>
     <body>
-        @auth
-            @include('layout.sidebar')
-        @endauth
-
         <div class="container">
             {{$slot}}
         </div>
-        
         <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     </body>
 </html>

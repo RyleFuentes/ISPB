@@ -1,11 +1,10 @@
 <div class="container d-flex justify-content-center align-items-center flex-column min-vh-100">
 
-    <img src="images/logo.png" width="100" class="mb-3 img-fluid">
-
-    <div class="border flex-column w-50 rounded-5 shadow p-5  align-items-center" >
-        <div class="text-start fw-bold">
+    <div class="border d-flex justify-content-center align-items-center flex-column rounded-3 shadow p-5" style="width: 30vw; height: 80%">
+        <div class="text-center fw-bold">
+            <img src="images/logo.png" width="100" class="mb-3 img-fluid">
             <div class="fs-6 text-secondary">Welcome</div>
-            <div class="fs-3  text-primary">Login to your account</div>
+            <div class="fs-5">Login to your <span class="text-primary">account</span></div>
         </div>
 
         <form wire:submit='authenticate' style="width: 100%">
