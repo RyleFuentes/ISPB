@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-center align-items-center flex-column min-vh-100">
 
-    <div class="border d-flex justify-content-center align-items-center flex-column rounded-3 shadow p-5" style="width: 30vw; height: 80%">
+    <div class="row border d-flex justify-content-center align-items-center flex-column rounded-3 shadow p-3 p-md-5" style="width: 90vw; max-width: 400px">
         <div class="text-center fw-bold">
             <img src="images/logo.png" width="100" class="mb-3 img-fluid">
             <div class="fs-6 text-secondary">Welcome</div>
@@ -31,7 +31,6 @@
     </div>
     
     <div class="text-center mt-3">
-        <p class="text-secondary">Don't have an account? <a href="/register" class="text-primary text-decoration-none fw-semibold">Register</a>
-        </p>
+        <p class="text-secondary">Don't have an account? <a href="/register" class="text-primary text-decoration-none fw-semibold">Register</a></p>
     </div>
 </div>

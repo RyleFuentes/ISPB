@@ -1,4 +1,5 @@
-<div>
-    @include('layout.sidebar')
-    
-</div>
+@auth
+    <div>
+        @include('layout.sidebar')
+    </div>
+@endauth
