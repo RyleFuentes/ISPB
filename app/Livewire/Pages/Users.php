@@ -4,16 +4,18 @@ namespace App\Livewire\Pages;
 
 use Livewire\Component;
 use App\Models\User;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\Hash;
 
+#[Layout('index')]
+#[Title('Users')]
 class Users extends Component
 {
     public $editing_id;
     public $editing = false;
 
     public $edit_name, $edit_email, $edit_password, $edit_role;
-
-
 
 
     public function edit_user($id)

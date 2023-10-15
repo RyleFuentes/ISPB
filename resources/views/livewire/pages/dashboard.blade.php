@@ -1,5 +1,4 @@
-@auth
-    <div class="d-flex" id="wrapper">   
+<div class="d-flex" id="wrapper">   
         @include('layout.sidebar')         
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')   
@@ -55,4 +54,3 @@
             </div>
         </div>
     </div>
-@endauth
