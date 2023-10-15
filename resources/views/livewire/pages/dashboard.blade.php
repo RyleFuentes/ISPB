@@ -1,7 +1,9 @@
 @auth
-    <div class="container-fluid">
+    <div class="d-flex" id="wrapper">   
+        @include('layout.sidebar')            
         
-        @include('layout.sidebar')
-          
+        <div class="container-fluid">
+
+        </div>
     </div>
 @endauth

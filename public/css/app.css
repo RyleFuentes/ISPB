@@ -19,5 +19,52 @@
 
 /* sidebar */
 
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: 15rem;
+  overflow: hidden;
+  transition: width 0.25s ease-out;
+}
 
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 5rem; 
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.item {
+  background-color: transparent;
+  border: none;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.item.active {
+  background: #6c3ca4;
+  color: white;
+  border-radius: 10px;
+}
+
+.hide-text {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #sidebar-wrapper {
+      width: 0;
+  }
+  .item.active {
+      padding-left: 5px; /* Adjust the left padding to align icons properly */
+  }
+  .item .me-2 {
+      display: none; /* Hide the text within the icons */
+  }
+}
 /* end of sidebar */

@@ -7,14 +7,14 @@
         <title>{{ $title ?? 'ISPB' }}</title>
         <link rel="icon" type="image/x-icon" href="/images/logo.png">
         <link rel="stylesheet" href="/bootstrap-5.3.2-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     </head>
     <body>
         {{$slot}}
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
-        <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
+    <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
     </body>
 </html>
