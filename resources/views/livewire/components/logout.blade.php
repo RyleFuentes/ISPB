@@ -1,3 +1,3 @@
 <div>
-    <button class="nav-link" wire:click.prevent='logout'>Logout</button>
+    <a class="nav-link text-white" wire:click.prevent='logout'>Logout</a>
 </div>
