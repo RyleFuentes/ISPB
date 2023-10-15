@@ -1,9 +1,9 @@
 <div>
-    <div class="container rounded p-3 " style="background: hsl(0, 0%, 0%, .7)">
+    <div class="container rounded p-3 mt-2" style="background-color: #345B6B;">
         <div class="container-fluid d-flex ">
             <div class="container">
-                <form>
-                    <div class="form-floating w-50">
+                <form class="d-flex">
+                    <div class="form-floating px-1 w-50">
                         <input type="text" id="search" class="form-control " placeholder="...">
                         <label for="search">Search</label>
                     </div>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="container mt-2 rounded p-3 ">
-        <div class="table-responsive-sm">
+        <div class="table-responsive-sm table-responsive-md">
             <table class="table">
                 <thead>
                     <tr class="text-center">
@@ -77,8 +77,6 @@
                             </tr>
                         @endif
                     @endforeach
-
-
                 </tbody>
             </table>
         </div>

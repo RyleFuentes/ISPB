@@ -1,7 +1,6 @@
-<div>
-
-    <div class="container rounded p-3 " style="background-color: #345B6B;">
-        <div class="container-fluid d-flex ">
+<div class="overflow-auto">
+    <div class="container rounded p-3 mt-2" style="background-color: #87814f;">
+        <div class="container-fluid d-flex overflow-auto">
             <div class="container">
                 <form class="d-flex">
                     <div class="form-floating px-1 w-50">
@@ -21,7 +20,7 @@
     </div>
 
     @if (!$addProduct)
-        <div class="container mt-2 rounded p-2" style="height: 100vh; background-color: #EBECEF">
+        <div class="container mt-2 rounded p-2 mb-2" style=" background-color: #f2f3f7">
             <div class="container">
                 <div class="row row-cols-lg-3 row-cols-md-2 ">
                     @foreach ($products as $product)

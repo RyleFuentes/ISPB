@@ -14,13 +14,14 @@
         <script data-navigate-track src="{{asset('https://code.jquery.com/jquery-3.7.1.js')}}" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     </head>
-    <body  style="background-image: url('{{ asset('images/Sprinkle.svg') }}'); background-size: cover; background-repeat: repeat; height: 100vh;">
+    <body>
+    <!-- <body  style="background-image: url('{{ asset('images/Sprinkle.svg') }}'); background-size: cover; background-repeat: repeat; height: 100vh;"> -->
 
         @auth
           <div class="container-fluid bg-white" >
             <div class="row" >
               <div class="col-lg-3 col-sm-4 bg-white">
-                <nav class="navbar navbar-expand-sm rounded p-3 mt-2" style="background-color: #B9A394; ">
+                <nav class="navbar navbar-expand-sm rounded p-3 mt-2" style="background-color: #d2cfb2; ">
                   <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
@@ -34,15 +35,15 @@
                             </a>
                           </li>
                           <li class="nav-item m-3">
-                            <a class="nav-link text-white" href="{{route('users')}}"><i class="logo bi bi-people"></i> Employee</a>
+                            <a class="nav-link text-dark" href="{{route('users')}}"><i class="logo bi bi-people"></i> Employee</a>
                           </li>
                           <li class="nav-item m-3">
-                            <a class="nav-link text-white" href="{{route('products')}}">Products</a>
+                            <a class="nav-link text-dark" href="{{route('products')}}">Products</a>
                           </li>
                           <li class="nav-item m-3">
-                            <a class="nav-link text-white" href="#">Orders</a>
+                            <a class="nav-link text-dark" href="#">Orders</a>
                           </li>
-                          <li class="nav-item m-3" style="cursor: pointer;">
+                          <li class="nav-item m-3 text-dark" style="cursor: pointer;">
                             <livewire:components.logout />
                           </li>
                         </ul>
@@ -51,7 +52,7 @@
                   </div>
                 </nav>
               </div>
-              <div class="col mt-2 container" style="background-color: #f8fafc; height: 100%;">
+              <div class="col mt-2 mx-2 container" style="background-color: #f1f6ca; height: 100%;">
                 {{ $slot }}
               </div>
             </div>
@@ -59,7 +60,7 @@
         @endauth
 
         @guest
-          <div class="container position-absolute top-50 start-50 translate-middle">
+          <div class="container position-absolute top-50 start-50 translate-middle rounded">
               {{ $slot }}
           </div>
         @endguest
