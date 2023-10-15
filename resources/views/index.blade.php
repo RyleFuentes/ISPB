@@ -11,7 +11,7 @@
     </head>
     <body>
         @auth
-            @include('layout.navbar')
+            <!-- @include('layout.navbar') -->
             @include('layout.sidebar')
         @endauth
 
