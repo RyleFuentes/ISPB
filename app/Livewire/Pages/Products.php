@@ -9,8 +9,8 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[Layout('components.layouts.app')]
-#[Title('Welcome')]
+#[Layout('index')]
+#[Title('Products')]
 class Products extends Component
 {
     use WithFileUploads;

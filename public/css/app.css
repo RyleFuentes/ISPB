@@ -48,7 +48,7 @@
 
 .item.active {
   background: #6c3ca4;
-  color: white;
+  color: white !important;
   border-radius: 10px;
 }
 
