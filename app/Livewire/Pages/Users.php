@@ -6,8 +6,6 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-#[Layout('index')]
-#[Title('Products')]
 class Users extends Component
 {
     public $editing_id;

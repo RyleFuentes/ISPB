@@ -1,6 +1,6 @@
-<div class="container p-3  rounded">
-    <div class="row  ">
-        <div class="col p-5 rounded bg-dark">
+<div class="container p-3 rounded">
+    <div class="row flex-reverse">
+        <div class="col-sm p-5 rounded bg-dark">
             <form wire:submit='addNewProduct'>
                 <div class="form-group mt-2">
 
@@ -65,18 +65,20 @@
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 text-end">
                     <button type="submit" class="btn btn-danger">Test</button>
                 </div>
             </form>
         </div>
         @if ($product_image)
-            <div class="col">
-
-
+            <div class="col bg-light d-flex flex-column justify-content-center align-items-center">
                 <div class="mb-5">Image Preview</div>
-                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="">
-
+                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview">
+            </div>
+        @else
+            <div class="col bg-light d-flex flex-column justify-content-center align-items-center">
+                <div class="mb-5">Image Preview</div>
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
             </div>
         @endif
 

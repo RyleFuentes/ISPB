@@ -12,6 +12,11 @@
 
     </head>
     <body>
+        @auth
+            @include('layout.navbar')
+            @include('layout.sidebar')
+        @endauth
+
         {{$slot}}
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
