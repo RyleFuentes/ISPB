@@ -58,7 +58,7 @@
 
 @media (max-width: 768px) {
   #sidebar-wrapper {
-      width: 0;
+      width: 5rem;
   }
   .item.active {
       padding-left: 5px; /* Adjust the left padding to align icons properly */
