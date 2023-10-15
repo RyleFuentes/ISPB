@@ -1,3 +1,7 @@
-<div class="p-2">
-    hello worlds
-</div>
+@auth
+    <div class="container-fluid">
+        
+        @include('layout.sidebar')
+          
+    </div>
+@endauth

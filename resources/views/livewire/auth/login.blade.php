@@ -4,7 +4,7 @@
         <div class="text-center fw-bold">
             <img src="images/logo.png" width="100" class="mb-3 img-fluid">
             <div class="fs-6 text-secondary">Welcome</div>
-            <div class="fs-5">Login to your <span class="text-primary">account</span></div>
+            <div class="fs-5">Login to your <span class="text-primary">Account</span></div>
         </div>
 
         <form wire:submit='authenticate' style="width: 100%">
