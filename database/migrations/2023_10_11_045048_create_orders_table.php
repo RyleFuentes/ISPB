@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('order_quantity');
             $table->date('due_date');
             $table->tinyInteger('status')->default(0);
+            $table->string('recipient');
             $table->timestamps();
         });
     }
