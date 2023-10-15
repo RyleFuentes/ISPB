@@ -1,6 +1,10 @@
-<div>
-
-    <div class="container rounded p-3 " style="background: hsl(0, 0%, 0%, .7)">
+@auth
+    <div class="d-flex" id="wrapper">   
+        @include('layout.sidebar')         
+        <div class="container-fluid px-4" id="dashboard">
+            @include('layout.navbar')   
+                    
+    <div class="container rounded p-3 ">
         <div class="container-fluid d-flex ">
             <div class="container">
 
@@ -22,7 +26,7 @@
     </div>
 
     @if (!$addProduct)
-        <div class="container mt-2 rounded " style="height: 100vh; background: hsl(39, 100%, 50%, .3)">
+        <div class="container mt-2 rounded " style="height: 100vh;">
             <div class="container">
 
                 @foreach ($products as $product)
@@ -47,11 +51,8 @@
     @else
         @include('livewire.components.add_products_component')
     @endif
+        @include('livewire.modals.add-brand-modal')
 
-
-    @include('livewire.modals.add-brand-modal')
-
-</div>
 
 
 @push('dismiss-add-brand-script')
@@ -61,3 +62,7 @@
         })
     </script>
 @endpush
+
+        </div>
+    </div>
+@endauth

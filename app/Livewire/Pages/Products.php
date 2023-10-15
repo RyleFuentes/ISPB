@@ -9,7 +9,7 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[Layout('components.layouts.app')]
+#[Layout('index')]
 #[Title('Welcome')]
 class Products extends Component
 {
