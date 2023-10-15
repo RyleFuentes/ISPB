@@ -20,7 +20,7 @@
         @auth
           <div class="container-fluid bg-white" >
             <div class="row" >
-              <div class="col-lg-3 col-sm-4 bg-white">
+              <div class="col-lg-3 col-md-4 col-sm-4 bg-white">
                 <nav class="navbar navbar-expand-sm rounded p-3 mt-2" style="background-color: #d2cfb2; ">
                   <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

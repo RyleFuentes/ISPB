@@ -3,7 +3,7 @@
         <div class="container-fluid d-flex overflow-auto">
             <div class="container">
                 <form class="d-flex">
-                    <div class="form-floating px-1 w-50">
+                    <div class="form-floating px-1 w-100">
                         <input type="text" id="search" class="form-control " placeholder="...">
                         <label for="search">Search</label>
                     </div>
@@ -11,10 +11,12 @@
             </div>
 
             <div class="container d-flex align-items-center " style="justify-content: end">
-                <button class="btn btn-outline-light btn-md" data-bs-toggle="modal" data-bs-target="#addBrand"><i
-                        class="bi bi-patch-plus-fill"></i> Brands</button>
-                <button class="btn btn-outline-light m-2" wire:click='addProductMode'><i
-                        class="bi bi-patch-plus-fill"></i> Products</button>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 g-2">
+                        <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#addBrand">Brands</button>
+                        <button class="btn btn-outline-light btn-sm" wire:click='addProductMode'>Products</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
     </div>
 
     <div class="container mt-2 rounded p-3 ">
-        <div class="table-responsive-sm table-responsive-md">
+        <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr class="text-center">
