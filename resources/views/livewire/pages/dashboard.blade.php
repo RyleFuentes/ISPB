@@ -5,9 +5,9 @@
             <div class="my-2 row g-3">
 
                 <div class="col col-md-4 col-xl-3">
-                    <div class="card bg-c-green order-card">
+                    <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
-                            <h4 class="m-b-20 fw-bold text-primary">SALES</h4>
+                            <div class="m-b-20 fw-bold text-primary">SALES</div>
                             <h2 class="text-right">
                                 <i class="fa fa-tag me-2"></i><span>486</span>
                             </h2>
@@ -17,33 +17,33 @@
                 </div> 
 
                 <div class="col col-md-4 col-xl-3">
-                    <div class="card bg-c-green order-card">
+                    <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
-                            <h4 class="m-b-20 fw-bold text-primary">Orders</h4>
+                            <div class="m-b-20 fw-bold text-primary">PRODUCTS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-tag me-2"></i><span>486</span>
+                                <i class="fa fa-box me-2"></i><span>486</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
+                            <p class="m-b-0 fw-bold">Products Left: 351</p>
                         </div>
                     </div>
                 </div> 
 
                 <div class="col col-md-4 col-xl-3">
-                    <div class="card bg-c-green order-card">
+                    <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
-                            <h4 class="m-b-20 fw-bold text-primary">Orders</h4>
+                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-tag me-2"></i><span>486</span>
+                                <i class="fa fa-shopping-bag me-2"></i><span>486</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
+                            <p class="m-b-0 fw-bold">Total Orders: 351</p>
                         </div>
                     </div>
                 </div> 
             
                 <div class="col col-md-4 col-xl-3">
-                    <div class="card bg-c-green order-card">
+                    <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
-                            <h4 class="m-b-20 fw-bold text-primary">Orders</h4>
+                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
                             <h2 class="text-right">
                                 <i class="fa fa-tag me-2"></i><span>486</span>
                             </h2>
