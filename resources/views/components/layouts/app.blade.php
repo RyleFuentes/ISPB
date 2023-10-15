@@ -34,7 +34,7 @@
                             </a>
                           </li>
                           <li class="nav-item m-3">
-                            <a class="nav-link text-white" href="#"><i class="logo bi bi-people"></i> Employee</a>
+                            <a class="nav-link text-white" href="{{route('users')}}"><i class="logo bi bi-people"></i> Employee</a>
                           </li>
                           <li class="nav-item m-3">
                             <a class="nav-link text-white" href="{{route('products')}}">Products</a>
