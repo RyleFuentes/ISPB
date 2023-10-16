@@ -40,17 +40,9 @@
 }
 
 .item {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
     border: none;
     padding: 15px 15px;
     text-decoration: none;
-}
-
-.item:hover{
-  filter: brightness(1);
-  border-radius: 10px;
 }
 
 .item.active {

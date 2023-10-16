@@ -4,19 +4,19 @@
     </div>
 
     <div class="d-flex flex-column mb-auto">
-        <a class="item text-secondary mb-3 p-3 mx-2 active"  aria-current="page" href="{{route('dashboard')}}">
-        <i class="fas fa-home me-1"></i>
+        <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+            <i class="fas fa-home me-1"></i>
             <span>Dashboard</span>
         </a>
-        <a class="item text-secondary mb-3 p-3 mx-2" href="{{route('products')}}">
-        <i class="fas fa-box me-1"></i>
+        <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('products*') ? 'active' : '' }}" href="{{ route('products') }}">
+            <i class="fas fa-box me-1"></i>
             <span>Products</span>
         </a>
-        <a class="item text-secondary mb-3 p-3 mx-2" href="{{route('products')}}">
+        <a class="item text-secondary mb-3 p-3 mx-2">
             <i class="fas fa-shopping-bag me-1"></i>
             <span>Orders</span>
         </a>
-        <a class="item text-secondary mb-3 p-3 mx-2" href="{{route('users')}}">
+        <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('users*') ? 'active' : '' }}" href="{{ route('users') }}">
             <i class="fas fa-users me-1"></i>
             <span>Users</span>
         </a>
