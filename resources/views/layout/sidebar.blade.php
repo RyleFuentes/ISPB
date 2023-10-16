@@ -12,7 +12,7 @@
         <i class="fas fa-box me-1"></i>
             <span>Products</span>
         </a>
-        <a href="#" class="item text-secondary mb-3 p-3 mx-2">
+        <a class="item text-secondary mb-3 p-3 mx-2" href="{{route('products')}}">
             <i class="fas fa-shopping-bag me-1"></i>
             <span>Orders</span>
         </a>
@@ -22,7 +22,6 @@
         </a>
     </div>
 
-    <div class="d-flex flex-column" style="bottom: 0">
-        <livewire:components.logout />
-    </div>
+    <livewire:components.logout />
+
 </div>

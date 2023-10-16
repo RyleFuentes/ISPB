@@ -40,15 +40,16 @@
 }
 
 .item {
-  background-color: transparent;
-  border: none;
-  padding: 15px 15px;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 15px 15px;
+    text-decoration: none;
 }
 
 .item:hover{
-  background: gray;
-  color: white !important;
+  filter: brightness(1);
   border-radius: 10px;
 }
 
@@ -60,6 +61,10 @@
 
 .hide-text {
   display: none;
+}
+
+#wrapper.toggled .item .text {
+    display: none;
 }
 /* end of sidebar */
 
@@ -89,10 +94,14 @@
   #sidebar-wrapper {
       width: 0rem;
   }
+  .item {
+        justify-content: center;
+        text-align: center !important;
+    }
   .item.active {
       padding-left: 5%; 
   }
-  .item .me-2 {
-      display: none; 
-  }
+  .hide-text {
+  display: none;
+}
 }
