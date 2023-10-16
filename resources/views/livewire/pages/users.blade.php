@@ -3,24 +3,23 @@
         @include('layout.sidebar')
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')
-            <div class="table-responsive">
-                <div class="card d-flex justify-content-center align-items-center mt-5">
+            <div class="card d-flex justify-content-center align-items-center mt-5">
                 <table class="table mt-5">
-                        <thead>
-                            <tr class="text-center fs-6">
-                                <td scope="col" class="text-primary">ID</td>
-                                <td scope="col" class="text-primary">Name</td>
-                                <td scope="col" class="text-primary">Email</td>
-                                <td scope="col" class="text-primary">Role</td>
-                                <td scope="col" class="text-primary">Actions</td>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            @foreach ($users as $user)
-                                @if ($editing == true && $user->id == $editing_id)
-                                    <tr>
-                                        <form>
-                                            <th scope="row">{{ $user->id }}</th>
+                    <thead>
+                        <tr class="text-center fs-6">
+                            <td scope="col" class="text-primary">ID</td>
+                            <td scope="col" class="text-primary">Name</td>
+                            <td scope="col" class="text-primary">Email</td>
+                            <td scope="col" class="text-primary">Role</td>
+                            <td scope="col" class="text-primary">Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach ($users as $user)
+                            @if ($editing == true && $user->id == $editing_id)
+                                <tr>
+                                    <form>
+                                        <th scope="row">{{ $user->id }}</th>
 
                                         <td><input wire:model='edit_name' type="text" class="form-control"
                                                 value="{{ $user->name }}"></td>
@@ -35,8 +34,7 @@
                                         <td>
                                             <select class="form-select" aria-label="Default select example"
                                                 wire:model='edit_role'>
-                                                <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>
-                                                    Admin
+                                                <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>Admin
                                                 </option>
                                                 <option value="1" {{ $edit_role == 1 ? 'selected' : '' }}>
                                                     Inventory Clerk
@@ -46,10 +44,14 @@
                                         @error('edit_role')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        <td class="d-flex justify-content-evenly">
-                                            <button wire:click='cancel_edit' class="btn btn-warning mx-1">Cancel</button>
-                                            <button wire:click='save_edit({{ $user->id }})'
-                                                class="btn btn-success mx-1">Save</button>
+                                        <td class="text-center">
+                                            <a wire:click='cancel_edit' class="text-danger mx-1"  style="cursor: pointer">
+                                                <i class="fas fa-cancel fs-5"></i>
+                                            </a>
+                                            <a wire:click='save_edit({{ $user->id }})'
+                                                class="mx-1 text-success" style="cursor: pointer">
+                                                <i class="fas fa-save fs-5"></i>
+                                            </a>
                                         </td>
                                     </form>
                                 </tr>
@@ -65,10 +67,14 @@
                                             <span class="text-warning">Inventory Clerk</span>
                                         @endif
                                     </td>
-                                    <td class="d-flex justify-content-evenly">
-                                        <button wire:click='edit_user({{ $user->id }})'
-                                            class="btn btn-success mx-1">Edit</button>
-                                        <button class="btn btn-danger mx-1">Delete</button>
+                                    <td class="text-center">
+                                        <a wire:click='edit_user({{ $user->id }})'
+                                            class="mx-1 text-primary" style="cursor: pointer">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="text-danger mx-1" style="cursor: pointer">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endif
@@ -79,3 +85,5 @@
         </div>
     </div>
 </div>
+
+{{--  --}}
