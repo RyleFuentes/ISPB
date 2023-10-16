@@ -8,10 +8,10 @@
         </h2>
     </div>
 
-    <form class="d-flex ms-auto">
+    {{-- <form class="d-flex ms-auto">
         <button class="btn btn-primary" type="submit">
             <i class="fas fa-search"></i>
         </button>
         <input class="form-control me-2 bg-primary text-white search" type="search" placeholder="Search" aria-label="Search" style="border-bottom-color: white;">
-    </form>
+    </form> --}}
 </nav>

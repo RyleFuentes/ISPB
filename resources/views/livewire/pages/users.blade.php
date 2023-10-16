@@ -3,8 +3,18 @@
         @include('layout.sidebar')
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')
-            <div class="card d-flex justify-content-center align-items-center mt-5">
-                <table class="table mt-5">
+            <div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
+                <div class="mb-4 ms-auto">
+                    <form class="d-flex mt-2">
+                        <input class="form-control me-2" type="search"
+                            placeholder="Search" aria-label="Search" style="border-bottom-color: #6c3ca4;">
+                        <button class="btn btn-primary me-3" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <table class="table">
                     <thead>
                         <tr class="text-center fs-6">
                             <td scope="col" class="text-primary">ID</td>
@@ -45,11 +55,12 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <td class="text-center">
-                                            <a wire:click='cancel_edit' class="text-danger mx-1"  style="cursor: pointer">
+                                            <a wire:click='cancel_edit' class="text-danger mx-1"
+                                                style="cursor: pointer">
                                                 <i class="fas fa-cancel fs-5"></i>
                                             </a>
-                                            <a wire:click='save_edit({{ $user->id }})'
-                                                class="mx-1 text-success" style="cursor: pointer">
+                                            <a wire:click='save_edit({{ $user->id }})' class="mx-1 text-success"
+                                                style="cursor: pointer">
                                                 <i class="fas fa-save fs-5"></i>
                                             </a>
                                         </td>
@@ -68,8 +79,8 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a wire:click='edit_user({{ $user->id }})'
-                                            class="mx-1 text-primary" style="cursor: pointer">
+                                        <a wire:click='edit_user({{ $user->id }})' class="mx-1 text-primary"
+                                            style="cursor: pointer">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a class="text-danger mx-1" style="cursor: pointer">
