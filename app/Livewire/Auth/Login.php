@@ -23,8 +23,22 @@ class Login extends Component
 
         if(Auth::attempt($validated))
         {
-            request()->session()->regenerate();
+            if(Auth::user()->role == 0)
+            {
+                request()->session()->regenerate();
             return redirect()->route('dashboard');
+            }
+            elseif(Auth::user()->role == 1)
+            {
+                request()->session()->regenerate();
+            return redirect()->route('products');
+            }
+            else
+            {
+                request()->session()->regenerate();
+            return redirect()->route('pending');
+            }
+            
         }
         
     }

@@ -6,6 +6,7 @@ use App\Livewire\Pages\Dashboard;
 use App\Livewire\Pages\Orders;
 use App\Livewire\Pages\Products;
 use App\Livewire\Pages\Users;
+use App\Livewire\PendingUser;
 use App\Livewire\Welcome;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,12 @@ Route::get('/', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 
-Route::get('/dashboard', Dashboard::class)->name('dashboard');
-Route::get('/products', Products::class)->name('products');
-Route::get('/users', Users::class)->name('users');
-Route::get('/orders', Orders::class)->name('orders');
+
+Route::middleware(['auth', 'can:access' ])->group(function() {
+    Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('admin');
+    Route::get('/products', Products::class)->name('products');
+    
+    Route::get('/users', Users::class)->name('users')->middleware('admin');
+});
+
+Route::get('/pending', PendingUser::class)->name('pending')->middleware('auth');
