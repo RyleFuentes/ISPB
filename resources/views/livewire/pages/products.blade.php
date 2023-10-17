@@ -25,8 +25,8 @@
                                          <p class="card-text c-text">Wholesale Price: {{ $product->wholesale_price }}</p>
                                          <p class="card-text c-text">Brand: {{ optional($product->brand)->brand_name }}.</p>
                                          <div class="d-flex">
-                                             <button class="btn btn-danger btn-sm c-text">Delete</button>
-                                             <button class="btn btn-warning btn-sm c-text">Edit</button>
+                                             <button class="btn btn-sm c-text" style="background-color: #7d5ea3">Delete</button>
+                                             <button class="btn btn-sm c-text" style="background-color: #c6a4f0">Edit</button>
                                          </div>
                                     </div>
                                 </div>
