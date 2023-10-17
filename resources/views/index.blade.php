@@ -20,5 +20,8 @@
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+    <x-livewire-alert::scripts />
     </body>
 </html>

@@ -63,7 +63,6 @@
                         </tr>
                     @else
                         <tr>
-                            <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
@@ -84,7 +83,7 @@
                                     </a>
                                 @else
 
-                                    <a wire:confirm="Are you sure?" wire:click='delete_user({{$user->id}})' class="text-danger mx-1" style="cursor: pointer">
+                                    <a wire:click='delete_confirm({{$user->id}})' class="text-danger mx-1" style="cursor: pointer">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 @endif

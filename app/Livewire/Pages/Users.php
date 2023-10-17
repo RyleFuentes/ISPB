@@ -6,14 +6,18 @@ use Livewire\Component;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Hash;
 
 #[Layout('index')]
 #[Title('Users')]
 class Users extends Component
 {
+    use LivewireAlert;
 
     public $pending_user_count = 0, $pending_user_mode = false;
+    public $user_to_delete;
+    public $user_to_accept;
 
     public $editing_id;
     public $editing = false;
@@ -25,13 +29,6 @@ class Users extends Component
         $this->pending_user_count = User::where('role', 2)->count();
     }
 
-
-    public function updatePendingUserCount()
-    {
-        $this->pending_user_count = User::where('role', 2)->count();
-    }
-
-
     public function accept_user(User $user)
     {
 
@@ -42,7 +39,6 @@ class Users extends Component
 
         $this->updatePendingUserCount();
         return back()->with('success', 'You have successfully accepted the user');
-
     }
 
     public function pending_user_mode_on()
@@ -55,16 +51,68 @@ class Users extends Component
         $this->pending_user_mode = false;
     }
 
-
-
-    public function delete_user(User $user)
+    public function accept_confirm($id)
     {
-
-
-        $user->delete();
-        return back()->with('success', 'You have successfully deleted the user');
+        $this->user_to_accept = $id;
+        $this->alert('info', 'Are you sure you want to add this account?', [
+            'position' => 'top',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Yes',
+            'onConfirmed' => 'add_account',
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Cancel',
+            'timer' => null,
+        ]);
     }
 
+    public function add_account()
+    {
+        $user = User::findOrFail($this->user_to_accept);
+        $user->update([
+            'role' => 1,
+        ]);
+
+        $this->reset('user_to_accept');
+        $this->updatePendingUserCount();
+    }
+
+
+    public function delete_confirm(User $user)
+    {
+        $this->user_to_delete = $user->id;
+
+        $this->alert('warning', 'Are you sure you want to delete?', [
+            'position' => 'top',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Yes',
+            'onConfirmed' => 'delete_user',
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Cancel',
+            'timer' => null,
+        ]);
+    }
+
+    public function delete_user()
+    {
+        $user = User::findOrFail($this->user_to_delete);
+        if ($user) {
+            $user->delete();
+            session()->flash('success', 'You have successfully deleted the user');
+            $this->updatePendingUserCount();
+        }
+    }
+
+
+    protected $listeners = [
+        'delete_user',
+        'add_account',
+        'Cancel'
+    ];
+
+    public function updatePendingUserCount()
+    {
+        $this->pending_user_count = User::where('role', 2)->count();
+    }
 
     public function edit_user($id)
     {

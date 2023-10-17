@@ -26,7 +26,7 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
                 <td>
-                    <button wire:confirm="Are you sure?" wire:click='accept_user({{$item->id}})' class="btn btn-outline-success"><i class="bi bi-check2-circle"></i></button>
+                    <button  wire:click='accept_confirm({{$item->id}})' class="btn btn-outline-success"><i class="bi bi-check2-circle"></i></button>
                     <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></i></button>
                 </td>
             </tr>
