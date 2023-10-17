@@ -15,25 +15,22 @@
              <div class="container">
                      <div class="row row-cols-lg-3 row-cols-md-2 ">
                          @foreach ($products as $product)
-                             <div class="col d-flex justify-content-around">
-                                 <div class="card m-1" style="width: 14rem;">
-                                     <img src="{{ Storage::url($product->product_image) }}" class="card-img-top"
-                                         alt="...">
-                                     <div class="card-body">
-                                         <p class="card-text">Product name: {{ $product->product_name }}</p>
-                                         <p class="card-text">Quantity: {{ $product->quantity }}</p>
-                                         <p class="card-text">Retail Price: {{ $product->retail_price }}</p>
-                                         <p class="card-text">Wholesale Price: {{ $product->wholesale_price }}</p>
-                                         <p class="card-text">Brand: {{ optional($product->brand)->brand_name }}.
-                                         </p>
-
-                                         <div>
-                                             <button class="btn btn-danger btn-sm">Delete</button>
-                                             <button class="btn btn-warning btn-sm">Edit</button>
+                            <div class="card-framez">
+                                <img class="imgz" src="{{ Storage::url($product->product_image) }}" alt="product image">
+                                <div class="card-boxz">
+                                    <div class="contentz">
+                                        <h3>{{ $product->product_name }}</h3>
+                                         <p class="card-text c-text">Quantity: {{ $product->quantity }}</p>
+                                         <p class="card-text c-text">Retail Price: {{ $product->retail_price }}</p>
+                                         <p class="card-text c-text">Wholesale Price: {{ $product->wholesale_price }}</p>
+                                         <p class="card-text c-text">Brand: {{ optional($product->brand)->brand_name }}.</p>
+                                         <div class="d-flex">
+                                             <button class="btn btn-danger btn-sm c-text">Delete</button>
+                                             <button class="btn btn-warning btn-sm c-text">Edit</button>
                                          </div>
-                                     </div>
-                                 </div>
-                             </div>
+                                    </div>
+                                </div>
+                            </div>
                          @endforeach
                      </div>
                  </div>
