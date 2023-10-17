@@ -4,8 +4,11 @@ namespace App\Livewire\Pages;
 
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
-
+#[Layout('index')]
+#[Title('Orders')]
 class Orders extends Component
 {
     public $product_quantity;
