@@ -3,9 +3,7 @@
         @include('layout.sidebar')
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')
-
-
-
+            
             @if ($pending_user_mode == true)
                 <div class="p-3 d-flex justify-content-end">
                     <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='pending_user_mode_off'>

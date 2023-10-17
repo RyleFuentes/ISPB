@@ -19,6 +19,7 @@
         {{$slot}}
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/app.js"></script>
     </body>
 </html>

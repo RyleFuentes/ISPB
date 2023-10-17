@@ -7,7 +7,7 @@
             @include('livewire.messages.success')
 
               
-            <div class="my-2 row g-3">
+            <div class="mt-5 row g-3">
 
                 <div class="col col-md-4 col-xl-3">
                     <div class="card bg-c-green order-card shadow">
@@ -56,6 +56,32 @@
                         </div>
                     </div>
                 </div>     
+            </div>
+
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="card shadow" style="height: 50vh">
+                        <div class="card-block">
+                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
+                            <h2 class="text-right">
+                                <i class="fa fa-tag me-2"></i><span>486</span>
+                            </h2>
+                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="col col-md-4">
+                    <div class="card shadow" style="height: 50vh">
+                        <div class="card-block">
+                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
+                            <h2 class="text-right">
+                                <i class="fa fa-tag me-2"></i><span>486</span>
+                            </h2>
+                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </div>
     </div>
