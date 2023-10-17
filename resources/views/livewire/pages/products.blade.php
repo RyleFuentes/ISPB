@@ -2,6 +2,7 @@
      @include('layout.sidebar')
      <div class="container-fluid px-4" id="dashboard">
          @include('layout.navbar')
+         @include('livewire.messages.success')
          <div class="p-3 d-flex justify-content-end">
              <button class="btn btn-light btn-sm rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addBrand">
                  <i class="fa fa-plus-circle me-2 text-primary"></i>Add Brand

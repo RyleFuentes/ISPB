@@ -56,6 +56,10 @@ class Products extends Component
         $this->reset('product_name', 'product_qty', 'product_retail_price', 'product_wholesale_price', 'product_image', 'brand_id');
        }
 
+       else{
+        return redirect()->route('products')->with('fail', 'Something went wrong please try again');
+       }
+
     }
 
     public function addProductMode()
@@ -77,10 +81,12 @@ class Products extends Component
 
         if($add)
         {
-            $this->dispatch('hide:add-brand-modal');
             $this->reset('brand');
+            return back()->with('success', 'You have successfully added a brand');
+            
         }
-        session()->flash('success', 'You have successfully added a brand');
+
+        return back()->with('fail', 'Something went wrong');
     }
 
 

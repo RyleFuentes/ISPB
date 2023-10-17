@@ -12,7 +12,7 @@
     <table class="table">
         <thead>
             <tr class="text-center fs-6">
-                <td scope="col" class="text-primary">ID</td>
+
                 <td scope="col" class="text-primary">Name</td>
                 <td scope="col" class="text-primary">Email</td>
                 <td scope="col" class="text-primary">Role</td>
@@ -25,7 +25,7 @@
                     @if ($editing == true && $user->id == $editing_id)
                         <tr>
                             <form>
-                                <th scope="row">{{ $user->id }}</th>
+                               
 
                                 <td><input wire:model='edit_name' type="text" class="form-control"
                                         value="{{ $user->name }}"></td>

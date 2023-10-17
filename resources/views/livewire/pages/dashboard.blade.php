@@ -1,7 +1,12 @@
-<div class="d-flex" id="wrapper">   
+<div class="d-flex" id="wrapper">
+    
         @include('layout.sidebar')         
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')   
+
+            @include('livewire.messages.success')
+
+              
             <div class="my-2 row g-3">
 
                 <div class="col col-md-4 col-xl-3">
