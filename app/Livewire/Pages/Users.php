@@ -12,20 +12,58 @@ use Illuminate\Support\Facades\Hash;
 #[Title('Users')]
 class Users extends Component
 {
+
+    public $pending_user_count = 0, $pending_user_mode = false;
+
     public $editing_id;
     public $editing = false;
 
     public $edit_name, $edit_email, $edit_password, $edit_role;
 
-
-
-    public function delete_user($id)
+    public function mount()
     {
-        $user = User::findOrFail($id);
+        $this->pending_user_count = User::where('role', 2)->count();
+    }
+
+
+    public function updatePendingUserCount()
+    {
+        $this->pending_user_count = User::where('role', 2)->count();
+    }
+
+
+    public function accept_user(User $user)
+    {
+
+        $user->update([
+            'role' => 1,
+        ]);
+
+
+        $this->updatePendingUserCount();
+        return back()->with('success', 'You have successfully accepted the user');
+
+    }
+
+    public function pending_user_mode_on()
+    {
+        $this->pending_user_mode = true;
+    }
+
+    public function pending_user_mode_off()
+    {
+        $this->pending_user_mode = false;
+    }
+
+
+
+    public function delete_user(User $user)
+    {
+
 
         $user->delete();
         return back()->with('success', 'You have successfully deleted the user');
-        }
+    }
 
 
     public function edit_user($id)
@@ -34,7 +72,7 @@ class Users extends Component
         $user = User::findOrFail($id);
         $this->editing_id = $user->id;
         //? ----- SETTING THE PUBLIC VARIABLES TO THESE ------
-        
+
         $this->edit_name = $user->name;
         $this->edit_email = $user->email;
         $this->edit_password = $user->password;
@@ -45,11 +83,10 @@ class Users extends Component
     {
         $user = User::findOrFail($id);
 
-        if($user->email == $this->edit_email)
-        {
+        if ($user->email == $this->edit_email) {
             $validated = $this->validate([
                 'edit_name' => 'required',
-               
+
             ]);
 
 
@@ -59,14 +96,10 @@ class Users extends Component
                 'role' => $this->edit_role,
                 'password' => $user->password,
             ]);
-    
-    
-        }
-        else
-        {
+        } else {
             $validated = $this->validate([
                 'edit_name' => 'required',
-                'edit_email' => 'required|email|unique:users,email,' ,
+                'edit_email' => 'required|email|unique:users,email,',
             ]);
 
             $user->update([
@@ -76,8 +109,8 @@ class Users extends Component
                 'password' => $user->password,
             ]);
         }
-      
-       
+
+
         return redirect()->route('users');
         $this->reset('edit_name', 'edit_email', 'edit_password', 'edit_role');
     }
@@ -90,6 +123,7 @@ class Users extends Component
     public function render()
     {
         $users = User::all();
-        return view('livewire.pages.users', compact('users'));
+        $pending_users = User::where('role', 2)->get();
+        return view('livewire.pages.users', compact('users', 'pending_users'));
     }
 }

@@ -1,98 +1,30 @@
-<div>
+<div wire:poll>
     <div class="d-flex" id="wrapper">
         @include('layout.sidebar')
         <div class="container-fluid px-4" id="dashboard">
             @include('layout.navbar')
-            <div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
-                <div class="mb-4 ms-auto">
-                    <form class="d-flex mt-2">
-                        <input class="form-control me-2" type="search"
-                            placeholder="Search" aria-label="Search" style="border-bottom-color: #6c3ca4;">
-                        <button class="btn btn-primary me-3" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+
+
+
+            @if ($pending_user_mode == true)
+                <div class="p-3 d-flex justify-content-end">
+                    <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='pending_user_mode_off'>
+                        User Management
+                    </button>
+
                 </div>
+                @include('livewire.components.pending_user_management')
+            @else
+                <div class="p-3 d-flex justify-content-end">
+                    <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='pending_user_mode_on'>
+                        <span  class="badge text-bg-info">{{ $pending_user_count }}</span> Pending Users
+                    </button>
 
-                <table class="table">
-                    <thead>
-                        <tr class="text-center fs-6">
-                            <td scope="col" class="text-primary">ID</td>
-                            <td scope="col" class="text-primary">Name</td>
-                            <td scope="col" class="text-primary">Email</td>
-                            <td scope="col" class="text-primary">Role</td>
-                            <td scope="col" class="text-primary">Actions</td>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        @foreach ($users as $user)
-                            @if ($editing == true && $user->id == $editing_id)
-                                <tr>
-                                    <form>
-                                        <th scope="row">{{ $user->id }}</th>
+                </div>
+                @include('livewire.components.user_management')
+            @endif
 
-                                        <td><input wire:model='edit_name' type="text" class="form-control"
-                                                value="{{ $user->name }}"></td>
-                                        @error('edit_name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <td><input wire:model='edit_email' type="email" class="form-control"
-                                                value="{{ $user->email }}"></td>
-                                        @error('edit_email')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <td>
-                                            <select class="form-select" aria-label="Default select example"
-                                                wire:model='edit_role'>
-                                                <option value="0" {{ $edit_role == 0 ? 'selected' : '' }}>Admin
-                                                </option>
-                                                <option value="1" {{ $edit_role == 1 ? 'selected' : '' }}>
-                                                    Inventory Clerk
-                                                </option>
-                                            </select>
-                                        </td>
-                                        @error('edit_role')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                        <td class="text-center">
-                                            <a wire:click='cancel_edit' class="text-danger mx-1"
-                                                style="cursor: pointer">
-                                                <i class="fas fa-cancel fs-5"></i>
-                                            </a>
-                                            <a wire:click='save_edit({{ $user->id }})' class="mx-1 text-success"
-                                                style="cursor: pointer">
-                                                <i class="fas fa-save fs-5"></i>
-                                            </a>
-                                        </td>
-                                    </form>
-                                </tr>
-                            @else
-                                <tr>
-                                    <th scope="row">{{ $user->id }}</th>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @if ($user->role == 0)
-                                            <span class="text-danger">Admin</span>
-                                        @else
-                                            <span class="text-warning">Inventory Clerk</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-center">
-                                        <a wire:click='edit_user({{ $user->id }})' class="mx-1 text-primary"
-                                            style="cursor: pointer">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a class="text-danger mx-1" style="cursor: pointer">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+
         </div>
     </div>
 </div>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 #[Title('Pending')]
 class PendingUser extends Component
 {
+   
 
     public function render()
     {
