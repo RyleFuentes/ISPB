@@ -1,6 +1,6 @@
 <div class="container p-3 rounded">
     <div class="row flex-reverse">
-        <div class="col-sm p-5 rounded bg-dark">
+        <div class="col-sm p-5 rounded" style="background-color: #c6a4f0;">
             <form wire:submit='addNewProduct'>
                 <div class="form-group mt-2">
 

@@ -2,6 +2,7 @@
      @include('layout.sidebar')
      <div class="container-fluid px-4" id="dashboard">
          @include('layout.navbar')
+         @include('livewire.messages.success')
          <div class="p-3 d-flex justify-content-end">
              <button class="btn btn-light btn-sm rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addBrand">
                  <i class="fa fa-plus-circle me-2 text-primary"></i>Add Brand
@@ -15,25 +16,22 @@
              <div class="container">
                      <div class="row row-cols-lg-3 row-cols-md-2 ">
                          @foreach ($products as $product)
-                             <div class="col d-flex justify-content-around">
-                                 <div class="card m-1" style="width: 14rem;">
-                                     <img src="{{ Storage::url($product->product_image) }}" class="card-img-top"
-                                         alt="...">
-                                     <div class="card-body">
-                                         <p class="card-text">Product name: {{ $product->product_name }}</p>
-                                         <p class="card-text">Quantity: {{ $product->quantity }}</p>
-                                         <p class="card-text">Retail Price: {{ $product->retail_price }}</p>
-                                         <p class="card-text">Wholesale Price: {{ $product->wholesale_price }}</p>
-                                         <p class="card-text">Brand: {{ optional($product->brand)->brand_name }}.
-                                         </p>
-
-                                         <div>
-                                             <button class="btn btn-danger btn-sm">Delete</button>
-                                             <button class="btn btn-warning btn-sm">Edit</button>
+                            <div class="card-framez">
+                                <img class="imgz" src="{{ Storage::url($product->product_image) }}" alt="product image">
+                                <div class="card-boxz">
+                                    <div class="contentz">
+                                        <h3>{{ $product->product_name }}</h3>
+                                         <p class="card-text c-text">Quantity: {{ $product->quantity }}</p>
+                                         <p class="card-text c-text">Retail Price: {{ $product->retail_price }}</p>
+                                         <p class="card-text c-text">Wholesale Price: {{ $product->wholesale_price }}</p>
+                                         <p class="card-text c-text">Brand: {{ optional($product->brand)->brand_name }}.</p>
+                                         <div class="d-flex">
+                                             <button class="btn btn-sm c-text" style="background-color: #7d5ea3">Delete</button>
+                                             <button class="btn btn-sm c-text" style="background-color: #c6a4f0">Edit</button>
                                          </div>
-                                     </div>
-                                 </div>
-                             </div>
+                                    </div>
+                                </div>
+                            </div>
                          @endforeach
                      </div>
                  </div>

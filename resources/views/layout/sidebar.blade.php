@@ -12,7 +12,7 @@
             <i class="fas fa-box me-1"></i>
             <span>Products</span>
         </a>
-        <a class="item text-secondary mb-3 p-3 mx-2">
+        <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('orders*') ? 'active' : '' }}" href="{{ route('orders') }}">
             <i class="fas fa-shopping-bag me-1"></i>
             <span>Orders</span>
         </a>
