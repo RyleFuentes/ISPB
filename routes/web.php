@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Dashboard;
+use App\Livewire\Pages\Orders;
 use App\Livewire\Pages\Products;
 use App\Livewire\Pages\Users;
 use App\Livewire\PendingUser;

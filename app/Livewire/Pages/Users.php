@@ -18,6 +18,16 @@ class Users extends Component
     public $edit_name, $edit_email, $edit_password, $edit_role;
 
 
+
+    public function delete_user($id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+        return back()->with('success', 'You have successfully deleted the user');
+        }
+
+
     public function edit_user($id)
     {
         $this->editing = true;

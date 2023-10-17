@@ -4,6 +4,7 @@
         <h2 class="fs-6 fw-bold m-0 text-white">
             {{ request()->is('dashboard*') ? 'Dashboard' : '' }}
             {{ request()->is('products*') ? 'Products' : '' }}
+             {{ request()->is('orders*') ? 'Orders' : '' }}
             {{ request()->is('users*') ? 'Users' : '' }}
         </h2>
     </div>
