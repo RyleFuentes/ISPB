@@ -4,6 +4,22 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c3ca4;
+    border-radius: 20px;
+
+}
+
+
 .form-control {
     color: #808080;
     border-bottom-color: rgba(0, 0, 0, 0.42);
@@ -163,6 +179,21 @@ h3, .c-text {
     background: linear-gradient(to bottom, #6c3ca4 30%, transparent 30%);
     width: 100%;
     height: 100vh;
+}
+
+.table {
+    width: 100%;
+    margin: 0;
+}
+
+
+.table td, .table th {
+    text-align: left;
+}
+
+.table td{
+    padding: 15px;
+
 }
 
 @media (max-width: 768px) {

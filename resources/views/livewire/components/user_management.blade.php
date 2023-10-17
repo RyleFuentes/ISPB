@@ -1,4 +1,4 @@
-<div  class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
+<div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
     <div class="mb-4 ms-auto">
         <form class="d-flex mt-2">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
@@ -9,23 +9,24 @@
         </form>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr class="text-center fs-6">
-                <td scope="col" class="text-primary">ID</td>
-                <td scope="col" class="text-primary">Name</td>
-                <td scope="col" class="text-primary">Email</td>
-                <td scope="col" class="text-primary">Role</td>
-                <td scope="col" class="text-primary">Actions</td>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            @foreach ($users as $user)
-                @if ($user->role == 0 || $user->role == 1)
-                    @if ($editing == true && $user->id == $editing_id)
-                        <tr>
-                            <form>
-                                <th scope="row">{{ $user->id }}</th>
+    <div style="margin: 20px auto; width: 100%;">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr class=" fw-semibold">
+                    <td scope="col" class="text-secondary">ID</td>
+                    <td scope="col" class="text-secondary">Name</td>
+                    <td scope="col" class="text-secondary">Email</td>
+                    <td scope="col" class="text-secondary">Role</td>
+                    <td scope="col" class="text-secondary">Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    @if ($user->role == 0 || $user->role == 1)
+                        @if ($editing == true && $user->id == $editing_id)
+                            <tr>
+                                <form>
+                                    <th scope="row">{{ $user->id }}</th>
 
                                 <td><input wire:model='edit_name' type="text" class="form-control"
                                         value="{{ $user->name }}"></td>
@@ -92,7 +93,8 @@
                     @endif
                 @endif
 
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
