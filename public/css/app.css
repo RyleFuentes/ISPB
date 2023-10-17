@@ -89,6 +89,8 @@
     border-radius: 20px;
     overflow: hidden;
     margin: 5px; /* Hide any overflowing content */
+    cursor: pointer;
+
 }
 
 .card-boxz {
@@ -118,7 +120,7 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Horizontally aligns child items because of column direction */
-    justify-content: center; /* Vertically aligns child items because of column direction */
+    justify-content: space-between; /* Vertically aligns child items because of column direction */
     text-align: center;
     top: 50%; /* Position the top edge at 50% of the parent's height */
     transform: translateY(-50%); /* Shift it up by half of its own height */
@@ -127,7 +129,9 @@
 }
 
 .card-boxz:hover {
-    height: 315px; /* Expanded height on hover */
+    height: 315px; 
+    background: linear-gradient(rgba(198, 164, 240, 0.6), rgba(146, 111, 189, 0.6), rgba(125, 94, 163, 0.6));
+/* Expanded height on hover */
 }
 
 h3, .c-text {
@@ -143,6 +147,7 @@ h3, .c-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .card-boxz:hover .c-text{
@@ -150,6 +155,7 @@ h3, .c-text {
     flex-direction: column;
     text-align: justify;
     position: relative;
+    justify-content: space-between;
     top: 20px;
 }
 
