@@ -24,6 +24,10 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
 
+            @if(session('error'))
+            <div class="alert alert-danger mt-3">{{ session('error') }}</div>
+            @endif
+
             <div class="form-group mt-3">
                 <button class="btn btn-primary w-100 rounded-pill fw-semibold">Login</button>
             </div>
