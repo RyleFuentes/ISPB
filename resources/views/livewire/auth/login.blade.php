@@ -1,5 +1,22 @@
 <div class="container d-flex justify-content-center align-items-center flex-column min-vh-100">
 
+    @if(session('error'))
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">ISPB</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">{{ session('error') }}</div>
+        </div>
+    @endif
+
+    <script>
+        var toastEl = document.querySelector('.toast');
+        var toast = new bootstrap.Toast(toastEl);
+        toast.show();
+    </script>
+
     <div class="row border d-flex justify-content-center align-items-center flex-column rounded-3 shadow p-3 p-md-5" style="width: 90vw; max-width: 400px">
         <div class="text-center fw-bold">
             <img src="images/logo.png" width="100" class="mb-3 img-fluid">
@@ -23,10 +40,6 @@
             @error('password')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-
-            @if(session('error'))
-            <div class="alert alert-danger mt-3">{{ session('error') }}</div>
-            @endif
 
             <div class="form-group mt-3">
                 <button class="btn btn-primary w-100 rounded-pill fw-semibold">Login</button>
