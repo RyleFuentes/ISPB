@@ -21,7 +21,7 @@ class Login extends Component
     public function authenticate()
     {
         $validated = $this->validate();
-
+    
         if (Auth::attempt($validated)) {
             if (Auth::user()->role == 0) {
                 request()->session()->regenerate();
@@ -29,12 +29,17 @@ class Login extends Component
             } elseif (Auth::user()->role == 1) {
                 request()->session()->regenerate();
                 return redirect()->route('products')->with('success', 'You have successfully logged in');
-            } else {
-                request()->session()->regenerate();
-                return redirect()->route('pending')->with('success', 'You have successfully logged in');
+            } elseif (Auth::user()->role == 2) {
+                // User role is 2 (pending)
+                Auth::logout(); // Log the user out
+                request()->session()->invalidate(); // Invalidate the session
+                request()->session()->regenerateToken(); // Regenerate the CSRF token
+    
+                return redirect()->route('login')->with('error', 'Your account is still pending.');
             }
         }
     }
+    
     public function render()
     {
         return view('livewire.auth.login');
