@@ -37,8 +37,5 @@ Route::middleware(['auth', 'can:access' ])->group(function() {
     Route::get('/users', Users::class)->name('users')->middleware('admin');
 });
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
 
 Route::get('/pending', PendingUser::class)->name('pending')->middleware('auth');
