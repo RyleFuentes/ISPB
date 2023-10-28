@@ -20,6 +20,8 @@ class Login extends Component
 
     public function authenticate()
     {
+
+        sleep(2);
         $validated = $this->validate();
     
         if (Auth::attempt($validated)) {
@@ -37,6 +39,10 @@ class Login extends Component
     
                 return redirect()->route('login')->with('error', 'Your account is still pending.');
             }
+        }
+        else
+        {
+            return back()->with('error', "This account doesn't exist in our system, try registering");
         }
     }
     

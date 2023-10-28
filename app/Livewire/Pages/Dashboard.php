@@ -26,6 +26,8 @@ class Dashboard extends Component
             ->addColumn('Commute', 360, '#90cdf4')
             ->addColumn('School allowance', 2000, '#90cdf4');
 
+
+
         return view('livewire.pages.dashboard')->with(['columnChartModel' => $columnChartModel]);
     }
 }

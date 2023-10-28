@@ -13,7 +13,6 @@
         <table class="table table-striped table-hover ">
             <thead>
                 <tr class=" fw-semibold">
-                    <td scope="col" class="text-secondary">ID</td>
                     <td scope="col" class="text-secondary">Name</td>
                     <td scope="col" class="text-secondary">Email</td>
                     <td scope="col" class="text-secondary">Role</td>
