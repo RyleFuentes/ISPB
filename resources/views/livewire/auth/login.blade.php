@@ -37,7 +37,7 @@
                 <button wire:loading wire:target="authenticate"  class="btn btn-primary w-100 rounded-pill fw-semibold">
                     <div >  
                         <div class="d-flex align-items-center">
-                            <strong role="status">Authenticating...</strong>
+                            <strong role="status">Authenticating</strong>
                             <div class="spinner-border spinner-border-sm ms-auto" aria-hidden="true"></div>
                           </div>
                     </div>
