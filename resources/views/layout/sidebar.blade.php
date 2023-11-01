@@ -20,6 +20,12 @@
             <i class="fas fa-users me-1"></i>
             <span>Users</span>
         </a>
+
+        <!-- demo link to be remove -->
+        <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('profile*') ? 'active' : '' }}" href="{{ route('profile') }}">
+            <i class="fas fa-user me-1"></i>
+            <span>Profile</span>
+        </a>
     </div>
 
     <livewire:components.logout />

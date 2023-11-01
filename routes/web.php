@@ -6,6 +6,7 @@ use App\Livewire\Pages\Dashboard;
 use App\Livewire\Pages\Orders;
 use App\Livewire\Pages\Products;
 use App\Livewire\Pages\Users;
+use App\Livewire\Pages\Profile;
 use App\Livewire\PendingUser;
 use App\Livewire\Welcome;
 
@@ -33,6 +34,7 @@ Route::middleware(['auth', 'can:access' ])->group(function() {
     Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('admin');
     Route::get('/products', Products::class)->name('products');
     Route::get('/orders', Orders::class)->name('orders');
+    Route::get('/profile', Profile::class)->name('profile');
     
     Route::get('/users', Users::class)->name('users')->middleware('admin');
 });

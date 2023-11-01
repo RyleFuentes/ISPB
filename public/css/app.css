@@ -20,6 +20,7 @@
 }
 
 
+
 .form-control {
     color: #808080;
     border-bottom-color: rgba(0, 0, 0, 0.42);
@@ -196,6 +197,12 @@ h3, .c-text {
 
 }
 
+.prof{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
 @media (max-width: 768px) {
     #sidebar-wrapper {
         width: 0rem;
@@ -209,5 +216,9 @@ h3, .c-text {
     }
     .hide-text {
         display: none;
+    }
+    .prof{
+        width: 20vw;
+        height: 20vw;
     }
 }
