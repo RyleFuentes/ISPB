@@ -1,7 +1,7 @@
 <div class="row">
     <!-- ala pa ako maisip na ilagay, lakas ng mental block -->
     <div class="col-md-5 d-flex align-items-center justify-content-center">
-        <div class="bg-primary rounded py-3 px-5 bg-opacity-25 w-100">
+        <div class="bg-primary rounded py-3 px-5 bg-opacity-25 w-100 h-100">
             <div class="d-flex align-items-center justify-content-center py-1">
                 <div class="prof rounded bg-secondary">
                     <img class="img prof" src="{{ asset('images/logo.png') }}" alt="logo">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-md-7 mt-3 d-flex justify-content-center">
-        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100 h-auto">
+        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100 h-100">
             <h2 class="fs-2">ABOUT</h2>
             <hr />
             <small class="badge rounded-pill bg-primary fs-5">Email</small>
