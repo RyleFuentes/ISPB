@@ -21,7 +21,7 @@
 
     <div class="col-md-7 mt-3 d-flex justify-content-center">
         <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100 h-100">
-            <h2 class="fs-2 text-primary">ABOUT</h2>
+            <h2 class="fs-2 text-primary">BASIC INFO</h2>
             <hr />
             <small class="badge rounded-pill bg-primary fs-6">Email</small>
             <p class="px-3 fs-5">{{ $user->email }}</p>
