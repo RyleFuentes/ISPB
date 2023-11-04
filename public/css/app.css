@@ -119,9 +119,9 @@
 }
 
 .prof{
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -137,9 +137,5 @@
     }
     .hide-text {
         display: none;
-    }
-    .prof{
-        width: 20vw;
-        height: 20vw;
     }
 }
