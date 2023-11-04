@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-md-7 mt-3 d-flex justify-content-center">
-        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100 h-100">
+        <div class="bg-primary rounded p-5 bg-opacity-25 w-100 h-100">
             <h2 class="fs-2 fs-sm-2 text-primary">BASIC INFO</h2>
             <hr />
             <small class="badge rounded-pill bg-primary fs-6">Email</small>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="my-3 d-flex justify-content-center">
-        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100">
+        <div class="bg-primary rounded p-5 bg-opacity-25 w-100">
             <h2 class="fs-2 text-primary">IN CASE OF EMERGENCY</h2>
             <hr>
             <small class="badge rounded-pill bg-primary fs-6">Guardian/Parent</small>

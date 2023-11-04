@@ -8,12 +8,16 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Hash;
+use Livewire\WithPagination;
 
 #[Layout('index')]
 #[Title('Users')]
 class Users extends Component
 {
     use LivewireAlert;
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
 
     public $pending_user_count = 0, $pending_user_mode = false;
     public $user_to_delete;
@@ -170,7 +174,7 @@ class Users extends Component
 
     public function render()
     {
-        $users = User::all();
+        $users = User::paginate(1);
         $pending_users = User::where('role', 2)->get();
         return view('livewire.pages.users', compact('users', 'pending_users'));
     }
