@@ -6,8 +6,7 @@
 
         @include('livewire.messages.message')
 
-
-        <div class="mt-5 row g-3">
+        <div class="mt-3 row g-3">
 
             <div class="col col-md-4 col-xl-3">
                 <div class="card bg-c-green order-card shadow">

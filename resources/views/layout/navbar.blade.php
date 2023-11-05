@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-3 mt-3 shadow rounded-3">
     <div class="d-flex align-items-center">
-        <i class="fas fa-align-justify primary-text fs-4 me-3 text-white" id="menu-toggle"></i>
-        <h2 class="fs-6 fw-bold m-0 text-white">
+        <i class="fas fa-align-justify primary-text fs-4 me-3 text-primary" id="menu-toggle"></i>
+        <h2 class="fs-6 fw-bold m-0 text-primary">
             {{ request()->is('dashboard*') ? 'Dashboard' : '' }}
             {{ request()->is('products*') ? 'Products' : '' }}
              {{ request()->is('orders*') ? 'Orders' : '' }}
