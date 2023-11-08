@@ -1,5 +1,5 @@
-<div class="container p-3 rounded">
-    <div class="row flex-reverse ">
+<div class="container p-3 rounded bg-secondary">
+    <div class="row">
         <div class="col-sm p-5 rounded bg-primary bg-opacity-50">
             <form wire:submit='addNewProduct'>
                 <div class="form-group mt-2">
@@ -71,13 +71,13 @@
             </form>
         </div>
         @if ($product_image)
-            <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
-                <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview">
-            </div>
+        <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
+            <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview">
+        </div>
         @else
-            <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
-                <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
-            </div>
+        <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
+            <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
+        </div>
         @endif
 
     </div>
