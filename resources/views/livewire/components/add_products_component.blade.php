@@ -71,11 +71,11 @@
             </form>
         </div>
         @if ($product_image)
-            <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center">
+            <div class="col mt-sm-0 mt-2 ms-md-2 ms-sm-2 bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center">
                 <img class="img-fluid" src="{{ $product_image->temporaryUrl() }}" alt="preview">
             </div>
         @else
-            <div class="col bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center">
+            <div class="col mt-sm-0 mt-2 ms-md-2 ms-sm-2 bg-primary bg-opacity-50 rounded d-flex flex-column justify-content-center align-items-center">
                 <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
             </div>
         @endif

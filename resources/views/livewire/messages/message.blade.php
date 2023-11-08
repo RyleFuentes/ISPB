@@ -35,12 +35,7 @@
     {{ session('error') }}
 </div>
 
-@elseif(session('create_success'))
-<div class="alert alert-danger alert-dismissible fade show position-absolute top-0 start-50 translate-middle mt-5 fs-5" role="alert">
-    {{ session('create_success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
+<!-- @elseif(session('create_success'))
 <div class="position-fixed bottom-0 end-0 m-2 m-sm-3 m-md-4 m-lg-5" style="z-index: 9999;">
     <div class="toast show">
         <div class="toast-header">
@@ -52,7 +47,7 @@
             <p class="mb-0">{{ session('create_success') }}</p>
         </div>
     </div>
-</div>
+</div> -->
 
 @endif
 

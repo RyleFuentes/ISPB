@@ -35,7 +35,8 @@ class Register extends Component
 
         if($add)
         {
-            return $this->redirect('/', navigate:true);
+            // return $this->redirect('/', navigate:true);
+            return redirect('/')->with('success', 'Account created successfully!');
         }
 
 

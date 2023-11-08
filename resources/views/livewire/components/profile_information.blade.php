@@ -7,7 +7,7 @@
                     <img class="img prof rounded border border-3 border-light" src="{{ asset('images/bean.jpg') }}" alt="logo">
                 </div>
             </div>
-            <hr>
+            <hr class="border border-3 rounded border-primary">
             <div>
                 <p class="fs-4 text-center mb-0">{{ $user->name }}</p>
                 @if ($user->role == 0)
@@ -19,30 +19,52 @@
         </div>
     </div>
 
-    <div class="col-md-7 mt-3 d-flex justify-content-center">
-        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100 h-100">
+    <div class="col-md-7 mt-3 mt-md-0 d-flex justify-content-center">
+        <div class="bg-primary rounded p-2 p-sm-3 p-md-4 p-lg-5 bg-opacity-25 w-100 h-100">
             <h2 class="fs-2 fs-sm-2 text-primary">BASIC INFO</h2>
-            <hr />
-            <small class="badge rounded-pill bg-primary fs-6">Email</small>
-            <p class="px-3 fs-5">{{ $user->email }}</p>
-            <small class="badge rounded-pill bg-primary fs-6">Address</small>
-            <p class="px-3 fs-5">Muntinlupa City</p>
-            <small class="badge rounded-pill bg-primary fs-6">Contact</small>
-            <p class="px-3 fs-5">09**-***-****</p>
+
+            <hr class="border border-3 rounded border-primary">
+
+            <div class="px-3">
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Email</h4>
+                <p class="fs-5"><i class="bi bi-envelope-at-fill text-primary"></i> {{ $user->email }}</p>
+
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Address</h4>
+                <p class="fs-5"><i class="bi bi-geo-alt-fill text-primary"></i> Muntinlupa City</p>
+
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Contact</h4>
+                <p class="fs-5 mb-0"><i class="bi bi-telephone-fill text-primary"></i> 09**-***-****</p>
+            </div>
         </div>
     </div>
 
     <div class="my-3 d-flex justify-content-center">
-        <div class="bg-primary rounded px-5 pt-5 bg-opacity-25 w-100">
+        <div class="bg-primary rounded p-2 p-sm-3 p-md-4 p-lg-5 bg-opacity-25 w-100">
             <h2 class="fs-2 text-primary">IN CASE OF EMERGENCY</h2>
-            <hr>
-            <small class="badge rounded-pill bg-primary fs-6">Guardian/Parent</small>
-            <p class="px-3 fs-5">name of guardian or parent</p>
-            <small class="badge rounded-pill bg-primary fs-6">Address</small>
-            <p class="px-3 fs-5">Muntinlupa City</p>
-            <small class="badge rounded-pill bg-primary fs-6">Emergency Contact</small>
-            <p class="px-3 fs-5">09**-***-****</p>
+
+            <hr class="border border-3 rounded border-primary">
+
+            <div class="px-3">
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Guardian/Parent</h4>
+                <p class="fs-5"><i class="bi bi-person-badge-fill text-primary"></i> Larry Gadon</p>
+
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Address</h4>
+                <p class="fs-5"><i class="bi bi-geo-alt-fill text-primary"></i> Muntinlupa City</p>
+
+                <h4 class="fw-bold mb-0 fs-6 badge rounded-pill bg-primary">Emergency Contact</h4>
+                <p class="mb-0 fs-5"><i class="bi bi-telephone-fill text-primary"></i> 09**-***-****</p>
+            </div>
         </div>
     </div>
-    
+
+    <div>
+        <button type="button" class="btn position-relative">
+            <i class="bi bi-bell-fill text-primary"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread notification</span>
+            </span>
+        </button>
+    </div>
+
 </div>
