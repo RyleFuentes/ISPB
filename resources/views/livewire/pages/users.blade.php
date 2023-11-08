@@ -20,8 +20,11 @@
 
                 </div>
                 @include('livewire.components.user_management')
-            @endif
 
+                <div class="d-flex justify-content-center">
+                    {{ $users->links() }}
+                </div>
+            @endif
 
         </div>
     </div>
