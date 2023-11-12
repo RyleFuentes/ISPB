@@ -69,7 +69,7 @@
 
             <div class="col col-md-4">
                 <div class="card shadow p-3" style="height: 50vh">
-                    <livewire:livewire-area-chart :area-chart-model="$areaChartModel" />
+                   <p>lskdjflsdkjf</p>
                 </div>
             </div>
         </div>

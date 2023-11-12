@@ -6,7 +6,7 @@ use Asantibanez\LivewireCharts\Models\AreaChartModel;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
-
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 
@@ -28,8 +28,12 @@ class Dashboard extends Component
             ->addColumn('School allowance', 2000, '#90cdf4')
             ->setAnimated(true);
 
+      
 
-
-        return view('livewire.pages.dashboard')->with(['columnChartModel' => $columnChartModel]);
+        return view('livewire.pages.dashboard')->with([
+            'columnChartModel' => $columnChartModel,
+           
+        
+        ]);
     }
 }
