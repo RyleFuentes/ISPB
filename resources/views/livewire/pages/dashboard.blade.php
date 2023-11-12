@@ -68,14 +68,8 @@
             </div>
 
             <div class="col col-md-4">
-                <div class="card shadow" style="height: 50vh">
-                    <div class="card-block">
-                        <div class="m-b-20 fw-bold text-primary">ORDERS</div>
-                        <h2 class="text-right">
-                            <i class="fa fa-tag me-2"></i><span>486</span>
-                        </h2>
-                        <p class="m-b-0 fw-bold">Total Sales: 351</p>
-                    </div>
+                <div class="card shadow p-3" style="height: 50vh">
+                    <livewire:livewire-area-chart :area-chart-model="$areaChartModel" />
                 </div>
             </div>
         </div>
