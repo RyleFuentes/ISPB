@@ -2,7 +2,7 @@
      @include('layout.sidebar')
      <div class="container-fluid px-4" id="dashboard">
          @include('layout.navbar')
-         @include('livewire.messages.success')
+         @include('livewire.messages.message')
          <div class="p-3 d-flex justify-content-end">
              <button class="btn btn-light btn-sm rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addBrand">
                  <i class="fa fa-plus-circle me-2 text-primary"></i>Add Brand
@@ -13,28 +13,41 @@
          </div>
 
          @if (!$addProduct)
-             <div class="container">
-                     <div class="row row-cols-lg-3 row-cols-md-2 ">
-                         @foreach ($products as $product)
-                            <div class="card-framez">
-                                <img class="imgz" src="{{ Storage::url($product->product_image) }}" alt="product image">
-                                <div class="card-boxz">
-                                    <div class="contentz">
-                                        <h3>{{ $product->product_name }}</h3>
-                                         <p class="card-text c-text">Quantity: {{ $product->quantity }}</p>
-                                         <p class="card-text c-text">Retail Price: {{ $product->retail_price }}</p>
-                                         <p class="card-text c-text">Wholesale Price: {{ $product->wholesale_price }}</p>
-                                         <p class="card-text c-text">Brand: {{ optional($product->brand)->brand_name }}.</p>
-                                         <div class="d-flex">
-                                             <button class="btn btn-sm c-text" style="background-color: #7d5ea3">Delete</button>
-                                             <button class="btn btn-sm c-text" style="background-color: #c6a4f0">Edit</button>
-                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                         @endforeach
-                     </div>
+             <div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
+                 <div class="mb-4 ms-auto">
+                     <form class="d-flex mt-2">
+                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                             style="border-bottom-color: #6c3ca4;">
+                         <button class="btn btn-primary me-3" type="submit">
+                             <i class="fas fa-search"></i>
+                         </button>
+                     </form>
                  </div>
+
+                 <div style="margin: 20px auto; width: 100%;">
+                     <table class="table table-striped table-hover ">
+                         <thead>
+                             <tr class=" fw-semibold">
+                                 <td scope="col" class="text-secondary">Image</td>
+                                 <td scope="col" class="text-secondary">Product Name</td>
+                                 <td scope="col" class="text-secondary">Brand</td>
+                                 <td scope="col" class="text-secondary">Quantity</td>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             @foreach ($products as $product)
+                                 <tr class="fw-semibold">
+                                     <td>Test</td>
+                                     <td>{{$product->product_name}}</td>
+                                     <td>{{$product->brand}}</td>
+                                     <td>{{$product->quantity}}</td>
+                                 </tr>
+                             @endforeach
+
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
          @else
              @include('livewire.components.add_products_component')
          @endif

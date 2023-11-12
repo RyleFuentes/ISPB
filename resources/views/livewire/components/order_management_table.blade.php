@@ -21,26 +21,29 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="fw-semibold">
-                        <td scope="col" class="text-secondary">ID</td>
+                        <td scope="col" class="text-secondary">..</td>
                         <td scope="col" class="text-secondary">Order</td>
-                        <td scope="col" class="text-secondary">Date</td>
-                        <td scope="col" class="text-secondary">Price</td>
+                        <td scope="col" class="text-secondary">Delivery Date</td>
                         <td scope="col" class="text-secondary">Quantity(kg.)</td>
-                        <td scope="col" class="text-secondary">Total</td>
+                        <td scope="col" class="text-secondary">Total Price</td>
                         <td scope="col" class="text-secondary">Status</td>
                         <td scope="col" class="text-secondary">Actions</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Integra</td>
+                        <td>
+                            <input type="checkbox" name="" id="">
+                        </td>
+                        <td>Integra 3000</td>
                         <td>10/18/2023</td>
-                        <td>46.00</td>
                         <td>3</td>
                         <td>138</td>
                         <td><span class="badge text-bg-warning">Pending</span></td>
                         <td>
+                            <a wire:click='' class="text-success mx-1" style="cursor: pointer">
+                                <i class="fas fa-eye fs-6"></i>
+                            </a>
                             <a wire:click='' class="text-primary mx-1" style="cursor: pointer">
                                 <i class="fas fa-edit fs-6"></i>
                             </a>
@@ -50,14 +53,16 @@
                             </a>
                         </td>
                     </tr>
-                     <td>2</td>
-                        <td>Integra</td>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>Corn Grits</td>
                         <td>10/17/2023</td>
-                        <td>46.00</td>
                         <td>3</td>
                         <td>138</td>
                         <td><span class="badge text-bg-success">Complete</span></td>
                         <td>
+                            <a wire:click='' class="text-success mx-1" style="cursor: pointer">
+                                <i class="fas fa-eye fs-6"></i>
+                            </a>
                             <a wire:click='' class="text-primary mx-1" style="cursor: pointer">
                                 <i class="fas fa-edit fs-6"></i>
                             </a>

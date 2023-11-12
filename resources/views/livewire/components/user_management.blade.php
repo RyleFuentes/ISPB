@@ -13,11 +13,10 @@
         <table class="table table-striped table-hover ">
             <thead>
                 <tr class=" fw-semibold">
-                    <td scope="col" class="text-secondary">ID</td>
-                    <td scope="col" class="text-secondary">Name</td>
-                    <td scope="col" class="text-secondary">Email</td>
-                    <td scope="col" class="text-secondary">Role</td>
-                    <td scope="col" class="text-secondary">Actions</td>
+                    <td scope="col" class="text-secondary text-center">Name</td>
+                    <td scope="col" class="text-secondary text-center">Email</td>
+                    <td scope="col" class="text-secondary text-center">Role</td>
+                    <td scope="col" class="text-secondary text-center--">Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -26,8 +25,6 @@
                         @if ($editing == true && $user->id == $editing_id)
                             <tr>
                                 <form>
-                                    <th scope="row">{{ $user->id }}</th>
-
                                 <td><input wire:model='edit_name' type="text" class="form-control"
                                         value="{{ $user->name }}"></td>
                                 @error('edit_name')

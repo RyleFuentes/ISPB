@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @include('livewire.messages.success')
+                @include('livewire.messages.message')
                 <form wire:submit='addBrand'>
                     <div class="form-floating">
                         <input type="text" placeholder="..." wire:model='brand' class="form-control" id="brand">

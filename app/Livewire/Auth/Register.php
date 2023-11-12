@@ -33,11 +33,9 @@ class Register extends Component
             'password' => Hash::make($validated['password']),
         ]);
 
-        if($add)
-        {
-            return $this->redirect('/', navigate:true);
-        }
-
+        if ($add) {
+            return redirect('/')->with('create_success', 'Account creation successful, account is now being process!');
+        }        
 
     }
 

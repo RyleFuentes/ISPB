@@ -6,6 +6,7 @@
             {{ request()->is('products*') ? 'Products' : '' }}
              {{ request()->is('orders*') ? 'Orders' : '' }}
             {{ request()->is('users*') ? 'Users' : '' }}
+            {{ request()->is('profile*') ? 'Profile' : '' }}
         </h2>
     </div>
 

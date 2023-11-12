@@ -4,7 +4,7 @@
     <div class="container-fluid px-4" id="dashboard">
         @include('layout.navbar')
 
-        @include('livewire.messages.success')
+        @include('livewire.messages.message')
 
 
         <div class="mt-5 row g-3">

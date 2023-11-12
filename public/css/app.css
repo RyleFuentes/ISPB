@@ -20,6 +20,7 @@
 }
 
 
+
 .form-control {
     color: #808080;
     border-bottom-color: rgba(0, 0, 0, 0.42);
@@ -96,85 +97,6 @@
     padding: 25px;
 }
 
-/* remodeled card css */
-.card-framez {
-    height: 315px;
-    width: 225px;
-    position: relative; /* Make .card-frame a positioning context */
-    display: block;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 5px; /* Hide any overflowing content */
-    cursor: pointer;
-
-}
-
-.card-boxz {
-    position: absolute; /* Positioned absolutely */
-    bottom: 0;          /* Start from the bottom */
-    left: 0;
-    background: linear-gradient(#c6a4f0, #926fbd, #7d5ea3);
-    height: 100px;
-    width: 100%;        /* Take the full width of the parent */
-    border-radius: 10px;
-    transition: height 0.3s; /* Smooth transition for the hover effect */
-    z-index: 2; /* Appear above other elements */
-}
-
-.imgz {
-    position: relative;
-    border-radius: 10px;
-    z-index: 1;
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-    border: 3px solid #c6a4f0; /* Below the .card-box */
-}
-
-.contentz {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Horizontally aligns child items because of column direction */
-    justify-content: space-between; /* Vertically aligns child items because of column direction */
-    text-align: center;
-    top: 50%; /* Position the top edge at 50% of the parent's height */
-    transform: translateY(-50%); /* Shift it up by half of its own height */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.card-boxz:hover {
-    height: 315px; 
-    background: linear-gradient(rgba(198, 164, 240, 0.6), rgba(146, 111, 189, 0.6), rgba(125, 94, 163, 0.6));
-/* Expanded height on hover */
-}
-
-h3, .c-text {
-    color: white;
-    margin: 5px; /* Reset margins */
-}
-
-.c-text {
-    display: none;
-}
-
-.card-boxz:hover .contentz{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.card-boxz:hover .c-text{
-    display: flex;
-    flex-direction: column;
-    text-align: justify;
-    position: relative;
-    justify-content: space-between;
-    top: 20px;
-}
-
 #dashboard {
     background: linear-gradient(to bottom, #6c3ca4 30%, transparent 30%);
     width: 100%;
@@ -196,6 +118,13 @@ h3, .c-text {
 
 }
 
+.prof{
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+}
+
+
 @media (max-width: 768px) {
     #sidebar-wrapper {
         width: 0rem;
@@ -209,5 +138,12 @@ h3, .c-text {
     }
     .hide-text {
         display: none;
+    }
+}
+@media (max-width: 576px) {
+    .prof{
+        width: 30vw;
+        height: 30vw;
+        object-fit: cover;
     }
 }
