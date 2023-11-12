@@ -52,7 +52,7 @@
             @if($editing == true)
             <div class="d-flex" style="justify-content: space-between">
                 <h2 class="fs-2 fs-sm-2 text-primary">EDIT INFORMATION</h2>
-                <button wire:click='unedit_profile' type="button" class="btn-close btn-danger"></button>
+                <button wire:click='unedit_profile' type="button" class="btn-close"></button>
             </div>
 
             <hr class="border border-3 rounded border-primary">
