@@ -69,7 +69,7 @@
 
             <div class="col col-md-4">
                 <div class="card shadow p-3" style="height: 50vh">
-                   <p>lskdjflsdkjf</p>
+                   <p>It's me!</p>
                 </div>
             </div>
         </div>
