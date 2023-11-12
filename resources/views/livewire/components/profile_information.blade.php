@@ -83,7 +83,7 @@
 
                         <div class="form-group mt-3">
                             <h4 class="fw-bold mb-0 fs-5">Date of Birth</h4>
-                            <input type="date" class="form-control  bg-primary bg-opacity-50 text-light"
+                            <input type="date" class="form-control bg-primary bg-opacity-50 text-light"
                                 wire:model='update_dateOfBirth'>
                         </div>
                         @error('update_dateOfBirth')
@@ -108,7 +108,7 @@
                     <form wire:submit='update_password'>
                         <div class="form-group mt-3">
                             <h4 class="fw-bold mb-0 fs-5">Old Password</h4>
-                            <input type="password" class="form-control" wire:model='old_password'>
+                            <input type="password" class="form-control bg-primary bg-opacity-50 text-light" wire:model='old_password'>
                         </div>
 
                         @error('old_password')
@@ -116,20 +116,23 @@
                         @enderror
                         <div class="form-group mt-3">
                             <h4 class="fw-bold mb-0 fs-5">Confirm Old Password</h4>
-                            <input type="password" class="form-control" wire:model='old_password_confirmation'>
+                            <input type="password" class="form-control bg-primary bg-opacity-50 text-light" wire:model='old_password_confirmation'>
                         </div>
+                        
                         @error('old_password_confirmation')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
+
                         <div class="form-group mt-3">
                             <h4 class="fw-bold mb-0 fs-5">New Password</h4>
-                            <input type="password" class="form-control" wire:model='new_password'>
+                            <input type="password" class="form-control bg-primary bg-opacity-50 text-light" wire:model='new_password'>
                         </div>
                         @error('new_password')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
-                        <div class="form-group mt-3">
-                            <button class="btn btn-outline-dark" >Update Password</button>
+
+                        <div class="form-group mt-3 d-flex justify-content-end">
+                            <button class="btn btn-primary" >Update Password</button>
                         </div>
                     </form>
                 </div>
