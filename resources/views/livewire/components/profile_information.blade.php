@@ -29,12 +29,23 @@
                     </div>
                 </form>
             @else
-                <div class="d-flex align-items-center justify-content-center py-1">
+                <!-- <div class="d-flex align-items-center justify-content-center py-1">
                     <div class="prof rounded bg-primary bg-opacity-25">
                         <img class="img prof rounded border border-3 border-light" src="{{ asset('images/bean.jpg') }}"
                             alt="logo">
+                        <i class="bi bi-camera-fill bg-primary" style="z-index: 99;"></i>
+                    </div>
+                </div> -->
+
+                <div class="d-flex align-items-center justify-content-center py-1">
+                    <div class="prof rounded bg-primary bg-opacity-25 position-relative">
+                        <img class="img prof rounded border border-3 border-light" src="{{ asset('images/bean.jpg') }}" alt="logo">
+                        <button class="btn position-absolute bottom-0 end-0" style="z-index: 99;">
+                            <i class="bi bi-camera-fill text-light rounded-circle bg-primary p-3"></i>
+                        </button>
                     </div>
                 </div>
+
                 <hr class="border border-3 rounded border-primary">
                 <div>
                     <p class="fs-4 text-center mb-0">{{ $user->name }}</p>
@@ -118,7 +129,7 @@
                             <h4 class="fw-bold mb-0 fs-5">Confirm Old Password</h4>
                             <input type="password" class="form-control bg-primary bg-opacity-50 text-light" wire:model='old_password_confirmation'>
                         </div>
-                        
+
                         @error('old_password_confirmation')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -145,7 +156,7 @@
                     <h4 class="fw-bold mb-0 fs-5">Email</h4>
                     <p class="fs-5"><i class="bi bi-envelope-at-fill text-primary"></i> {{ $user->email }}</p>
 
-                    <h4 class="fw-bold mb-0 fs-5">Address</h4>
+                    <h4 class="fw-bold mb-0 fs-5">Address{!! isset($user->profile->address) ? '' : ' <span class="text-danger">*</span> ' !!}</h4>
                     <p class="fs-5"><i class="bi bi-geo-alt-fill text-primary"></i>
                         {{ $user->profile->address ?? 'Not Set' }}</p>
 
@@ -153,7 +164,7 @@
                     <p class="fs-5"><i class="bi bi-telephone-fill text-primary"></i>
                         {{ $user->profile->number ?? 'Not Set' }}</p>
 
-                    <h4 class="fw-bold mb-0 fs-5">Birth Date</h4>
+                    <h4 class="fw-bold mb-0 fs-5">Birth Date{!! isset($user->profile->birth_of_date) ? '' : ' <span class="text-danger">*</span> ' !!}</h4>
                     <p class="fs-5 mb-0"><i class="bi bi-calendar-event-fill text-primary"></i>
                         {{ $user->profile->date_of_birth ?? 'Not Set' }}</p>
                 </div>
