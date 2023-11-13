@@ -41,7 +41,7 @@
                     <div class="prof rounded bg-primary bg-opacity-25 position-relative">
                         <img class="img prof rounded border border-3 border-light" src="{{ asset('images/bean.jpg') }}" alt="logo">
                         <button class="btn position-absolute bottom-0 end-0" style="z-index: 99;">
-                            <i class="bi bi-camera-fill text-light rounded-circle bg-primary p-3"></i>
+                            <i class="bi bi-camera-fill text-light rounded-circle bg-primary py-1 px-2 fs-3"></i>
                         </button>
                     </div>
                 </div>
