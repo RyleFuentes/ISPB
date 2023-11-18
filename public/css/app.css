@@ -124,6 +124,14 @@
     object-fit: cover;
 }
 
+.prof:hover .bi-camera-fill {
+    display: block;
+}
+
+.bi-camera-fill {
+    display: none;
+}
+
 
 @media (max-width: 768px) {
     #sidebar-wrapper {
