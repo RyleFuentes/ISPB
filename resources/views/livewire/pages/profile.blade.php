@@ -8,7 +8,7 @@
         
        
 
-        @if ($editing === false && $change_pass === false )
+        @if ($editing === false && $change_pass === false && $change_profile_image === false)
             <div class="p-3 d-flex justify-content-end">
                 
                 <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='toggle_change_password'>

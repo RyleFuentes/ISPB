@@ -9,14 +9,19 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProfileManagement as Profile_M;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 #[Layout('index')]
 #[Title('Profile')]
 
 class Profile extends Component
 {
-    public $user, $editing = false, $change_pass = false;
-    public $update_name, $update_address, $update_number, $update_dateOfBirth;
+    use WithFileUploads;
+
+
+    public $user, $editing = false, $change_pass = false, $change_profile_image = false;
+    public $profile_image_preview;
+    public $update_name, $update_address, $update_number, $update_dateOfBirth, $update_profile_image;
     public $old_password, $old_password_confirmation, $new_password;
 
     public function mount()
@@ -27,10 +32,10 @@ class Profile extends Component
         $this->update_address = $this->user->profile->address ?? null;
         $this->update_number = $this->user->profile->number ?? null;
         $this->update_dateOfBirth = $this->user->date_of_birth ?? null;
-        
+        $this->update_profile_image = $this->user->profile->profile_image ?? '';
 
 
-        $profile = Profile_M::firstOrCreate([
+        Profile_M::firstOrCreate([
             'userID' => $this->user->id,
             'address' => null,
             'number' => null,
@@ -38,6 +43,46 @@ class Profile extends Component
             'profile_image' => null,
         ]);
     }
+
+    public function change_image()
+    {
+        $this->change_profile_image = true;
+
+        
+    }
+
+    public function unchange_image()
+    {
+        $this->change_profile_image = false;
+    }
+
+    public function update_image()
+    {
+        $validated = $this->validate([
+            'profile_image_preview' => 'required|image'
+        ]);
+
+        if($validated['profile_image_preview']);
+        {
+           $this->update_profile_image = $this->profile_image_preview->store('profile_pictures', 'public');
+           
+        }
+
+
+        $update_photo = $this->user->profile->update([
+            'profile_image' => $this->update_profile_image
+        ]);
+
+        if($update_photo)
+        {
+            $this->unchange_image();
+            $this->reset('profile_image_preview');
+            session()->flash('success', "You have successfully updated your profile picture");
+        }
+        
+
+    }
+
 
     public function update_password()
     {
