@@ -34,7 +34,7 @@
                 
                 </button>
 
-                <button wire:loading wire:target="authenticate"  class="btn btn-primary w-100 rounded-pill fw-semibold">
+                <button wire:loading.delay wire:target="authenticate"  class="btn btn-primary w-100 rounded-pill fw-semibold">
                     <div >  
                         <div class="d-flex align-items-center justify-content-center">
                             <strong role="status">Authenticating</strong>

@@ -21,7 +21,7 @@ class Login extends Component
     public function authenticate()
     {
 
-        sleep(2);
+        
         $validated = $this->validate();
     
         if (Auth::attempt($validated)) {
