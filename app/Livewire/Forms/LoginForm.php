@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Forms;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Rule;
@@ -68,5 +70,9 @@ class LoginForm extends Form
     protected function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+    }
+
+    public function dashboard(){
+        return redirect()->route('dashboard')->with('success', 'You have successfully logged in');
     }
 }
