@@ -72,7 +72,4 @@ class LoginForm extends Form
         return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
     }
 
-    public function dashboard(){
-        return redirect()->route('dashboard')->with('success', 'You have successfully logged in');
-    }
 }

@@ -35,14 +35,15 @@ new #[Layout('layouts.guest')] class extends Component
             <div class="fs-5">Login to your <span class="text-primary">Account</span></div>
         </div>
     </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
         <!-- Email Address -->
         <div class="form-floating mt-2">
-            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full form-control" type="email"
-                name="email" required autofocus autocomplete="username" placeholder="email" />
+            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email"
+                required autofocus autocomplete="username" placeholder="email" />
             <x-input-label for="email" :value="__('Email')" />
 
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -50,8 +51,8 @@ new #[Layout('layouts.guest')] class extends Component
 
         <!-- Password -->
         <div class="form-floating mt-4">
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full form-control"
-                type="password" name="password" required autocomplete="current-password" placeholder="password" />
+            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" type="password"
+                name="password" required autocomplete="current-password" placeholder="password" />
             <x-input-label for="password" :value="__('Password')" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -81,8 +82,7 @@ new #[Layout('layouts.guest')] class extends Component
 
             <p class="text-sm text-gray-600 rounded-md">
                 Don't have an account?
-                <a href="{{ route('register') }}"
-                    class="text-primary text-decoration-none fw-semibold"
+                <a href="{{ route('register') }}" class="text-primary text-decoration-none fw-semibold"
                     wire:navigate>Register</a>
             </p>
         </div>
