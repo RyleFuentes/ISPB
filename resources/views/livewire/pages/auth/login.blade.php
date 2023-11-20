@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component {
+new #[Layout('layouts.guest')] class extends Component 
+{
     public LoginForm $form;
 
     /**
@@ -26,10 +27,13 @@ new #[Layout('layouts.guest')] class extends Component {
 ?>
 
 <div>
-    <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 mb-5">
+    <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 mb-4">
         <a href="/" wire:navigate>
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </a>
+        <div class="text-center fw-bold mt-4">
+            <div class="fs-5">Login to your <span class="text-primary">Account</span></div>
+        </div>
     </div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -61,7 +65,7 @@ new #[Layout('layouts.guest')] class extends Component {
             </label>
         </div>
 
-        <div class="flex items-center justify-center mt-4 flex-column">
+        <div class="flex items-center justify-center flex-column">
             <x-primary-button class="flex items-center justify-center ms-3 mt-3 bg-primary w-100 rounded-pill">
                 {{ __('Log in') }}
             </x-primary-button>
