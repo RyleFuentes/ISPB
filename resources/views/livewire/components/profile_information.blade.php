@@ -5,7 +5,7 @@
 
             <div class="d-flex align-items-center justify-content-center py-1">
                 <div class="prof rounded bg-primary bg-opacity-25 position-relative">
-                    @if ($user->profile->profile_image)
+                    @if ($user->profile->profile_image ?? null)
                         <img class="img prof rounded border border-3 border-light"
                             src="{{ Storage::url($user->profile->profile_image) }}" alt="Profile Image">
                     @else

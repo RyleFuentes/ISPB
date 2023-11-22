@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('retail_price');
             $table->decimal('wholesale_price');
-            $table->string('product_image');
             $table->timestamps();
         });
     }
