@@ -46,7 +46,7 @@
     </div>
     
     <div class="text-center mt-3">
-        <p class="text-secondary">Already have an account? <a href="/" class="text-primary text-decoration-none fw-semibold">Login</a>
+        <p class="text-secondary">Already have an account? <a wire:navigate href="/" class="text-primary text-decoration-none fw-semibold">Login</a>
         </p>
     </div>
 </div>

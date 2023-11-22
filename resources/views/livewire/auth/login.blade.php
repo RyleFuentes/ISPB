@@ -51,6 +51,6 @@
     </div>
     
     <div class="text-center mt-3">
-        <p class="text-secondary">Don't have an account? <a href="/register" class="text-primary text-decoration-none fw-semibold">Register</a></p>
+        <p class="text-secondary">Don't have an account? <a wire:navigate href="/register" class="text-primary text-decoration-none fw-semibold">Register</a></p>
     </div>
 </div>

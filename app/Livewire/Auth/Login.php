@@ -9,7 +9,7 @@ use Livewire\Attributes\Rule;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Livewire\Component;
 
-#[Layout('index')]
+#[Layout('guest_layout')]
 #[Title('Login')]
 class Login extends Component
 {
