@@ -11,6 +11,7 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/bootstrap.js",
                 "resources/js/bootstrap.min.js",
+                "resources/js/jquery-3.6.0.min.js",
                 "resources/js/script.js",
             ],
             refresh: true,
