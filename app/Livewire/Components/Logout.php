@@ -2,16 +2,20 @@
 
 namespace App\Livewire\Components;
 
+use GuzzleHttp\Psr7\Request;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Logout extends Component
 {
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
+
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect()->route('login');
+
+        return $this->redirect('/', navigate: true);
     }
     public function render()
     {

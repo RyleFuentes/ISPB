@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Livewire\Component;
 
 #[Layout('index')]
@@ -27,17 +28,21 @@ class Login extends Component
         if (Auth::attempt($validated)) {
             if (Auth::user()->role == 0) {
                 request()->session()->regenerate();
-                return redirect()->route('dashboard')->with('success', 'You have successfully logged in');
+                session()->flash('success', 'You have successfully logged in!!'.Auth::user()->name.'');
+                return $this->redirect('dashboard', navigate:true);
             } elseif (Auth::user()->role == 1) {
                 request()->session()->regenerate();
-                return redirect()->route('products')->with('success', 'You have successfully logged in');
+                session()->flash('success','You have successfullly logged in!!');
+                return $this->redirect('products', navigate:true);
             } elseif (Auth::user()->role == 2) {
                 // User role is 2 (pending)
                 Auth::logout(); // Log the user out
                 request()->session()->invalidate(); // Invalidate the session
                 request()->session()->regenerateToken(); // Regenerate the CSRF token
     
-                return redirect()->route('login')->with('error', 'Your account is still pending.');
+                //return redirect()->intended('login')->with('error', 'Your account is still pending.');
+                session()->flash('error', 'Your account is still pending.');
+                return $this->redirect('/', navigate:true);
             }
         }
         else

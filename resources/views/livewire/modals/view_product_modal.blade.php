@@ -7,11 +7,11 @@
             </div>
             <div class="modal-body">
                 
-                <p>Name: {{$product->product_name}}</p>
-                <p>Category: </p>
-                <p>Quantity: {{$product->quantity}}</p>
-                <p>RSP: </p>
-                <p>WSP: </p>
+                <p>Name: {{ $product->product_name}}</p>
+                <p>Category: {{ $product->brand->brand_name}}</p>
+                <p>Quantity: {{ $product->quantity}}</p>
+                <p>Retail price: {{ $product->retail_price}}</p>
+                <p>Wholesale price: {{ $product->wholesale_price}} </p>
                 <p>Date Purchased: </p>
                 <p>Expiry: </p>
 

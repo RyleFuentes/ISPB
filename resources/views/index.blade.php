@@ -7,6 +7,7 @@
 
     <title>{{ $title ?? 'ISPB' }}</title>
 
+
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('/bootstrap-5.3.2-dist/css/bootstrap.css') }}">
@@ -16,13 +17,33 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    
 </head>
 
 <body>
 
+    @auth
+        <div class="d-flex" id="wrapper">
+
+            @include('layout.sidebar')
+            <div class="container-fluid px-4" id="dashboard">
+                @include('layout.navbar')
+        
+                @include('livewire.messages.message')
+        
+                {{ $slot }}
+                
+        </div>
+    @endauth
+
+    @guest
+        
+        {{$slot}}
+    @endguest
 
 
-    {{ $slot }}
+
+    
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -31,7 +52,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <x-livewire-alert::scripts />
-    
+
     @livewireChartsScripts
 </body>
 

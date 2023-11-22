@@ -34,7 +34,7 @@ class Register extends Component
         ]);
 
         if ($add) {
-            return redirect('/')->with('create_success', 'Account creation successful, account is now being process!');
+            return $this->redirect('/', navigate:true);
         }        
 
     }

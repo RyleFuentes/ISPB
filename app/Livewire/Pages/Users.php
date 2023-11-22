@@ -174,7 +174,7 @@ class Users extends Component
 
     public function render()
     {
-        $users = User::where('role', '!=', 2)->paginate(1);
+        $users = User::where('role', '!=', 2)->paginate(10);
         $pending_users = User::where('role', 2)->get();
         return view('livewire.pages.users', compact('users', 'pending_users'));
     }
