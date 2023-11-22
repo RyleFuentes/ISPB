@@ -16,13 +16,14 @@ new class extends Component {
     }
 }; ?>
 
-<nav x-data="{ open: false }" class="mt-4">
+<nav x-data="{ open: false }" class="mt-2">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  shadow-sm sm:rounded-lg bg-white">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <div class="shrink-0 flex items-center">
-                <i class="fas fa-align-justify primary-text fs-4 me-3 text-primary" id="menu-toggle"></i>                </div>
+                <i class="fas fa-align-justify primary-text fs-4 me-3 text-primary" id="menu-toggle"></i>                
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -30,7 +31,7 @@ new class extends Component {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 text-capitalize">
+                            class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-dark-500 bg-white hover:text-gray-700 transition ease-in-out duration-150 text-uppercase border border-dark">
                             <div x-data="{ name: '{{ auth()->user()->name }}' }" x-text="name"
                                 x-on:profile-updated.window="name = $event.detail.name"></div>
 
