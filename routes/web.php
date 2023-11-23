@@ -17,6 +17,18 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::view('orders', 'orders')
+    ->middleware(['auth', 'verified'])
+    ->name('orders');
+
+Route::view('products', 'products')
+    ->middleware(['auth', 'verified'])
+    ->name('products');
+
+Route::view('users', 'users')
+    ->middleware(['auth', 'verified'])
+    ->name('users');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
