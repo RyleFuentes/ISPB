@@ -18,12 +18,22 @@ class Products extends Component
 
     public AddBrandsForm $add_brands_form;
     public $brand = '' ;
+
     public $addBrandMode = false;
     public $addProduct=false;
 
     public function add_brand_mode_on()
     {
         $this->addBrandMode = true;
+    }
+
+
+    public $brand_view_id;
+    public $view_product_mode = false;
+    public function view_product_list(Brand $brand)
+    {
+        $this->brand_view_id = $brand->brand_id;
+        $this->view_product_mode = true;
     }
 
     public function addProductMode()
@@ -35,6 +45,7 @@ class Products extends Component
     {
         $this->addBrandMode = false;
         $this->addProduct = false;
+        $this->view_product_mode = false;
     }
 
     //?----- ADDING BRANDS ----------
@@ -43,6 +54,19 @@ class Products extends Component
         $this->add_brands_form->addBrand();
         $this->addBrandMode = false;
         session()->flash('success', 'You have successfully added a new brand!!');
+    }
+
+    //? ---------- DELETING BRANDS ----------------
+    public function delete_brand(Brand $brand)
+    {
+        if($brand->products->count() < 1)
+        {
+            $brand->delete();
+            session()->flash('success','you have successfully deleted a brand');
+        }
+
+        session()->flash('error', "This brand can't be deleted, it still containts products");
+        
     }
 
 
@@ -89,27 +113,7 @@ class Products extends Component
 
     
 
-    public function addBrand()
-    {
-        $validated = $this->validate([
-            'brand' => 'required'
-        ]);
-        
-
-
-        $add = Brand::create([
-            'brand_name' => $validated['brand']
-        ]);
-
-        if($add)
-        {
-            $this->reset('brand');
-            return back()->with('success', 'You have successfully added a brand');
-            
-        }
-
-        return back()->with('fail', 'Something went wrong');
-    }
+    
 
 
     public function render()
