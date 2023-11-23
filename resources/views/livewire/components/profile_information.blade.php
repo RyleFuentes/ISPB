@@ -13,7 +13,7 @@
                             alt="Default Image">
                     @endif
                     <button wire:click='change_image' class="btn position-absolute bottom-0 end-0" style="z-index: 99;">
-                        <i class="bi bi-camera-fill text-light rounded-circle bg-primary py-1 px-2 fs-3"></i>
+                        <i class="bi bi-camera-fill text-light rounded-circle fs-3"></i>
                     </button>
                 </div>
             </div>

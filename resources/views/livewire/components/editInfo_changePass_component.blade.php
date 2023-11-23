@@ -140,7 +140,7 @@
                 <p class="fs-5"><i class="bi bi-telephone-fill text-primary"></i>
                     {{ $user->profile->number ?? 'Not Set' }}</p>
 
-                <h4 class="fw-bold mb-0 fs-5">Birth Date{!! isset($user->profile->birth_of_date) ? '' : ' <span class="text-danger">*</span> ' !!}</h4>
+                <h4 class="fw-bold mb-0 fs-5">Birth Date{!! isset($user->profile->date_of_birth) ? '' : ' <span class="text-danger">*</span> ' !!}</h4>
                 <p class="fs-5 mb-0"><i class="bi bi-calendar-event-fill text-primary"></i>
                     {{ $user->profile->date_of_birth ?? 'Not Set' }}</p>
             </div>

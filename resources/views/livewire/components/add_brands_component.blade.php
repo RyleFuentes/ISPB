@@ -19,18 +19,25 @@
                     <span class="text-danger">{{$message}}</span>
                 @enderror
 
-                <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-success">Add Brand</button>
+                <div class="form-group mt-3 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Add Brand</button>
                 </div>
             </form>
         </div>
 
-        <div class="col">
+        <div class="col col-sm col-md">
             @if ($add_brands_form->brand_image)
                 
+                    <div class="col rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
+                        <img src="{{$add_brands_form->brand_image->temporaryUrl() }}" class="image-fluid rounded sm" alt="preview" width="250" height="250">
+                    </div>
 
-                    <img src="{{$add_brands_form->brand_image->temporaryUrl() }}" class="image-fluid rounded sm" alt="preview">
-                
+            @else
+
+                <div class="col rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
+                    <img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="logo">
+                </div>
+
             @endif
         </div>
     </div>
