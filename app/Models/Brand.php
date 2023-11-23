@@ -13,6 +13,8 @@ class Brand extends Model
     protected $guarded = [
         'brand_id'
     ];
+
+    protected $primaryKey = 'brand_id';
     
 
     public function products()

@@ -1,6 +1,6 @@
 <div>
     <div class="p-3 d-flex justify-content-end">
-        @if (!$addProduct && !$addBrandMode)
+        @if (!$addProduct && !$addBrandMode && !$view_product_mode)
             <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='add_brand_mode_on'>
                 <i class="fa fa-plus-circle me-2 text-primary"></i>Add Brand
             </button>
@@ -17,6 +17,9 @@
         @include('livewire.components.add_products_component')
     @elseif($addBrandMode)
         @include('livewire.components.add_brands_component')
+
+    @elseif($view_product_mode)
+        @include('livewire.components.product_components.brand_product_table_components')
     @else
        @include('livewire.components.brand_cards_component')
     @endif
