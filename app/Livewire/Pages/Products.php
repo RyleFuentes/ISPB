@@ -10,18 +10,24 @@ use App\Livewire\Forms\AddProductsForm;
 use App\Livewire\Forms\AddBrandsForm;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
+
 
 #[Layout('index')]
 #[Title('Products')]
 class Products extends Component
 {
+    use WithPagination;
     use WithFileUploads;
+
 
     public AddBrandsForm $add_brands_form;
     public $brand;
-
+    public $search = '';
     public $addBrandMode = false;
     public $addProduct=false;
+    public $tableMode = true;
+    public $cardMode = false;
 
     public function add_brand_mode_on()
     {
@@ -47,6 +53,18 @@ class Products extends Component
         $this->addBrandMode = false;
         $this->addProduct = false;
         $this->view_product_mode = false;
+    }
+
+    public function toggle_card()
+    {
+        $this->cardMode = true;
+        $this->tableMode = false;
+    }
+
+    public function toggle_table()
+    {
+        $this->cardMode = false;
+        $this->tableMode = true;
     }
 
     //?-------ADDING PRODUCTS-------------
@@ -78,61 +96,33 @@ class Products extends Component
         
     }
 
-    //?----- FOR PRODUCT INFO -------------
-
-    public $product_name, $product_qty, $product_retail_price, $product_wholesale_price, $product_image, $brand_id;
-
-
-    public function addNewProduct()
-    {
-        $validated = $this->validate([
-            'product_name' => 'required|min:3|max:50',
-            'product_qty' => 'required',
-            'product_retail_price' => 'required',
-            'product_wholesale_price' => 'required',
-            'product_image' => 'required|image',
-        ]);
-
-        if($validated['product_image'])
-        {
-            $validated['product_image'] = $this->product_image->store('product_images', 'public');
-        }
-        
-        $store = Product::create([
-            'product_name' => $validated['product_name'],
-            'quantity' => $validated['product_qty'],
-            'retail_price' => $validated['product_retail_price'],
-            'wholesale_price' => $validated['product_wholesale_price'],
-            'product_image' => $validated['product_image'],
-            'brandID' => $this->brand_id
-        ]);
-
-       if($store)
-       {
-        return redirect()->route('products')->with('success', 'You have successfully added a new product');
-        $this->reset('product_name', 'product_qty', 'product_retail_price', 'product_wholesale_price', 'product_image', 'brand_id');
-       }
-
-       else{
-        return redirect()->route('products')->with('fail', 'Something went wrong please try again');
-       }
-
-    }
+   
 
     public function render()
     {
 
+        $results = [];
         
-
         if($this->brand_view_id)
         {
             $this->brand = Brand::where('brand_id', $this->brand_view_id)->first();
         }
 
         $brands = Brand::all();
-        $products = Product::all();
+        $data = compact('brands');
         
-        return view('livewire.pages.products', compact('brands', 'products'));
+        if(strlen($this->search) >= 1)
+        {
+            $results = Product::where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
+            $data['products'] = $results;
+        }
+        else
+        {
+            $products = Product::paginate(10);
+            $data['products'] = $products;
+        }
+
+        return view('livewire.pages.products', $data);
         
     }
 }
