@@ -1,4 +1,6 @@
 <div >
+
+    @include('livewire.messages.message')
     
     @if ($cardMode === true)
         @include('livewire.components.product_components.card-component')

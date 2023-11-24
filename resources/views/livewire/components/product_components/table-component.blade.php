@@ -32,13 +32,14 @@
             <tbody>
 
                 @foreach ($products as $product)
-                    <tr>
+                    <tr wire:key='{{$product->product_id}}'>
                         <td>{{ $product->brand->brand_name }}</td>
                         <td>{{ $product->product_name }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>
                             <button class="btn"><i class="bi bi-eye-fill text-primary"></i></button>
-                            <button class="btn"><i class="bi bi-pencil-fill text-primary"></i></button>
+                            <button class="btn"><i class="bi bi-pencil-fill text-success"></i></button>
+                            <button wire:click='delete_product({{$product->product_id}})' class="btn"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 @endforeach

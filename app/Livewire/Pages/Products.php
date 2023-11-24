@@ -96,6 +96,13 @@ class Products extends Component
         
     }
 
+    //? ----------- DELETING PRODUCTS ----------------
+    public function delete_product(Product $product)
+    {
+        $product->delete();
+        session()->flash("success","You have successfully deleted the product");
+    }
+
    
 
     public function render()
