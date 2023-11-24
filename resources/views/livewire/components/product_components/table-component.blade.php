@@ -12,8 +12,10 @@
 
             <div>
                 <form action="" class="form d-flex">
-                    <input wire:model.live='search' type="text" class="form-control">
-
+                    <div class="form-floating">
+                        <input wire:model.live='search' placeholder="..." id="search" type="text" class="form-control">
+                        <label for="search">Search...</label>
+                    </div>
                 </form>
             </div>
         </div>
@@ -23,6 +25,7 @@
                     <th>Brand</th>
                     <th>Product</th>
                     <th>Quantity (bags) </th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -33,6 +36,10 @@
                         <td>{{ $product->brand->brand_name }}</td>
                         <td>{{ $product->product_name }}</td>
                         <td>{{ $product->quantity }}</td>
+                        <td>
+                            <button class="btn"><i class="bi bi-eye-fill text-primary"></i></button>
+                            <button class="btn"><i class="bi bi-pencil-fill text-primary"></i></button>
+                        </td>
                     </tr>
                 @endforeach
 
