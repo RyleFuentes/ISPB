@@ -69,7 +69,6 @@ class Products extends Component
         
     }
 
-
     //?----- FOR PRODUCT INFO -------------
 
     public $product_name, $product_qty, $product_retail_price, $product_wholesale_price, $product_image, $brand_id;
@@ -110,11 +109,6 @@ class Products extends Component
        }
 
     }
-
-    
-
-    
-
 
     public function render()
     {
