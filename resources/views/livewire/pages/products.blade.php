@@ -4,6 +4,8 @@
             <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='add_brand_mode_on'>
                 <i class="fa fa-plus-circle me-2 text-primary"></i>Add Brand
             </button>
+            <button class="btn btn-light rounded-pill me-2 btn-sm">
+                <i class="bi bi-table text-primary"></i> Table view</button>
         @else
             <button wire:click='cancel_add_mode' class="btn btn-outline-dark">X</button>
         @endif
