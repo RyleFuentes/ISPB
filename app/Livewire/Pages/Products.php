@@ -6,6 +6,7 @@ use Livewire\Attributes\Title;
 use App\Models\Brand;
 use App\Models\Product;
 use Livewire\Attributes\Rule;
+use App\Livewire\Forms\AddProductsForm;
 use App\Livewire\Forms\AddBrandsForm;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -17,7 +18,7 @@ class Products extends Component
     use WithFileUploads;
 
     public AddBrandsForm $add_brands_form;
-    public $brand = '' ;
+    public $brand;
 
     public $addBrandMode = false;
     public $addProduct=false;
@@ -46,6 +47,14 @@ class Products extends Component
         $this->addBrandMode = false;
         $this->addProduct = false;
         $this->view_product_mode = false;
+    }
+
+    //?-------ADDING PRODUCTS-------------
+    public AddProductsForm $product_form ;
+
+    public function add_product()
+    {
+        $this->product_form->add_form($this->brand_view_id);
     }
 
     //?----- ADDING BRANDS ----------
@@ -112,6 +121,13 @@ class Products extends Component
 
     public function render()
     {
+
+        
+
+        if($this->brand_view_id)
+        {
+            $this->brand = Brand::where('brand_id', $this->brand_view_id)->first();
+        }
 
         $brands = Brand::all();
         $products = Product::all();

@@ -14,14 +14,14 @@
     </div>
 
     @if ($addProduct)
-        @include('livewire.components.add_products_component')
+        @include('livewire.components.product_components.add_products_component')
     @elseif($addBrandMode)
-        @include('livewire.components.add_brands_component')
+        @include('livewire.components.product_components.add_brands_component')
 
     @elseif($view_product_mode)
         @include('livewire.components.product_components.brand_product_table_components')
     @else
-       @include('livewire.components.brand_cards_component')
+       @include('livewire.components.product_components.brand_cards_component')
     @endif
 
 
