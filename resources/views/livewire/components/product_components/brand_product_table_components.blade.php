@@ -1,5 +1,6 @@
 <div class="mt-3 rounded bg-white p-3 shadow-sm">
     
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProduct">Add new product</button>
 
 
     <table class="table table-striped">
@@ -37,4 +38,7 @@
             </tr>
         </tbody>
     </table>
+
+    
+    @include('livewire.modals.add_product_modal')
 </div>
