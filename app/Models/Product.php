@@ -15,11 +15,22 @@ class Product extends Model
          
     ];
 
+    public function getTotalQuantityAttribute()
+    {
+        // Sum the quantity from related batches
+        return $this->batch->sum('quantity');
+    }
+
     protected $primaryKey = 'product_id';
 
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'brandID', 'brand_id');
+    }
+
+    public function batch()
+    {
+        return $this->hasMany(Batch::class, 'productID');
     }
     
 }

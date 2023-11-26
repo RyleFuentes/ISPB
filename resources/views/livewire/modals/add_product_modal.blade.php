@@ -45,6 +45,15 @@
                     @error('product_form.wholesale_price')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+
+                    <div class="form-floating mt-2">
+                        <input type="date" class="form-control" placeholder="..." id="exp_date"
+                            wire:model='product_form.expiration_date'>
+                        <label for="exp_date">Expiration Date</label>
+                    </div>
+                    @error('product_form.wholesale_price')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <div class="form-group mt-4">
                       <button type="submit" class="btn btn-primary">Add product</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -18,6 +18,9 @@ class AddProductsForm extends Form
     #[Rule('required')]
     public $wholesale_price;
 
+    #[Rule('required|date')]
+    public $expiration_date;
+
     public function add_form($brand_id)
     {
         $brand = Brand::findOrFail($brand_id);
@@ -25,16 +28,23 @@ class AddProductsForm extends Form
 
         $store = $brand->products()->create([
             'product_name' => $validated['prod_name'],
-            'quantity' => $validated['quantity'],
+            
             'retail_price' => $validated['retail_price'],
             'wholesale_price' => $validated['wholesale_price'],
         ]);
         
-        if($store)
+
+        $setBatch = $store->batch()->create([
+            'expiration_date' => $validated['expiration_date'],
+            'quantity' => $validated['quantity'],
+        ]);
+        
+        
+        if($store && $setBatch)
         {
 
             session()->flash('success', "You have successfully added a new product");
-            $this->reset('prod_name', 'quantity', 'retail_price', 'wholesale_price');
+            $this->reset('prod_name', 'quantity', 'retail_price', 'wholesale_price', 'expiration_date');
         }
     }
 

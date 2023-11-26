@@ -18,7 +18,7 @@
             @foreach ($brand->products as $item)
                 <tr >
                     <td>{{$item->product_name}}</td>
-                    <td>{{$item->quantity}}</td>
+                    <td>{{$item->total_quantity}}</td>
                     <td>{{$item->retail_price}}</td>
                     <td>{{$item->wholesale_price}}</td>
                 </tr>

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Livewire\Pages;
+
+use App\Livewire\Forms\addBatchForm;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use App\Models\Brand;
@@ -23,11 +25,37 @@ class Products extends Component
 
     public AddBrandsForm $add_brands_form;
     public $brand;
+    public $quantity;
     public $search = '';
     public $addBrandMode = false;
     public $addProduct=false;
     public $tableMode = true;
     public $cardMode = false;
+    public $view_batch = false;
+
+
+    public function mount()
+    {
+
+    }
+
+
+    public addBatchForm $batch_form;
+    public function add_batch(Product $product)
+    {
+        $this->batch_form->add_new_batch($product->product_id);
+    }
+
+
+
+    public $product;
+    public function view_product_info(Product $product)
+    {
+
+        $this->product = $product;
+        $this->view_batch = true;
+        $this->tableMode = false;
+    }
 
     public function add_brand_mode_on()
     {
@@ -99,8 +127,20 @@ class Products extends Component
     //? ----------- DELETING PRODUCTS ----------------
     public function delete_product(Product $product)
     {
-        $product->delete();
-        session()->flash("success","You have successfully deleted the product");
+
+        if($product->batch()->exists())
+        {
+
+            session()->flash('error', 'This product still has some active batches!!!');
+        }
+        else
+        {
+
+            
+            $product->delete();
+            session()->flash("success","You have successfully deleted the product");
+        }
+
     }
 
    
