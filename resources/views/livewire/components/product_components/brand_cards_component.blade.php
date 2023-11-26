@@ -1,3 +1,5 @@
+
+
 <div class="mt-3 p-5 bg-white shadow-sm rounded fs-40 fw-40">
     @include('livewire.messages.message')
 

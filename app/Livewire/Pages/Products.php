@@ -10,6 +10,7 @@ use App\Models\Product;
 use Livewire\Attributes\Rule;
 use App\Livewire\Forms\AddProductsForm;
 use App\Livewire\Forms\AddBrandsForm;
+use App\Livewire\Forms\AddProductFromTableForm;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -25,20 +26,27 @@ class Products extends Component
 
     public AddBrandsForm $add_brands_form;
     public $brand;
+    public $product;
     public $quantity;
     public $search = '';
     public $addBrandMode = false;
-    public $addProduct=false;
+    public $addProduct = false;
     public $tableMode = true;
     public $cardMode = false;
     public $view_batch = false;
 
 
-    public function mount()
+    public function table_mode()
     {
-
+        $this->view_product_mode = false;
+        $this->tableMode = true;
     }
 
+    public AddProductFromTableForm $table_product_form;
+    public function add_table_product()
+    {
+        $this->table_product_form->store();
+    }
 
     public addBatchForm $batch_form;
     public function add_batch(Product $product)
@@ -48,7 +56,7 @@ class Products extends Component
 
 
 
-    public $product;
+
     public function view_product_info(Product $product)
     {
 
@@ -57,10 +65,19 @@ class Products extends Component
         $this->tableMode = false;
     }
 
+    public function unview_product_info()
+    {
+
+        $this->reset('product');
+        $this->view_batch = false;
+        $this->tableMode = true;
+    }
+
     public function add_brand_mode_on()
     {
         $this->addBrandMode = true;
     }
+
 
 
     public $brand_view_id;
@@ -68,15 +85,18 @@ class Products extends Component
     public function view_product_list(Brand $brand)
     {
         $this->brand_view_id = $brand->brand_id;
+        $this->brand = Brand::findOrFail($this->brand_view_id);
+        $this->tableMode = false;
         $this->view_product_mode = true;
+       
     }
 
     public function addProductMode()
     {
-        $this->addProduct=true;
+        $this->addProduct = true;
     }
 
-    public function cancel_add_mode()
+    public function cancel()
     {
         $this->addBrandMode = false;
         $this->addProduct = false;
@@ -96,7 +116,7 @@ class Products extends Component
     }
 
     //?-------ADDING PRODUCTS-------------
-    public AddProductsForm $product_form ;
+    public AddProductsForm $product_form;
 
     public function add_product()
     {
@@ -114,62 +134,49 @@ class Products extends Component
     //? ---------- DELETING BRANDS ----------------
     public function delete_brand(Brand $brand)
     {
-        if($brand->products->count() < 1)
-        {
+        if ($brand->products->count() < 1) {
             $brand->delete();
-            session()->flash('success','you have successfully deleted a brand');
+            session()->flash('success', 'you have successfully deleted a brand');
         }
 
         session()->flash('error', "This brand can't be deleted, it still containts products");
-        
     }
 
     //? ----------- DELETING PRODUCTS ----------------
     public function delete_product(Product $product)
     {
 
-        if($product->batch()->exists())
-        {
+        if ($product->batch()->exists()) {
 
             session()->flash('error', 'This product still has some active batches!!!');
-        }
-        else
-        {
+        } else {
 
-            
+
             $product->delete();
-            session()->flash("success","You have successfully deleted the product");
+            session()->flash("success", "You have successfully deleted the product");
         }
-
     }
 
-   
+
 
     public function render()
     {
 
         $results = [];
-        
-        if($this->brand_view_id)
-        {
-            $this->brand = Brand::where('brand_id', $this->brand_view_id)->first();
-        }
+
+
 
         $brands = Brand::all();
         $data = compact('brands');
-        
-        if(strlen($this->search) >= 1)
-        {
+
+        if (strlen($this->search) >= 1) {
             $results = Product::where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
             $data['products'] = $results;
-        }
-        else
-        {
+        } else {
             $products = Product::paginate(10);
             $data['products'] = $products;
         }
 
         return view('livewire.pages.products', $data);
-        
     }
 }

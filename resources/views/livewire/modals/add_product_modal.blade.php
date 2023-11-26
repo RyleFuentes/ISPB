@@ -29,8 +29,9 @@
                     @enderror
 
                     <div class="form-floating mt-2">
-                        <input type="number" class="form-control" placeholder="..." id="retail"
-                            wire:model='product_form.retail_price'>
+                        <input type="text" class="form-control" placeholder="..." id="retail"
+                            wire:model='product_form.retail_price' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places." >
                         <label for="retail">Retail Price</label>
                     </div>
                     @error('product_form.retail_price')
@@ -38,8 +39,9 @@
                     @enderror
 
                     <div class="form-floating mt-2">
-                        <input type="number" class="form-control" placeholder="..." id="wholesale"
-                            wire:model='product_form.wholesale_price'>
+                        <input type="text" class="form-control" placeholder="..." id="wholesale"
+                            wire:model='product_form.wholesale_price' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places." >
                         <label for="wholesale">Wholesale price</label>
                     </div>
                     @error('product_form.wholesale_price')

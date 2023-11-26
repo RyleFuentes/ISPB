@@ -9,13 +9,13 @@ use Livewire\Form;
 
 class AddProductsForm extends Form
 {
-    #[Rule('required|min:3|max:20')]
+    #[Rule('required|min:3|max:20|unique:products,product_name')]
     public $prod_name;
     #[Rule('required')]
     public $quantity;
-    #[Rule('required')]
+    #[Rule('required|numeric')]
     public $retail_price;
-    #[Rule('required')]
+    #[Rule('required|numeric')]
     public $wholesale_price;
 
     #[Rule('required|date')]

@@ -1,3 +1,5 @@
+
+<button class="btn btn-light" wire:click='table_mode'>back</button>
 <div class="mt-3 rounded bg-white p-3 shadow-sm">
 
     <div class="d-flex mb-5 justify-content-between">

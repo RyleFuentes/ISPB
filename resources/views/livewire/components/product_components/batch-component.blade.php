@@ -1,7 +1,7 @@
 <div wire:poll>
     <div class="p-3 d-flex justify-content-end">
-        <button class="btn btn-light rounded-pill me-2 btn-sm" wire:click='toggle_card'>
-            <i class="bi bi-table text-primary"></i> products page</button>
+        <button class="btn btn-light rounded-pill me-2 btn-sm" wire:click='unview_product_info'>
+            <i class="bi bi-table text-primary"></i> < Go back</button>
 
             
     </div>
@@ -12,7 +12,7 @@
             
             <div class="d-flex flex-column mb-5 justify-content-between">
                 <h3 class="fw-50 fs-30 mb-5">{{$product->product_name}} BATCHES</h3>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBatch">Add new product</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBatch">Add new batch</button>
             </div>
 
             <div>
@@ -48,7 +48,7 @@
                        
                         <td>
                             <button wire:click='view_product_info' class="btn"><i class="bi bi-eye-fill text-primary"></i></button>
-                            <button class="btn"><i class="bi bi-pencil-fill text-success"></i></button>
+                            <button wire:click='edit_product' class="btn"><i class="bi bi-pencil-fill text-success"></i></button>
                             <button wire:click='delete_product({{$product->product_id}})' class="btn"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
