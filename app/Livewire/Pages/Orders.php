@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Livewire\Forms\Orders\addOrderForm;
 use App\Models\Brand;
+use App\Models\Order;
 use Livewire\Component;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
@@ -59,7 +60,8 @@ class Orders extends Component
     public function render()
     {
         $brands = Brand::all();
-        $data = compact('brands');
+        $orders = Order::all();
+        $data = compact('brands', 'orders');
        
     
         return view('livewire.pages.orders', $data);
