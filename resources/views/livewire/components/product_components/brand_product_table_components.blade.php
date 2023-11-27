@@ -13,16 +13,23 @@
                 <th>Quantity</th>
                 <th>Retail Price</th>
                 <th>Wholesale Price</th>
+                <th>batches</th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody>
             @foreach ($brand->products as $item)
-                <tr >
+                <tr wire:key='{{$item->product_id}}'>
                     <td>{{$item->product_name}}</td>
                     <td>{{$item->total_quantity}}</td>
                     <td>{{$item->retail_price}}</td>
                     <td>{{$item->wholesale_price}}</td>
+                    <td>
+                        <button wire:click='view_product_info({{ $item->product_id }})' class="btn"><i
+                                class="bi bi-eye-fill text-primary"></i>Product Batches</button>
+                       
+                    </td>
                 </tr>
             @endforeach
 

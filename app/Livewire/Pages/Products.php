@@ -8,6 +8,7 @@ use Livewire\Attributes\Title;
 use App\Models\Brand;
 use App\Models\Product;
 use Livewire\Attributes\Rule;
+use App\Models\Batch;
 use App\Livewire\Forms\AddProductsForm;
 use App\Livewire\Forms\AddBrandsForm;
 use App\Livewire\Forms\AddProductFromTableForm;
@@ -24,6 +25,8 @@ class Products extends Component
     use WithFileUploads;
 
 
+    protected $dontConvertToLivewireComponents = ['product'];
+
     public AddBrandsForm $add_brands_form;
     public $brand;
     public $product;
@@ -36,9 +39,24 @@ class Products extends Component
     public $view_batch = false;
 
 
+    public function delete_batch(Batch $batch)
+    {
+        if($batch->quantity > 0)
+        {
+            session()->flash('error','The quantity of this batch is still more than 1');
+        }
+        else
+        {
+            $batch->delete();
+            session()->flash('success','You have successfully deleted this batch');
+        }
+        
+    }
+
     public function table_mode()
     {
         $this->view_product_mode = false;
+        $this->addBrandMode = false;
         $this->tableMode = true;
     }
 
@@ -61,6 +79,7 @@ class Products extends Component
     {
 
         $this->product = $product;
+        $this->cardMode = false;
         $this->view_batch = true;
         $this->tableMode = false;
     }
@@ -76,6 +95,8 @@ class Products extends Component
     public function add_brand_mode_on()
     {
         $this->addBrandMode = true;
+
+       
     }
 
 
@@ -163,11 +184,10 @@ class Products extends Component
     {
 
         $results = [];
-
-
-
         $brands = Brand::all();
+      
         $data = compact('brands');
+        
 
         if (strlen($this->search) >= 1) {
             $results = Product::where('product_name', 'like', '%' . $this->search . '%')->paginate(10);

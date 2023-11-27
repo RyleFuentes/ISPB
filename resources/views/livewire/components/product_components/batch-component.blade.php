@@ -1,4 +1,4 @@
-<div wire:poll>
+<div >
     <div class="p-3 d-flex justify-content-end">
         <button class="btn btn-light rounded-pill me-2 btn-sm" wire:click='unview_product_info'>
             <i class="bi bi-table text-primary"></i> < Go back</button>
@@ -41,7 +41,7 @@
                 @foreach ($product->batch as $batch)
                     <tr wire:key='{{$batch->batch_id}}'>
                         <td>{{$batch->batch_id}}</td>
-                        <td>{{ $product->product_name }}</td>
+                        <td>{{ $batch->product->product_name }}</td>
                         <td>{{ $batch->quantity }}</td>
                         <td>{{ $batch->expiration_date }}</td>
                        
@@ -49,7 +49,7 @@
                         <td>
                             <button wire:click='view_product_info' class="btn"><i class="bi bi-eye-fill text-primary"></i></button>
                             <button wire:click='edit_product' class="btn"><i class="bi bi-pencil-fill text-success"></i></button>
-                            <button wire:click='delete_product({{$product->product_id}})' class="btn"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <button wire:click='delete_batch({{$batch->batch_id}})' class="btn"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 @endforeach
@@ -60,8 +60,8 @@
 
 
         <div class="mt-3 p-3">
-
-            {{ $products->links() }}
+            {{$product->batch()->paginate(10)->links()}}
+            
         </div>
 
 

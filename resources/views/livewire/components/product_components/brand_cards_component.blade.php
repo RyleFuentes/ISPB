@@ -1,8 +1,9 @@
 
+<button class="btn btn-light" wire:click='table_mode'>back</button>
 
 <div class="mt-3 p-5 bg-white shadow-sm rounded fs-40 fw-40">
     @include('livewire.messages.message')
-
+    <button class="btn btn-primary rounded-pill" wire:click='add_brand_mode_on'>add new brand</button>
     <div class="mt-3 row grid gap-3" >
         @foreach ($brands as $brand)
             <div wire:key='{{$brand->brand_id}}' class="card " style="width: 12rem;">

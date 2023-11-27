@@ -1,3 +1,5 @@
+
+<button class="btn btn-light rounded-pill mb-3" wire:click='table_mode'>back</button>
 <div class="p-3 rounded shadow-sm bg-white">
     <div class="row">
         <div class="col">

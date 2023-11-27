@@ -5,6 +5,9 @@
     @if ($cardMode === true)
         @include('livewire.components.product_components.card-component')
     
+    @elseif($addBrandMode)
+        @include('livewire.components.product_components.add_brands_component')
+    
     @elseif($tableMode === true)
         @include('livewire.components.product_components.table-component')
 

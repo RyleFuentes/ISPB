@@ -15,6 +15,8 @@ class Product extends Model
          
     ];
 
+
+
     public function getTotalQuantityAttribute()
     {
         // Sum the quantity from related batches

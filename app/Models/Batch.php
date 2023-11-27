@@ -14,6 +14,6 @@ class Batch extends Model
 
     public function product()
     {
-        $this->belongsTo(Product::class, 'productID', 'product_id');
+       return $this->belongsTo(Product::class, 'productID', 'product_id');
     }
 }
