@@ -61,8 +61,7 @@ class Orders extends Component
         $brands = Brand::all();
         $data = compact('brands');
        
-      
-
+    
         return view('livewire.pages.orders', $data);
     }
 }
