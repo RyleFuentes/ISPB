@@ -12,6 +12,8 @@ use App\Models\Batch;
 use App\Livewire\Forms\AddProductsForm;
 use App\Livewire\Forms\AddBrandsForm;
 use App\Livewire\Forms\AddProductFromTableForm;
+use App\Livewire\Forms\EditForm;
+use App\Livewire\Forms\EditFormBatch;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -39,6 +41,70 @@ class Products extends Component
     public $view_batch = false;
 
 
+
+
+   
+
+
+
+    public $set_id;
+    public $editing_mode = false;
+    public EditForm $editForm;
+    public function set_edit(Product $product)
+    {
+       $this->set_id = $product->product_id;
+       $this->editForm->set_edit_values($product->product_id);
+       $this->editing_mode = true;
+
+    }
+
+    public function update_edited()
+    {
+        $this->editForm->edit_brand_product_table($this->set_id);
+        if($this->editForm->success == true)
+        {
+            $this->reset('set_id');
+            $this->editing_mode = false;
+            session()->flash('success', 'You have successfully updated the data');
+        }
+        else{
+            session()->flash('error', 'Something went wrong...');
+        }
+    }
+
+
+    public function set_edit_batch(Batch $batch)
+    {
+        $this->set_id = $batch->batch_id;
+        $this->edit_form_batch->set_edit_values_batch($batch->batch_id);
+        $this->editing_mode = true;
+    }
+
+
+    public EditFormBatch $edit_form_batch;
+    public function update_batch_form()
+    {
+        $this->edit_form_batch->update_batch($this->set_id);
+        if($this->edit_form_batch->success == true)
+        {
+            $this->reset('set_id');
+            $this->editing_mode = false;
+            session()->flash('success', 'You have successfully edited this batch');
+        }
+        else
+        {
+            session()->flash('error', 'something went wrong...');
+        }
+    }
+
+    public function cancel_edit()
+    {
+        $this->reset('set_id');
+        $this->editing_mode = false;
+    }
+
+
+
     public function delete_batch(Batch $batch)
     {
         if($batch->quantity > 0)
@@ -56,8 +122,10 @@ class Products extends Component
     public function table_mode()
     {
         $this->view_product_mode = false;
+        $this->view_batch = false;
         $this->addBrandMode = false;
         $this->tableMode = true;
+        $this->editing_mode = false;
     }
 
     public AddProductFromTableForm $table_product_form;

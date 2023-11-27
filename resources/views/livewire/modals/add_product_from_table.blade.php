@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            @include('livewire.messages.message')
+
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="addProductTableLabel">ADD NEW PRODUCT</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -45,7 +45,8 @@
 
                     <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="retail"
-                            wire:model='table_product_form.retail'>
+                            wire:model='table_product_form.retail' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places." >
                         <label for="retail">Retail Price</label>
                     </div>
                     @error('table_product_form.retail')
@@ -55,7 +56,7 @@
                     <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="wholesale"
                             wire:model='table_product_form.wholesale' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places." /> 
+                            title="Please enter a valid number with up to two decimal places." > 
                             <label for="wholesale">Wholesale price</label>
                     </div>
                     @error('table_product_form.wholesale')
@@ -64,8 +65,7 @@
 
                     <div class="form-floating mt-2">
                         <input type="date" class="form-control" placeholder="..." id="exp_date"
-                            wire:model='table_product_form.expiration_date' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places." />
+                            wire:model='table_product_form.expiration_date'  >
                             <label for="exp_date">Expiration Date</label>
                     </div>
                     @error('table_product_form.expiration_date')
