@@ -39,8 +39,8 @@
                             <td>{{$order->product->product_name}}</td>
                             <td>{{$order->due_date}}</td>
                             <td>{{$order->order_quantity}}</td>
-                            <td>na</td>
-                            <td><span class="badge text-bg-warning">{{$order->status}}</span></td>
+                            <td>{{$order->total_price}}</td>
+                            <td><span class="badge text-bg-warning">Pending</span></td>
                             <td>
                                 <a wire:click='' class="text-success mx-1" style="cursor: pointer">
                                     <i class="fas fa-eye fs-6"></i>
