@@ -21,7 +21,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="fw-semibold">
-                        <td scope="col" class="text-secondary">..</td>
+                        
                         <td scope="col" class="text-secondary">Order</td>
                         <td scope="col" class="text-secondary">Delivery Date</td>
                         <td scope="col" class="text-secondary">Quantity(kg.)</td>
@@ -33,13 +33,11 @@
                 <tbody>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>
-                                <input type="checkbox" name="" id="">
-                            </td>
+                            
                             <td>{{$order->product->product_name}}</td>
                             <td>{{$order->due_date}}</td>
                             <td>{{$order->order_quantity}}</td>
-                            <td>na</td>
+                            <td>{{$order->total_price }}</td>
                             <td><span class="badge text-bg-warning">{{$order->status}}</span></td>
                             <td>
                                 <a wire:click='' class="text-success mx-1" style="cursor: pointer">

@@ -12,25 +12,25 @@ class addOrderForm extends Form
 
 
     
-    #[validate('required')]
+    #[Rule('required')]
     public $brand;
 
-    #[Validate('required')]
+    #[Rule('required')]
     public $type_order;
     
-    #[validate('required')]
+    #[Rule('required')]
     public $product;
 
-    #[validate('required|min:3|max:30')]
+    #[Rule('required|min:3|max:30')]
     public $recipient;
 
-    #[validate('required')]
+    #[Rule('required')]
     public $order_qty;
 
 
     public $total_price;
 
-    #[validate('required|date')]
+    #[Rule('required|date')]
     public $deliver_date;
 
    
@@ -41,16 +41,23 @@ class addOrderForm extends Form
     {
         $validated = $this->validate();
         $product = Product::findOrFail($validated['product']);
-        $store = $product->orders()->create([
-            'order_quantity' => $validated['order_qty'],
-            'due_date' => $validated['deliver_date'],
-            'recipient' => $validated['recipient'],
-
-        ]);
-
-        if($store)
+        if($product->total_quantity < $validated['order_qty'])
         {
+            session()->flash('error_modal','The quantity requested exceeds the existing records');
+        }
+        else
+        {
+
+            $product->orders()->create([
+                'order_quantity' => $validated['order_qty'],
+                'due_date' => $validated['deliver_date'],
+                'recipient' => $validated['recipient'],
+    
+            ]);
+
             session()->flash('success','well done success');
         }
+
+       
     }
 }
