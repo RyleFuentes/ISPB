@@ -5,12 +5,13 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use App\Models\Batch;
+use Livewire\Attributes\Rule;
 
 class EditFormBatch extends Form
 {
-    #[validate('required')]
+    #[Rule('required')]
     public $quantity;
-    #[validate('date|required')]
+    #[Rule('date|required')]
     public $exp_date;
 
     public $success = false;

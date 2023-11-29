@@ -107,17 +107,18 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
+                 
 
-
-
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" type="button" class="btn btn-primary">Proceed Order</button>
+                    <div class="form-group mt-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" type="button" class="btn btn-primary">Proceed Order</button>
+      
+                    </div>
 
 
                 </form>
               </div>
+             
           </div>
       </div>
   </div>

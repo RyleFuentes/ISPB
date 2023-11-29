@@ -17,6 +17,7 @@ class Orders extends Component
 
     public $products;
 
+
     public function mount(){
         $this->products = collect();
     }
@@ -47,6 +48,7 @@ class Orders extends Component
 
     public function updateProducts()
     {
+       
         if ($this->add_order->brand) {
             // get the products for the selected brand
             $this->products = Product::where('brandID', $this->add_order->brand)->get();

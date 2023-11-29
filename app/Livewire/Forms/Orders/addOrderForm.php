@@ -9,15 +9,11 @@ use Livewire\Form;
 use App\Models\Product;
 class addOrderForm extends Form
 {
-
-
-    
     #[Rule('required')]
     public $brand;
 
     #[Rule('required')]
     public $type_order;
-    
     #[Rule('required')]
     public $product;
 
@@ -26,16 +22,26 @@ class addOrderForm extends Form
 
     #[Rule('required')]
     public $order_qty;
-
-
     public $total_price;
 
     #[Rule('required|date')]
     public $deliver_date;
 
-   
 
- 
+
+    public function calculate($type, $prod, $qty)
+    {
+        $product = Product::findOrFail($prod);
+
+        if ($type === '1') {
+            return $product->retail_price * $qty;
+        } elseif ($type === '2') {
+            return $product->wholesale_price * $qty;
+        }
+
+        // Add a default value or handle other cases as needed
+        return 0;
+    }
 
     public function store()
     {
