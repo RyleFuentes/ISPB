@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('productID');
             $table->foreign('productID')->references('product_id')->on('products')->onDelete('cascade');
             $table->integer('order_quantity');
-            $table->decimal('total_price');
+            $table->decimal('total_price', 10, 3);
             $table->date('due_date');
             $table->tinyInteger('status')->default(0);
             $table->string('recipient');
