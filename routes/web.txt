@@ -1,12 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Pages\Dashboard;
-use App\Livewire\Pages\Orders;
-use App\Livewire\Pages\Products;
-use App\Livewire\Pages\Users;
-use App\Livewire\PendingUser;
-use App\Livewire\Welcome;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +17,29 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('profile', 'profile')
+Route::view('orders', 'orders')
     ->middleware(['auth', 'verified'])
+    ->name('orders');
+
+Route::view('products', 'products')
+    ->middleware(['auth', 'verified'])
+    ->name('products');
+
+Route::view('users', 'users')
+    ->middleware(['auth', 'verified'])
+    ->name('users');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
     ->name('profile');
 
-Route::middleware(['auth', 'verified' ])->group(function() {
+
+Route::middleware(['auth', 'can:access' ])->group(function() {
+    Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('admin');
     Route::get('/products', Products::class)->name('products');
     Route::get('/orders', Orders::class)->name('orders');
-    Route::get('/users', Users::class)->name('users');
+    Route::get('/profile', Profile::class)->name('profile');
+    
+    Route::get('/users', Users::class)->name('users')->middleware('admin');
 });
-
 require __DIR__.'/auth.php';
