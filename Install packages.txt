@@ -1,0 +1,4 @@
+1. composer require realrashid/sweet-alert
+
+2. a. composer require asantibanez/livewire-charts
+   b. php artisan livewire-charts:install
