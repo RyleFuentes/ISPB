@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $guarded = [
         'product_id',
-         
+
     ];
 
 
@@ -21,6 +21,14 @@ class Product extends Model
     {
         // Sum the quantity from related batches
         return $this->batch->sum('quantity');
+    }
+
+    public function getPendingOrderQuantityAttribute()
+    {
+        // Sum the order quantities for pending orders of the specific product
+        return $this->orders()
+            ->where('status', 0) // Adjust the status condition as needed
+            ->sum('order_quantity');
     }
 
     protected $primaryKey = 'product_id';
@@ -37,6 +45,6 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class,'productID');
+        return $this->hasMany(Order::class, 'productID');
     }
 }

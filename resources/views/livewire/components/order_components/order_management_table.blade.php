@@ -1,4 +1,5 @@
 <div>
+    @include('livewire.messages.message')
     <div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
         <div class="mb-4 px-4 mt-3 w-100">
             <div class="d-flex justify-content-between align-items-center">
@@ -22,9 +23,9 @@
                 <thead>
                     <tr class="fw-semibold">
                         
-                        <td scope="col" class="text-secondary">Order</td>
+                        <td scope="col" class="text-secondary">Ordered Product</td>
                         <td scope="col" class="text-secondary">Delivery Date</td>
-                        <td scope="col" class="text-secondary">Quantity(kg.)</td>
+                        <td scope="col" class="text-secondary">Quantity(bags)</td>
                         <td scope="col" class="text-secondary">Total Price</td>
                         <td scope="col" class="text-secondary">Status</td>
                         <td scope="col" class="text-secondary">Actions</td>
@@ -32,25 +33,29 @@
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
-                        <tr>
-                            
-                            <td>{{$order->product->product_name}}</td>
-                            <td>{{$order->due_date}}</td>
-                            <td>{{$order->order_quantity}}</td>
-                            <td>{{$order->total_price}}</td>
-                            <td><span class="badge text-bg-warning">Pending</span></td>
-                            <td>
-                                <a wire:click='' class="text-success mx-1" style="cursor: pointer">
-                                    <i class="fas fa-eye fs-6"></i>
-                                </a>
-                                <a wire:click='' class="text-primary mx-1" style="cursor: pointer">
-                                    <i class="fas fa-edit fs-6"></i>
-                                </a>
-                                <a wire:click='' class="mx-1 text-danger" style="cursor: pointer">
-                                    <i class="fas fa-trash fs-6"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        @if ($order->status === 0)
+                            <tr>
+                                
+                                <td>{{$order->product->product_name}}</td>
+                                <td>{{$order->due_date}}</td>
+                                <td>{{$order->order_quantity}}</td>
+                                <td>₱ {{$order->total_price}}</td>
+                                <td><span class="badge text-bg-warning">Pending</span></td>
+                                <td>
+                                    <a wire:click='' class="text-success mx-1" style="cursor: pointer">
+                                        <i class="fas fa-eye fs-6"></i>
+                                    </a>
+                                    <a wire:click='' class="text-primary mx-1" style="cursor: pointer">
+                                        <i class="fas fa-edit fs-6"></i>
+                                    </a>
+                                    <a wire:click='' class="mx-1 text-danger" style="cursor: pointer">
+                                        <i class="fas fa-trash fs-6"></i>
+                                    </a>
+                                    <button wire:click='completeOrder({{$order->order_id}})' class="btn btn-primary btn-sm">Complete order</button>
+                                </td>
+                            </tr>
+                        @endif
+                        
                     @endforeach
 
                 </tbody>

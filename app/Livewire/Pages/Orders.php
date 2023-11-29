@@ -16,25 +16,58 @@ class Orders extends Component
 {
 
     public $products;
+    public addOrderForm $add_order;
+    public $product_quantity;
+    public $change_page = 1;
 
-
-    public function mount(){
+    public function mount()
+    {
         $this->products = collect();
     }
-    public addOrderForm $add_order;
 
 
-    
+
     public function submit_order()
     {
         $this->add_order->store();
     }
 
+    public function completeOrder(Order $order)
+    {
+        if ($order->status === 0) 
+        {
+            $product = $order->product;
+            $order_qty = $order->order_quantity;
 
-    public $product_quantity;
+            $batches = $product->batch()->orderBy('expiration_date', 'asc')->get();
+            $remaining_qty = $order_qty;
 
+            foreach ($batches as $batch) {
+                $quantityToDeduct = min($remaining_qty, $batch->quantity);
 
-    public $change_page = 1;
+                // Update the batch quantity
+                $batch->update(['quantity' => $batch->quantity - $quantityToDeduct]);
+
+                // TODO: Save information to Orders table
+                // You need to decide how to store the order information in your Orders table
+                // For example, you might have a pivot table that links orders to batches.
+
+                $remaining_qty -= $quantityToDeduct;
+
+                if ($remaining_qty <= 0) {
+                    break;
+                    
+                }
+            }
+            $order->update(['status' => 1]);
+            session()->flash('success', 'you have successfully completed the order !');
+        }
+        else
+        {
+            session()->flash('error','This order has been completed');
+        }
+    }
+
 
     public function toggle_on()
     {
@@ -48,7 +81,7 @@ class Orders extends Component
 
     public function updateProducts()
     {
-       
+
         if ($this->add_order->brand) {
             // get the products for the selected brand
             $this->products = Product::where('brandID', $this->add_order->brand)->get();
@@ -64,8 +97,8 @@ class Orders extends Component
         $brands = Brand::all();
         $orders = Order::all();
         $data = compact('brands', 'orders');
-       
-    
+
+
         return view('livewire.pages.orders', $data);
     }
 }

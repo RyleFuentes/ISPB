@@ -51,14 +51,19 @@ class addOrderForm extends Form
         {
             session()->flash('error_modal','The quantity requested exceeds the existing records');
         }
+        elseif($product->total_quantity <= $product->pendingOrderQuantity)
+        {
+            session()->flash('error_modal','Cannot exceed current order quantity for this product');
+        }
         else
         {
 
+            $this->total_price = $this->calculate($validated['type_order'], $validated['product'], $validated['order_qty']);
             $product->orders()->create([
                 'order_quantity' => $validated['order_qty'],
                 'due_date' => $validated['deliver_date'],
                 'recipient' => $validated['recipient'],
-    
+                'total_price' => $this->total_price,
             ]);
 
             session()->flash('success','well done success');

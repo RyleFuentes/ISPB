@@ -35,6 +35,8 @@
                         <th>Brand</th>
                         <th>Product</th>
                         <th>Quantity (bags) </th>
+                        <th>retail price</th>
+                        <th>wholesale price</th>
 
                         <th></th>
                     </tr>
@@ -47,6 +49,8 @@
                             <td>{{ $product->brand->brand_name }}</td>
                             <td>{{ $product->product_name }}</td>
                             <td>{{ $product->total_quantity }}</td>
+                            <td>₱ {{$product->retail_price}}</td>
+                            <td>₱ {{$product->wholesale_price}}</td>
 
 
                             <td>

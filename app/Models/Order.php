@@ -13,6 +13,8 @@ class Order extends Model
         'order_id',
          
     ];
+    protected $primaryKey = 'order_id';
+    
 
     public function product()
     {
