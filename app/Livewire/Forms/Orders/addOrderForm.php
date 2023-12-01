@@ -67,6 +67,7 @@ class addOrderForm extends Form
             ]);
 
             session()->flash('success','well done success');
+            $this->reset();
         }
 
        

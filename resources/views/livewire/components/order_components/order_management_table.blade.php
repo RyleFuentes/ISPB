@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $order)
+                    @foreach ($pending_orders as $order)
                         @if ($order->status === 0)
                             <tr>
                                 
@@ -42,16 +42,8 @@
                                 <td>₱ {{$order->total_price}}</td>
                                 <td><span class="badge text-bg-warning">Pending</span></td>
                                 <td>
-                                    <a wire:click='' class="text-success mx-1" style="cursor: pointer">
-                                        <i class="fas fa-eye fs-6"></i>
-                                    </a>
-                                    <a wire:click='' class="text-primary mx-1" style="cursor: pointer">
-                                        <i class="fas fa-edit fs-6"></i>
-                                    </a>
-                                    <a wire:click='' class="mx-1 text-danger" style="cursor: pointer">
-                                        <i class="fas fa-trash fs-6"></i>
-                                    </a>
-                                    <button wire:click='completeOrder({{$order->order_id}})' class="btn btn-primary btn-sm">Complete order</button>
+                                    <button wire:click.prevent='completeOrder({{$order->order_id}})' class="btn btn-primary btn-sm">Complete order</button>
+                                    <button wire:click.prevent='cancelOrder({{$order->order_id}})' class="btn btn-danger btn-sm">Cancel</button>
                                 </td>
                             </tr>
                         @endif
@@ -59,7 +51,13 @@
                     @endforeach
 
                 </tbody>
+
+                
             </table>
+
+            <div class="mt-3 p-3">
+                {{$pending_orders->links()}}
+            </div>
         </div>
     </div>
     @include('livewire.modals.add_orders_modal')

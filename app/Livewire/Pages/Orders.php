@@ -9,11 +9,14 @@ use Livewire\Component;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\WithPagination;
 
 #[Layout('index')]
 #[Title('Orders')]
 class Orders extends Component
 {
+
+    use WithPagination;
 
     public $products;
     public addOrderForm $add_order;
@@ -30,12 +33,12 @@ class Orders extends Component
     public function submit_order()
     {
         $this->add_order->store();
+        session()->flash('success','You have cancelled the order');
     }
 
     public function completeOrder(Order $order)
     {
-        if ($order->status === 0) 
-        {
+        if ($order->status === 0) {
             $product = $order->product;
             $order_qty = $order->order_quantity;
 
@@ -56,15 +59,22 @@ class Orders extends Component
 
                 if ($remaining_qty <= 0) {
                     break;
-                    
                 }
             }
             $order->update(['status' => 1]);
             session()->flash('success', 'you have successfully completed the order !');
+        } else {
+            session()->flash('error', 'This order has been completed');
         }
-        else
+    }
+
+    public function cancelOrder(Order $order)
+    {
+        $update = $order->update(['status' => 2]);
+
+        if($update)
         {
-            session()->flash('error','This order has been completed');
+            session()->flash('success','You have cancelled the order');
         }
     }
 
@@ -95,9 +105,11 @@ class Orders extends Component
     public function render()
     {
         $brands = Brand::all();
-        $orders = Order::all();
-        $data = compact('brands', 'orders');
+        $pending_orders = Order::where('status', 0)->paginate(10);
+        $completed_orders = Order::whereIn('status', [1,2])->paginate(10);
+        $data = compact('brands', 'pending_orders' , 'completed_orders');
 
+        
 
         return view('livewire.pages.orders', $data);
     }
