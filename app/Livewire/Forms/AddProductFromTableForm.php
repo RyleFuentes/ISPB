@@ -19,6 +19,8 @@ class AddProductFromTableForm extends Form
     public $quantity;
 
     #[Rule('required|numeric')]
+    public $kilo;
+    #[Rule('required|numeric')]
     public $retail;
     #[Rule('required|numeric')]
     public $wholesale;
@@ -34,7 +36,7 @@ class AddProductFromTableForm extends Form
             'product_name' => $validated['prod_name'],
             'retail_price' => $validated['retail'],
             'wholesale_price' => $validated['wholesale'],
-            
+            'kilo' => $validated['kilo'],
         ]);
 
         $batch = $product->batch()->create([

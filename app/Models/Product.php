@@ -28,8 +28,22 @@ class Product extends Model
         // Sum the order quantities for pending orders of the specific product
         return $this->orders()
             ->where('status', 0) // Adjust the status condition as needed
-            ->sum('order_quantity');
+            ->where('order_type', 2)
+            ->pluck('order_quantity')
+            ->sum();
     }
+
+    public function getPendingOrderKiloAttribute()
+    {
+        // Sum the order quantities for pending orders of the specific product
+        return $this->orders()
+            ->where('status', 0)
+            ->where('order_type', 1)
+            ->pluck('order_kilo')
+            ->sum();
+    }
+
+
 
     protected $primaryKey = 'product_id';
 

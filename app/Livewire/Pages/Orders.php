@@ -18,6 +18,7 @@ class Orders extends Component
 
     use WithPagination;
 
+
     public $products;
     public addOrderForm $add_order;
     public $product_quantity;
@@ -33,34 +34,48 @@ class Orders extends Component
     public function submit_order()
     {
         $this->add_order->store();
-        session()->flash('success','You have cancelled the order');
     }
 
     public function completeOrder(Order $order)
     {
         if ($order->status === 0) {
-            $product = $order->product;
-            $order_qty = $order->order_quantity;
+            if ($order->order_type === 1) 
+            {
+                $newKilo = $order->product->kilo - $order->order_kilo;
+                $order->product->update([
+                    'kilo' => $newKilo
+                ]);
+                
+            } 
+            else 
+            {
+                $product = $order->product;
+                $order_qty = $order->order_quantity;
 
-            $batches = $product->batch()->orderBy('expiration_date', 'asc')->get();
-            $remaining_qty = $order_qty;
+                $batches = $product->batch()->orderBy('expiration_date', 'asc')->get();
+                $remaining_qty = $order_qty;
 
-            foreach ($batches as $batch) {
-                $quantityToDeduct = min($remaining_qty, $batch->quantity);
+                foreach ($batches as $batch) {
+                    $quantityToDeduct = min($remaining_qty, $batch->quantity);
 
-                // Update the batch quantity
-                $batch->update(['quantity' => $batch->quantity - $quantityToDeduct]);
+                    // Update the batch quantity
+                    $batch->update(['quantity' => $batch->quantity - $quantityToDeduct]);
+                    if ($batch->quantity === 0) {
+                        // Delete the batch from the database
+                        $batch->delete();
+                    }
+                    // TODO: Save information to Orders table
+                    // You need to decide how to store the order information in your Orders table
+                    // For example, you might have a pivot table that links orders to batches.
 
-                // TODO: Save information to Orders table
-                // You need to decide how to store the order information in your Orders table
-                // For example, you might have a pivot table that links orders to batches.
+                    $remaining_qty -= $quantityToDeduct;
 
-                $remaining_qty -= $quantityToDeduct;
-
-                if ($remaining_qty <= 0) {
-                    break;
+                    if ($remaining_qty <= 0) {
+                        break;
+                    }
                 }
             }
+
             $order->update(['status' => 1]);
             session()->flash('success', 'you have successfully completed the order !');
         } else {
@@ -72,9 +87,8 @@ class Orders extends Component
     {
         $update = $order->update(['status' => 2]);
 
-        if($update)
-        {
-            session()->flash('success','You have cancelled the order');
+        if ($update) {
+            session()->flash('success', 'You have cancelled the order');
         }
     }
 
@@ -106,10 +120,10 @@ class Orders extends Component
     {
         $brands = Brand::all();
         $pending_orders = Order::where('status', 0)->paginate(10);
-        $completed_orders = Order::whereIn('status', [1,2])->paginate(10);
-        $data = compact('brands', 'pending_orders' , 'completed_orders');
+        $completed_orders = Order::whereIn('status', [1, 2])->latest()->paginate(10);
+        $data = compact('brands', 'pending_orders', 'completed_orders');
 
-        
+
 
         return view('livewire.pages.orders', $data);
     }

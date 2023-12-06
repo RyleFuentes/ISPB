@@ -13,6 +13,8 @@ class AddProductsForm extends Form
     public $prod_name;
     #[Rule('required')]
     public $quantity;
+
+
     #[Rule('required|numeric')]
     public $retail_price;
     #[Rule('required|numeric')]

@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-
+            @include('livewire.messages.message')
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="addProductTableLabel">ADD NEW PRODUCT</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -40,6 +40,16 @@
                         <label for="quantity">Quantity</label>
                     </div>
                     @error('table_product_form.quantity')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
+                    <div class="form-floating mt-2">
+                        <input type="text" class="form-control" placeholder="..." id="kilo"
+                            wire:model='table_product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places." >
+                        <label for="kilo">Kilo</label>
+                    </div>
+                    @error('table_product_form.kilo')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 

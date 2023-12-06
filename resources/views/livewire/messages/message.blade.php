@@ -13,17 +13,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('livewire:navigated', function() {
-            const toast = document.querySelector('.toast');
-            setTimeout(function() {
-                toast.classList.add('show');
-            }, 10000);
-            setTimeout(function() {
-                toast.classList.remove('show');
-            }, 11000);
-        });
-    </script>
+
 @elseif(session('error'))
     <div class="position-fixed bottom-0 end-0 m-2 m-sm-3 m-md-4 m-lg-5" style="z-index: 2;">
         <div class="toast show">
@@ -40,17 +30,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('livewire:navigated', function() {
-            const toast = document.querySelector('.toast');
-            setTimeout(function() {
-                toast.classList.add('show');
-            }, 10000);
-            setTimeout(function() {
-                toast.classList.remove('show');
-            }, 11000);
-        });
-    </script>
+   
 @elseif(session('create_success'))
     <div class="alert alert-danger alert-dismissible fade show position-absolute top-0 start-50 translate-middle mt-5 fs-5"
         role="alert">
@@ -68,7 +48,7 @@
             </div>
             <div class="toast-body">
                 <p class="mb-0">{{ session('create_success') }}</p>
-                {{ Session::forget('create_success') }}
+                {{ Session::forget('error_modal') }}
                 
             </div>
         </div>
@@ -86,3 +66,15 @@
 @endif
 
 
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        const toast = document.querySelector('.toast');
+        setTimeout(function() {
+            toast.classList.add('show');
+        }, 10000);
+        setTimeout(function() {
+            toast.classList.remove('show');
+        }, 11000);
+    });
+</script>

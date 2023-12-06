@@ -22,7 +22,7 @@
                 <div>
                     <form action="" class="form d-flex">
                         <div class="form-floating">
-                            <input wire:model.live='search' placeholder="..." id="search" type="text"
+                            <input wire:model.live='search' placeholder="..." id="search" type="search"
                                 class="form-control">
                             <label for="search">Search...</label>
                         </div>
@@ -35,6 +35,7 @@
                         <th>Brand</th>
                         <th>Product</th>
                         <th>Quantity (bags) </th>
+                        <th>Kilos </th>
                         <th>retail price</th>
                         <th>wholesale price</th>
 
@@ -49,6 +50,7 @@
                             <td>{{ $product->brand->brand_name }}</td>
                             <td>{{ $product->product_name }}</td>
                             <td>{{ $product->total_quantity }}</td>
+                            <td>{{ $product->kilo }}</td>
                             <td>₱ {{$product->retail_price}}</td>
                             <td>₱ {{$product->wholesale_price}}</td>
 

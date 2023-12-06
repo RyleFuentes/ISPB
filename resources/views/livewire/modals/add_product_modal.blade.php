@@ -28,6 +28,8 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
+                   
+
                     <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="retail"
                             wire:model='product_form.retail_price' pattern="^\d+(\.\d{1,2})?$"

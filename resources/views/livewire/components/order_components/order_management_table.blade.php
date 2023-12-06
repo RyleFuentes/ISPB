@@ -9,7 +9,7 @@
                 </button>
 
                 <form class="d-flex mt-2">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    <input wire:model.live='search' class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
                         style="border-bottom-color: #6c3ca4;">
                     <button class="btn btn-primary me-3" type="submit">
                         <i class="fas fa-search"></i>
