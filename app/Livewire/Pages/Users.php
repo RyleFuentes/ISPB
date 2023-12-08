@@ -10,7 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
 
-#[Layout('index')]
+#[Layout('layouts.app')]
 #[Title('Users')]
 class Users extends Component
 {
