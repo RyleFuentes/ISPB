@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brand', function (Blueprint $table) {
-            $table->id('brand_id');
-            $table->string('brand_name');
-            $table->string('brand_image');
+        Schema::create('batches', function (Blueprint $table) {
+            $table->id('batch_id');
+            $table->unsignedBigInteger('productID');
+            $table->integer('quantity');
+            $table->foreign('productID')->references('product_id')->on('products')->onDelete('cascade');
+            $table->date('expiration_date');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brand');
+        Schema::dropIfExists('batches');
     }
 };

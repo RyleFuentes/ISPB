@@ -13,5 +13,12 @@ class Order extends Model
         'order_id',
          
     ];
+    protected $primaryKey = 'order_id';
+    
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'productID', 'product_id');
+    }
 
 }

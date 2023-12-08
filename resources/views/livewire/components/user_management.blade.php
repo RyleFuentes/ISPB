@@ -13,10 +13,10 @@
         <table class="table table-striped table-hover ">
             <thead>
                 <tr class=" fw-semibold">
-                    <td scope="col" class="text-secondary text-center">Name</td>
-                    <td scope="col" class="text-secondary text-center">Email</td>
-                    <td scope="col" class="text-secondary text-center">Role</td>
-                    <td scope="col" class="text-secondary text-center--">Actions</td>
+                    <td scope="col" class="text-secondary ">Name</td>
+                    <td scope="col" class="text-secondary ">Email</td>
+                    <td scope="col" class="text-secondary ">Role</td>
+                    <td scope="col" class="text-secondary ">Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@
                                     <span class="text-warning">Inventory Clerk</span>
                                 @endif
                             </td>
-                            <td class="text-center">
+                            <td >
                                 <a wire:click='edit_user({{ $user->id }})' class="mx-1 text-primary"
                                     style="cursor: pointer">
                                     <i class="fas fa-edit"></i>

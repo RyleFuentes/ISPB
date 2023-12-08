@@ -132,6 +132,14 @@
     display: none;
 }
 
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3); /* Default opacity */
+  }
+  
+  .modal-backdrop.opaque {
+    background-color: rgba(0, 0, 0, .3); /* Opaque background */
+  }
+
 
 @media (max-width: 768px) {
     #sidebar-wrapper {
