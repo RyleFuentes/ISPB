@@ -11,7 +11,7 @@
                 <td scope="col" class="text-secondary">Amount</td>
                 <td scope="col" class="text-secondary">Total Price</td>
                 <td scope="col" class="text-secondary">Status</td>
-                <td scope="col" class="text-secondary">Actions</td>
+  
             </tr>
         </thead>
         <tbody>
@@ -34,9 +34,7 @@
                                 <span class="text-warning">Cancelled</span>
                             @endif
                         </td>
-                        <td>
-                            <button class="btn btn-secondary btn-sm">test</button>
-                        </td>
+                        
                     </tr>
                 @endif
             @endforeach

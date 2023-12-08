@@ -20,7 +20,7 @@ return new class extends Migration
             $table->tinyInteger('order_type'); //? 1 == retail orders ; 2 == wholesale orders
             $table->decimal('total_price', 10, 3);
             $table->date('due_date');
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(0); //? 0 == pending ; 1 == completed; 2 == cancelled
             $table->string('recipient');
             $table->timestamps();
         });

@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Pages;
 
-use Asantibanez\LivewireCharts\Models\AreaChartModel;
+use App\Models\Order;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
-use Illuminate\Support\Facades\Auth;
+
 use Livewire\Component;
 
 
@@ -16,16 +16,16 @@ class Dashboard extends Component
 {
     public function render()
     {
-
+        $pending_orders = Order::where('status', 0)->count();
+        $completed__orders = Order::where('status', 1)->count();
+        $cancelled_orders = Order::where('status',2)->count();
         $columnChartModel =
             (new ColumnChartModel())
-            ->setTitle('Expenses by Type')
+            ->setTitle('ORDERS')
             ->setAnimated(true)
-            ->addColumn('Food', 100, '#f6ad55')
-            ->addColumn('Shopping', 200, '#fc8181')
-            ->addColumn('Travel', 300, '#90cdf4')
-            ->addColumn('Commute', 360, '#90cdf4')
-            ->addColumn('School allowance', 2000, '#90cdf4')
+            ->addColumn('Pending Orders', $pending_orders, '#f6ad55')
+            ->addColumn('Completed Orders', $completed__orders, '#008000')
+            ->addColumn('Cancelled Orders', $cancelled_orders, '#ff0000')
             ->setAnimated(true);
 
       
