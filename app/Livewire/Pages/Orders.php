@@ -23,10 +23,24 @@ class Orders extends Component
     public addOrderForm $add_order;
     public $product_quantity;
     public $change_page = 1;
+    public $toggle_input;
 
-    public function mount()
+    //! lifecycle hook for when add_order->brandID is updated/changed
+    public function updatedAddOrderBrandID()
     {
-        $this->products = collect();
+        $this->add_order->product = null;
+    }
+
+    public function updatedAddOrderTypeOrder()
+    {
+        if($this->add_order->type_order == 1)
+        {
+            $this->toggle_input = 1;
+        }
+        else
+        {
+            $this->toggle_input = 2;
+        }
     }
 
 
@@ -106,9 +120,9 @@ class Orders extends Component
     public function updateProducts()
     {
 
-        if ($this->add_order->brand) {
+        if ($this->add_order->brandID) {
             // get the products for the selected brand
-            $this->products = Product::where('brandID', $this->add_order->brand)->get();
+            $this->products = Product::where('brandID', $this->add_order->brandID)->get();
         } else {
             // reset the products and product value
             $this->products = collect();
@@ -118,10 +132,10 @@ class Orders extends Component
 
     public function render()
     {
-        $brands = Brand::all();
+       
         $pending_orders = Order::where('status', 0)->paginate(10);
         $completed_orders = Order::whereIn('status', [1, 2])->latest()->paginate(10);
-        $data = compact('brands', 'pending_orders', 'completed_orders');
+        $data = compact( 'pending_orders', 'completed_orders');
 
 
 

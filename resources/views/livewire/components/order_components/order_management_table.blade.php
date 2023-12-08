@@ -25,8 +25,9 @@
                         
                         <td scope="col" class="text-secondary">Ordered Product</td>
                         <td scope="col" class="text-secondary">Delivery Date</td>
-                        <td scope="col" class="text-secondary">Quantity(bags)</td>
+                        <td scope="col" class="text-secondary">Amount</td>
                         <td scope="col" class="text-secondary">Total Price</td>
+                        <td scope="col" class="text-secondary">Recipient</td>
                         <td scope="col" class="text-secondary">Status</td>
                         <td scope="col" class="text-secondary">Actions</td>
                     </tr>
@@ -38,8 +39,14 @@
                                 
                                 <td>{{$order->product->product_name}}</td>
                                 <td>{{$order->due_date}}</td>
-                                <td>{{$order->order_quantity}}</td>
+                                @if ($order->order_type === 1)
+                                    <td>{{$order->order_kilo}} <i class="bi bi-basket2-fill text-primary"></i></td>
+                                @else
+                                    <td>{{$order->order_quantity}} <i class="bi bi-handbag-fill text-primary"></i></td>
+                                @endif
+                                
                                 <td>₱ {{$order->total_price}}</td>
+                                <td>{{$order->recipient}}</td>
                                 <td><span class="badge text-bg-warning">Pending</span></td>
                                 <td>
                                     <button wire:click.prevent='completeOrder({{$order->order_id}})' class="btn btn-primary btn-sm">Complete order</button>
