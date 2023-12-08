@@ -86,7 +86,7 @@ class addOrderForm extends Form
                     'order_type' => $validated['type_order']
                 ]);
 
-                session()->flash('success', 'You have added a retail order');
+                session()->flash('modal_success', 'You have added a retail order');
                 $this->reset();
             }
         } else {
@@ -103,7 +103,7 @@ class addOrderForm extends Form
                     'order_type' => $validated['type_order']
                 ]);
 
-                session()->flash('success', 'You have added a wholesale order');
+                session()->flash('modal_success', 'You have added a wholesale order');
                 $this->reset();
             }
         }

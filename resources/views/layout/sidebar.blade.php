@@ -4,25 +4,26 @@
     </div>
 
     <div class="d-flex flex-column mb-auto">
-        <a wire:navigate data-navigate-track  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+    
+        <a wire:navigate   class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
             <i class="fas fa-home me-1"></i>
             <span>Dashboard</span>
         </a>
-        <a wire:navigate data-navigate-track class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('products*') ? 'active' : '' }}" href="{{ route('products') }}">
+        <a wire:navigate  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('products*') ? 'active' : '' }}" href="{{ route('products') }}">
             <i class="fas fa-box me-1"></i>
             <span>Products</span>
         </a>
-        <a wire:navigate data-navigate-track class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('orders*') ? 'active' : '' }}" href="{{ route('orders') }}">
+        <a wire:navigate  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('orders*') ? 'active' : '' }}" href="{{ route('orders') }}">
             <i class="fas fa-shopping-bag me-1"></i>
             <span>Orders</span>
         </a>
-        <a wire:navigate data-navigate-track class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('users*') ? 'active' : '' }}" href="{{ route('users') }}">
+        <a wire:navigate  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('users*') ? 'active' : '' }}" href="{{ route('users') }}">
             <i class="fas fa-users me-1"></i>
             <span>Users</span>
         </a>
 
         <!-- demo link to be remove -->
-        <a wire:navigate data-navigate-track class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('profile*') ? 'active' : '' }}" href="{{ route('profile') }}">
+        <a wire:navigate  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('profile*') ? 'active' : '' }}" href="{{ route('profile') }}">
             <i class="fas fa-user me-1"></i>
             <span>Profile</span>
         </a>
