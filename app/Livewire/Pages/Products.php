@@ -40,6 +40,46 @@ class Products extends Component
     public $cardMode = false;
     public $view_batch = false;
 
+    public $kilo_id;
+    public $edit_kilo = false;
+    #[Rule('required|numeric', as: 'Kilo Value')]
+    public $kilo_val;
+
+    public function update_kilo()
+    {
+        $validated = $this->validateOnly('kilo_val');
+
+        $product = Product::findOrFail($this->kilo_id);
+        $update = $product->update([
+            'kilo' => $validated['kilo_val'],
+        ]);
+
+        if($update)
+        {
+
+            session()->flash('success','You have successfully edited the Kilo value of the product');
+            $this->reset('kilo_id', 'kilo_val');
+            $this->edit_kilo = false;
+        }
+        else
+        {
+            session()->flash('error','Something went wrong, try again...');
+        }
+    }
+    public function set_edit_kilo(Product $product)
+    {
+        $this->kilo_id = $product->product_id;
+        $this->kilo_val = $product->kilo;
+        $this->edit_kilo = true;
+
+    }
+
+    public function unset_edit_kilo()
+    {
+ 
+        $this->edit_kilo = false;
+       
+    }
 
 
 
@@ -250,6 +290,7 @@ class Products extends Component
 
     public function render()
     {
+
 
         $results = [];
         $brands = Brand::all();
