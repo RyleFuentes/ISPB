@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-between mb-2 px-5">
-    <button class="btn btn-outline-secondary rounded-3 rounded-3 py-2 px-3 btn-sm" wire:click='table_mode'>
+    <button class="btn btn-outline-dark rounded-4 rounded-3 py-2 px-3 btn-sm" wire:click='table_mode'>
         <i class="fa-sharp fa-solid fa-arrow-left"></i> Go Back
     </button>
-    <button class="btn btn-primary rounded-3 py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#addBrandModal">
+    <button class="btn btn-primary rounded-4 py-2 px-3 btn-sm" data-bs-toggle="modal" data-bs-target="#addBrandModal">
         <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Brand
     </button>
 </div>
 
-<div class="container-fluid mt-2 px-5 py-2">
+<div class="mt-2 px-5 py-2">
     @include('livewire.messages.message')
 
     <div class="mt-2 row grid gap-3">
