@@ -1,29 +1,32 @@
 <div>
-    <div class="p-3 d-flex justify-content-end">
-        <button class="btn btn-primary rounded-pill me-2 btn-sm" wire:click='unview_product_info'>
-            <i class="bi bi-table text-primary"></i>
-            < Go back</button>
+    <div class="px-5 d-flex justify-content-between">
+        <h3 class="fs-5">Batches for {{ $product->product_name }}</h3>
 
+        <button class="btn btn-outline-dark rounded-4 rounded-3 py-2 px-3 btn-sm" wire:click='unview_product_info'>
+            <i class="fa-sharp fa-solid fa-arrow-left"></i> Go Back
+        </button>
 
     </div>
 
+
     <div class="rounded p-3 mt-3 bg-white shadow-sm">
-        <div class="d-flex align-items-center justify-content-between">
-
-
-            <div class="d-flex flex-column mb-5 justify-content-between">
-                <h3 class="fw-50 fs-30 mb-5">{{ $product->product_name }} BATCHES</h3>
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBatch">Add new batch</button>
-            </div>
-
+        <div class="px-4 d-flex align-items-center justify-content-between">
             <div>
-                <form action="" class="form d-flex">
-                    <div class="form-floating">
-                        <input wire:model.live='search' placeholder="..." id="search" type="text"
-                            class="form-control">
-                        <label for="search">Search...</label>
+                <form action="" class="form">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input wire:model.live='search' placeholder="Search" id="search" type="search"
+                            class="form-control border-secondary rounded-3">
+                        <button class="">
+                            <i class="ms-3 fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </div>
                 </form>
+            </div>
+
+            <div class="p-3">
+                <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#addBatch">
+                    <i class="fa-sharp fa-solid fa-circle-plus"></i> Add new batch</button>
             </div>
         </div>
         <table class="table table-striped">
@@ -48,13 +51,13 @@
                             <td>
                                 <input type="number" class="form-control" wire:model='edit_form_batch.quantity'>
                                 @error('edit_form_batch.quantity')
-                                    <span class="text-danger">{{$message}}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </td>
                             <td>
                                 <input type="date" class="form-control" wire:model='edit_form_batch.exp_date'>
                                 @error('edit_form_batch.exp_date')
-                                    <span class="text-danger">{{$message}}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </td>
 

@@ -75,7 +75,7 @@
 
                         <td>
                             <button wire:click='view_product_info({{ $product->product_id }})' class="btn"><i
-                                    class="bi bi-eye-fill text-primary"></i>Product Batches</button>
+                                    class="bi bi-eye-fill text-primary"></i> Product Batches</button>
 
                         </td>
                     </tr>
