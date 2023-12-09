@@ -15,6 +15,8 @@ class EditForm extends Form
     #[Rule('required|min:3|max:20')]
     public $prod_name;
     #[Rule('required|numeric')]
+    public $kilo;
+    #[Rule('required|numeric')]
     public $retail;
     #[Rule('required|numeric')]
     public $wholesale;
@@ -28,6 +30,7 @@ class EditForm extends Form
         $this->prod_name = $product->product_name;
         $this->retail = $product->retail_price;
         $this->wholesale = $product->wholesale_price;
+        $this->kilo = $product->kilo;
     }
 
     public function edit_brand_product_table($prod_id)
@@ -39,6 +42,7 @@ class EditForm extends Form
             'product_name' => $validated['prod_name'],
             'retail_price' => $validated['retail'],
             'wholesale_price' => $validated['wholesale'],
+            'kilo' => $validated['kilo'],
         ]);
 
 

@@ -9,18 +9,21 @@ use Livewire\Form;
 
 class AddProductsForm extends Form
 {
-    #[Rule('required|min:3|max:20|unique:products,product_name')]
+    #[Rule('required|min:3|max:20|unique:products,product_name', as:'Product name')]
     public $prod_name;
-    #[Rule('required')]
+    #[Rule('required', as:'Quantity')]
     public $quantity;
 
+    #[Rule('required|numeric', as:'Kilo')]
+    public $kilo;
 
-    #[Rule('required|numeric')]
+
+    #[Rule('required|numeric', as:'Retail Price')]
     public $retail_price;
-    #[Rule('required|numeric')]
+    #[Rule('required|numeric', as:'Wholesale Price')]
     public $wholesale_price;
 
-    #[Rule('required|date')]
+    #[Rule('required|date', as:'Expiration Date')]
     public $expiration_date;
 
     public function add_form($brand_id)
@@ -30,7 +33,7 @@ class AddProductsForm extends Form
 
         $store = $brand->products()->create([
             'product_name' => $validated['prod_name'],
-            
+            'kilo' => $validated['kilo'],
             'retail_price' => $validated['retail_price'],
             'wholesale_price' => $validated['wholesale_price'],
         ]);
