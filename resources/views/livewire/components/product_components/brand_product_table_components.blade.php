@@ -10,6 +10,7 @@
             <tr>
                 <th>Product</th>
                 <th>Quantity</th>
+                <th>Kilo</th>
                 <th>Retail Price</th>
                 <th>Wholesale Price</th>
                 <th>actions</th>
@@ -29,6 +30,15 @@
                             </td>
 
                             <td>{{ $item->total_quantity }}</td>
+                            <td>
+                                <input type="text" class="form-control" wire:model='editForm.kilo'
+                                    pattern="^\d+(\.\d{1,2})?$"
+                                    title="Please enter a valid number with up to two decimal places.">
+                                @error('editForm.kilo')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </td>
+
                             <td>
                                 <input type="text" class="form-control" wire:model='editForm.retail'
                                     pattern="^\d+(\.\d{1,2})?$"
@@ -60,6 +70,7 @@
                     <tr wire:key='{{ $item->product_id }}'>
                         <td>{{ $item->product_name }}</td>
                         <td>{{ $item->total_quantity }}</td>
+                        <td>{{ $item->kilo }}</td>
                         <td>{{ $item->retail_price }}</td>
                         <td>{{ $item->wholesale_price }}</td>
                         <td>
