@@ -9,7 +9,6 @@
                 </button>
 
                 <div class="d-flex g-2">
-                    @include('livewire.pages.orders.dropdown-filters')
 
                     <form action="" class="form">
                         <div class="d-flex justify-content-center align-items-center">
