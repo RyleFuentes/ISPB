@@ -1,34 +1,30 @@
 <div>
-
-    <div class="p-3 d-flex justify-content-end">
-        <button class="btn btn-primary rounded-pill me-2 btn-sm" wire:click='toggle_card'>
-            <i class="bi bi-table text-primary"></i> Brand view</button>
-
-
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary rounded-3 me-2 rounded-3 py-2 px-3 btn-sm" wire:click='toggle_card'>
+            <i class="bi bi-table text-light"></i> View Brands</button>
     </div>
 
-
-    <div class="rounded p-3 mt-3 bg-white shadow-sm">
-        <div class="mb-3 p-3">
-            <button class="btn btn-primary rounded-pill me-2 btn-sm" data-bs-toggle="modal"
-                data-bs-target="#addProductTable">
-                <i class="bi bi-plus-circle-fill text-light"></i> Add new product</button>
-        </div>
-        <div class="d-flex align-items-center justify-content-between">
-
-            <h3 class="fw-50 fs-30 mb-5">PRODUCTS LIST</h3>
-
-
+    <div class="rounded mt-3 bg-white shadow-sm">
+        <div class="px-4 py-3 d-flex align-items-center justify-content-between">
             <div>
-                <form action="" class="form d-flex">
-                    <div class="form-floating">
-                        <input wire:model.live='search' placeholder="..." id="search" type="search"
-                            class="form-control">
-                        <label for="search">Search...</label>
+                <form action="" class="form">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input wire:model.live='search' placeholder="Search" id="search" type="search"
+                            class="form-control border-secondary rounded-3">
+                        <button class="">
+                            <i class="ms-3 fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </div>
                 </form>
             </div>
+
+            <div class="p-3">
+                <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#addProductTable">
+                    <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Product</button>
+            </div>
         </div>
+
         <table class="table table-striped">
             <thead>
                 <tr>

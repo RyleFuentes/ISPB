@@ -1,89 +1,93 @@
 <!-- Modal -->
 <div wire:ignore.self class="modal fade" id="addProductTable" tabindex="-1" aria-labelledby="addProductTableLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
             @include('livewire.messages.message')
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addProductTableLabel">ADD NEW PRODUCT</h1>
+                <h5 class="modal-title" id="addProductTableLabel">Add Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body px-5">
                 <form wire:submit.prevent='add_table_product'>
                     <div class="form-group mt-2">
-                        <select class="form-select" aria-label="Default select example"
-                            wire:model="table_product_form.brand">
-                            <option selected class="form-control">===Choose from existing brands====</option>
+                        <label for="brand" class="modal-input-label">
+                            Choose Brand: </label>
+                        <select class="modal-input-field form-select" wire:model="table_product_form.brand">
+                            <option selected class="form-control" style="font-size: 12px">Select from Existing Brands
+                            </option>
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->brand_id }}">{{ $brand->brand_name }}</option>
                             @endforeach
                         </select>
-                        <label for="brand">Brand</label>
                     </div>
                     @error('table_product_form.brand')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="prod_name"
-                            wire:model='table_product_form.prod_name'>
-                        <label for="prod_name">Product Name</label>
+                    <div class="mt-2">
+                        <label for="prod_name" class="modal-input-label">Product Name</label>
+                        <input type="text" class="modal-input-field form-control" placeholder="Enter Product Name"
+                            id="prod_name" wire:model='table_product_form.prod_name'>
                     </div>
                     @error('table_product_form.prod_name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="number" class="form-control" placeholder="..." id="quantity"
-                            wire:model='table_product_form.quantity'>
-                        <label for="quantity">Quantity</label>
+                    <div class=" mt-2">
+                        <label for="quantity" class="modal-input-label">Quantity</label>
+
+                        <input type="number" class="modal-input-field form-control" placeholder="Enter Quantity"
+                            id="quantity" wire:model='table_product_form.quantity'>
                     </div>
                     @error('table_product_form.quantity')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="kilo"
-                            wire:model='table_product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places." >
-                        <label for="kilo">Kilo</label>
+                    <div class=" mt-2">
+                        <label for="kilo" class="modal-input-label">Kilo</label>
+                        <input type="text" class="modal-input-field form-control" placeholder="Enter Kilo"
+                            id="kilo" wire:model='table_product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places.">
                     </div>
                     @error('table_product_form.kilo')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="retail"
-                            wire:model='table_product_form.retail' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places." >
-                        <label for="retail">Retail Price</label>
+                    <div class="mt-2">
+                        <label for="retail" class="modal-input-label">Retail Price</label>
+                        <input type="text" class="modal-input-field form-control" placeholder="Enter Retail Price"
+                            id="retail" wire:model='table_product_form.retail' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places.">
                     </div>
                     @error('table_product_form.retail')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="wholesale"
-                            wire:model='table_product_form.wholesale' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places." > 
-                            <label for="wholesale">Wholesale price</label>
+                    <div class=" mt-2">
+                        <label for="wholesale" class="modal-input-label">Wholesale price</label>
+                        <input type="text" class="modal-input-field form-control" placeholder="Enter Wholesale Price"
+                            id="wholesale" wire:model='table_product_form.wholesale' pattern="^\d+(\.\d{1,2})?$"
+                            title="Please enter a valid number with up to two decimal places.">
+
                     </div>
                     @error('table_product_form.wholesale')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
-                        <input type="date" class="form-control" placeholder="..." id="exp_date"
-                            wire:model='table_product_form.expiration_date'  >
-                            <label for="exp_date">Expiration Date</label>
+                    <div class="mt-2">
+                        <label for="exp_date" class="modal-input-label">Expiration Date</label>
+                        <input type="date" class="modal-input-field form-control" placeholder="Enter Expiration Date"
+                            id="exp_date" wire:model='table_product_form.expiration_date'>
                     </div>
                     @error('table_product_form.expiration_date')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-primary">Add product</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="form-group mt-4 text-center">
+                        <button type="submit" class="btn btn-primary px-5" style="font-size: 12px">
+                            <i class="fa-sharp fa-solid fa-plus"></i> Add Product</button></button>
+                        <button type="button" class="btn btn-outline-secondary px-5" data-bs-dismiss="modal"
+                            style="font-size: 12px">Close</button>
                     </div>
                 </form>
 
