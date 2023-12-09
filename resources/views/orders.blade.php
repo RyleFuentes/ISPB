@@ -4,30 +4,25 @@
             {{ __('Orders') }}
         </h2>
     </x-slot>
+    <div class="max-w-7xl mx-auto lg:px-2">
+        <div class="overflow-hidden sm:rounded-lg">
+            @if ($change_page == 1)
+                <div class="p-3 d-flex justify-content-end">
+                    <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='toggle_on'>
+                        Orders History
+                    </button>
+                </div>
+                @include('livewire.pages.orders.order_management_table')
+            @else
+                <div class="p-3 d-flex justify-content-end">
 
-    <div class="py-3">
-        <div class="max-w-7xl mx-auto lg:px-2">
-            <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                @if ($change_page == 1)
-                    <div class="p-3 d-flex justify-content-end">
+                    <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='toggle_off'>
+                        Orders Page
+                    </button>
+                </div>
 
-                        <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='toggle_on'>
-                            Orders History
-                        </button>
-                    </div>
-                    @include('livewire.pages.orders.order_management_table')
-                @else
-                    <div class="p-3 d-flex justify-content-end">
-
-                        <button class="btn btn-light btn-sm rounded-pill me-2" wire:click='toggle_off'>
-                            Orders Page
-                        </button>
-                    </div>
-
-                    @include('livewire.pages.orders.order_history_table')
-                @endif
-            </div>
+                @include('livewire.pages.orders.order_history_table')
+            @endif
         </div>
     </div>
-</div>
 </div>

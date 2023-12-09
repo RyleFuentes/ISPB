@@ -1,6 +1,6 @@
 <div>
     <div class="p-3 d-flex justify-content-end">
-        <button class="btn btn-light rounded-pill me-2 btn-sm" wire:click='unview_product_info'>
+        <button class="btn btn-primary rounded-pill me-2 btn-sm" wire:click='unview_product_info'>
             <i class="bi bi-table text-primary"></i>
             < Go back</button>
 

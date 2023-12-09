@@ -25,7 +25,6 @@
                 <tbody class="text-center">
                     @foreach ($pending_users as $item)
                         <tr wire:key='{{ $item->id }}'>
-                            <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>

@@ -1,7 +1,7 @@
 <div>
 
     <div class="p-3 d-flex justify-content-end">
-        <button class="btn btn-light rounded-pill me-2 btn-sm" wire:click='toggle_card'>
+        <button class="btn btn-primary rounded-pill me-2 btn-sm" wire:click='toggle_card'>
             <i class="bi bi-table text-primary"></i> Brand view</button>
 
 

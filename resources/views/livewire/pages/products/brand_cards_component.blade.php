@@ -1,4 +1,4 @@
-<button class="btn btn-light" wire:click='table_mode'>back</button>
+<button class="btn btn-primary" wire:click='table_mode'>back</button>
 
 <div class="mt-3 p-5 bg-white shadow-sm rounded fs-40 fw-40">
     @include('livewire.messages.message')

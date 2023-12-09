@@ -1,4 +1,4 @@
-<button class="btn btn-light" wire:click='table_mode'>back</button>
+<button class="btn btn-primary" wire:click='table_mode'>back</button>
 <div class="mt-3 rounded bg-white p-3 shadow-sm">
     @include('livewire.modals.add_product_modal')
     <div class="d-flex mb-5 justify-content-between">
