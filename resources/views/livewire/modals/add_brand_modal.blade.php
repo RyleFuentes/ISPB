@@ -11,10 +11,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-
                 <div>
-
                     <form wire:submit='add_brand'>
                         <div class="form-floating mt-3">
                             <input type="text" id='brand_name' class="form-control" placeholder="..."
@@ -39,10 +36,7 @@
                             <button type="submit" class="btn btn-primary">Add Brand</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
-        
                         </form>
-
-
                 </div>
 
                 <div class="col mt-3 col-sm col-md">
@@ -59,10 +53,7 @@
                         </div>
                     @endif
                 </div>
-                
             </div>
-
-
         </div>
 
     </div>

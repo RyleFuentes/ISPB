@@ -19,7 +19,7 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 
-#[Layout('index')]
+#[Layout('layouts.app')]
 #[Title('Products')]
 class Products extends Component
 {
@@ -306,6 +306,6 @@ class Products extends Component
             $data['products'] = $products;
         }
 
-        return view('livewire.pages.products', $data);
+        return view('products', $data);
     }
 }

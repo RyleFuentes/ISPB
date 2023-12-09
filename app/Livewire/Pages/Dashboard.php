@@ -10,7 +10,7 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Livewire\Component;
 
 
-#[Layout('index')]
+#[Layout('layouts.app')]
 #[Title('Dashboard')]
 class Dashboard extends Component
 {
@@ -30,7 +30,7 @@ class Dashboard extends Component
 
       
 
-        return view('livewire.pages.dashboard')->with([
+        return view('dashboard')->with([
             'columnChartModel' => $columnChartModel,
            
         

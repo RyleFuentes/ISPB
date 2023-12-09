@@ -10,7 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
 
-#[Layout('index')]
+#[Layout('layouts.app')]
 #[Title('Users')]
 class Users extends Component
 {
@@ -176,6 +176,6 @@ class Users extends Component
     {
         $users = User::where('role', '!=', 2)->paginate(10);
         $pending_users = User::where('role', 2)->get();
-        return view('livewire.pages.users', compact('users', 'pending_users'));
+        return view('users', compact('users', 'pending_users'));
     }
 }

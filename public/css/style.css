@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+button:focus{
+    outline: none;
+    border: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c3ca4;
+    border-radius: 20px;
+
+}
+
+
+.search::placeholder{
+    color: white;
+}
+
+.error {
+    font-size: 12px;
+}
+
+/* sidebar */
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 16.25rem;
+    overflow: hidden;
+    transition: width 0.25s ease-out;
+    font-size: 14px !important;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 5rem;
+}
+
+#menu-toggle {
+    cursor: pointer;
+}
+
+.item {
+    border: none;
+    padding: 15px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.item.active {
+    background: #6c3ca4;
+    color: white !important;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.hide-text {
+    display: none;
+}
+
+#wrapper.toggled .item .text {
+    display: none;
+}
+/* end of sidebar */
+
+.card {
+    border-radius: 20px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+#dashboard {
+    background: linear-gradient(to bottom, #6c3ca4 30%, transparent 30%);
+    width: 100%;
+    height: 100vh;
+}
+
+.table {
+    width: 100%;
+    margin: 0;
+}
+
+
+.table td, .table th {
+    text-align: left;
+}
+
+.table td{
+    padding: 15px;
+
+}
+
+.prof{
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.prof:hover .bi-camera-fill {
+    display: block;
+}
+
+.bi-camera-fill {
+    display: none;
+}
+
+.btn-outline-dark:hover{
+    background-color: white !important;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        width: 0rem;
+    }
+    .item {
+        justify-content: center;
+        text-align: center !important;
+    }
+    .item.active {
+        padding-left: 5%;
+    }
+    .hide-text {
+        display: none;
+    }
+}
+@media (max-width: 576px) {
+    .prof{
+        width: 30vw;
+        height: 30vw;
+        object-fit: cover;
+    }
+}

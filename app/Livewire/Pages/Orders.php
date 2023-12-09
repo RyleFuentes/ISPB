@@ -11,7 +11,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
-#[Layout('index')]
+#[Layout('layouts.app')]
 #[Title('Orders')]
 class Orders extends Component
 {
@@ -139,6 +139,6 @@ class Orders extends Component
 
 
 
-        return view('livewire.pages.orders', $data);
+        return view('orders', $data);
     }
 }

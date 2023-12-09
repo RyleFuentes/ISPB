@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('orders', 'orders')
+    ->middleware(['auth', 'verified'])
+    ->name('orders');
+
+Route::view('products', 'products')
+    ->middleware(['auth', 'verified'])
+    ->name('products');
+
+Route::view('users', 'users')
+    ->middleware(['auth', 'verified'])
+    ->name('users');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+
+Route::middleware(['auth', 'can:access' ])->group(function() {
+    Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('admin');
+    Route::get('/products', Products::class)->name('products');
+    Route::get('/orders', Orders::class)->name('orders');
+    Route::get('/profile', Profile::class)->name('profile');
+    
+    Route::get('/users', Users::class)->name('users')->middleware('admin');
+});
+require __DIR__.'/auth.php';
