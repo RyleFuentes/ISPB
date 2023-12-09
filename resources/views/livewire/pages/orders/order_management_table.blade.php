@@ -8,6 +8,7 @@
                     <i class="fa fa-plus me-2 text-light"></i>Add Order
                 </button>
 
+
                 @if ($pending_orders->count() >= 1)
                     <form class="d-flex mt-2">
                         <input wire:model.live='search' class="form-control me-2" type="search" placeholder="Search"
