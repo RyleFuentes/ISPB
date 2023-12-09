@@ -1,12 +1,27 @@
 <div>
     @include('livewire.messages.message')
-    <div class="card d-flex justify-content-center align-items-center table-responsive">
+    <div class="card d-flex justify-content-center align-items-center table-responsive" style="z-index: 0;">
         <div class="mb-4 px-4 mt-3 w-100">
             <div class="d-flex justify-content-between align-items-center">
                 <button class="btn btn-primary btn-sm rounded-pill me-2" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     <i class="fa fa-plus me-2 text-light"></i>Add Order
                 </button>
+
+                <div class="d-flex g-2">
+                    @include('livewire.pages.orders.dropdown-filters')
+
+                    <form action="" class="form">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input wire:model.live='search' placeholder="Search" id="search" type="search"
+                                class="form-control border-secondary rounded-3">
+                            <button class="">
+                                <i class="ms-3 fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
 
 
                 @if ($pending_orders->count() >= 1)

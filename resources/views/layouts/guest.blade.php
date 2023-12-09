@@ -8,11 +8,17 @@
 
     <title>{{ config('app.name', 'ISPB') }}</title>
 
-    <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('/bootstrap-5.3.2-dist/css/bootstrap.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css') }}"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Scripts -->
 </head>
 
 <body class="font-sans antialiased">
@@ -27,11 +33,14 @@
 
 
 
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="/bootstrap-5.3.2-dist/js/popper.js"></script>
+    <script src="/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <x-livewire-alert::scripts />
 
