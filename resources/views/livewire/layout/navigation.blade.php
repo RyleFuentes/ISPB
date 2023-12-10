@@ -30,7 +30,7 @@ new class extends Component {
             <div class="hidden sm:flex sm:items-center sm:ms-6 fw-medium">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        @if (auth()->user()->profile->profile_image != null)
+                        @if (auth()->user()?->profile?->profile_image !== null)
                             <div >
                                 <img style="border-radius: 100%" src="{{ Storage::url(auth()->user()->profile->profile_image) }}"
                                     class="image" alt="preview" width="100" height="100">

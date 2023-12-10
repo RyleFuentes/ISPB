@@ -52,9 +52,8 @@ new class extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            return back()->with('success', 'you have successfully updated your email');
-
-            return;
+            $this->redirect('profile', navigate:true);
+            session()->flash('success', 'you have successfully updated your email');
         }
 
         $user->sendEmailVerificationNotification();

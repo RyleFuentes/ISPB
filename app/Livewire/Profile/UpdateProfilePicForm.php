@@ -19,10 +19,12 @@ class UpdateProfilePicForm extends Component
     {
         $user = Auth::user();
 
-        $user->profile()->firstOrCreate([
-            'user_id' => $user->id,
-            'profile_image' => null,
-        ]);
+        if(!$user->profile)
+        {
+            $user->profile()->create([
+                'profile_image' => null,
+            ]);
+        }
 
     }
     
@@ -38,6 +40,7 @@ class UpdateProfilePicForm extends Component
         Auth::user()->profile()->update([
             'profile_image' => $validated['profilePic'],
         ]);
+        $this->redirect('profile', navigate:true);
         session()->flash('success', 'You have updated your profile photo');
         $this->reset();
 
