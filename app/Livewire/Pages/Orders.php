@@ -10,6 +10,8 @@ use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Livewire\Attributes\Computed;
 
 #[Layout('layouts.app')]
 #[Title('Orders')]
@@ -131,12 +133,23 @@ class Orders extends Component
         }
     }
 
+    public function pdf()
+    {
+        $pdf = Pdf::loadView('test_pdf');
+        return $pdf->download('invoice.pdf');
+    }
+
+    #[Computed()]
+    public function completedOrders()
+    {
+        return Order::whereIn('status', [1, 2])->latest()->paginate(10);
+    }
+
     public function render()
     {
        
         $pending_orders = Order::where('status', 0)->paginate(10);
-        $completed_orders = Order::whereIn('status', [1, 2])->latest()->paginate(10);
-        $data = compact( 'pending_orders', 'completed_orders');
+        $data = compact( 'pending_orders');
 
 
 

@@ -1,0 +1,1 @@
+<h1>Good day {{$supplier->supplier_name}} this email is to inform you that a new set of orders will be sent to you for the next following days.</h1>

@@ -2,6 +2,8 @@
     @include('livewire.messages.message')
     <h3>Order history</h3>
 
+    <button class="btn btn-sm btn-primary" wire:click='pdf'><i class="bi bi-filetype-pdf"></i></button>
+
     <table class="table table-striped table-hover">
         <thead>
             <tr class="fw-semibold">
@@ -16,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($completed_orders as $order)
+            @foreach ($this->completedOrders() as $order)
                 @if ($order->status === 1 || $order->status === 2)
                     <tr wire:key='{{$order->order_id}}'>
 
@@ -54,6 +56,6 @@
     </div>
 
     <div class="mt-3 p-3">
-        {{ $completed_orders->links() }}
+        {{ $this->completedOrders()->links() }}
     </div>
 </div>
