@@ -44,7 +44,28 @@ new class extends Component {
                         </button>
                     </x-slot>
 
-                    <x-slot name="content">
+                    <x-slot name="content" class="w-100">
+                        <div
+                            class="mb-4 border-bottom d-flex justify-content-center flex-column align-items-center w-100">
+                            <p class="mt-2 text-center text-uppercase fw-semibold">
+                                {{ auth()->user()->name }}
+                            </p>
+                            @if (auth()->user()?->profile?->profile_image !== null)
+                                <div class="profile-dropdown border border-dark mb-2">
+                                    <img src="{{ Storage::url(auth()->user()->profile->profile_image) }}"
+                                        class="img-fluid rounded-circle" alt="preview" width="100" height="100">
+                                </div>
+                            @else
+                                <div
+                                    class="profile-dropdown border border-dark mb-2 d-flex justify-content-center align-items-center">
+                                    <i class="fa-solid fa-user rounded-circle"></i>
+                                </div>
+                            @endif
+                            <p class="text-center text-secondary text-lowercase fw-medium" style="font-size: 12px">
+                                {{ auth()->user()->email }}
+                            </p>
+                        </div>
+
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             <i class="fas fa-user me-3"></i>
                             {{ __('PROFILE') }}

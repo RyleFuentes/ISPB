@@ -65,6 +65,10 @@ button:focus {
     transition: background-color 0.3s;
 }
 
+.item:hover {
+    color: #6c3ca4 !important;
+}
+
 .item.active {
     background: #6c3ca4;
     color: white !important;
@@ -247,11 +251,29 @@ td .btn {
     background: rgba(217, 217, 217, 0.5);
     border-radius: 40px;
     cursor: pointer;
-    transition: filter 0.2s ease; 
+    transition: filter 0.2s ease;
 }
 
+.profile-dropdown {
+    width: 80px;
+    height: 80px;
+    background: rgba(217, 217, 217, 0.5);
+    border-radius: 40px;
+}
 .profile-icon:hover {
-    filter: brightness(0.8); 
+    filter: brightness(0.8);
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown-content {
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 @media (max-width: 768px) {
     #sidebar-wrapper {
