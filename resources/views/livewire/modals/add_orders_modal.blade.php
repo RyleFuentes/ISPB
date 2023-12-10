@@ -2,23 +2,23 @@
   <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
 
-      <div class="modal-dialog">
-          <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4">
 
               @include('livewire.messages.modal_message')
               <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Add Order</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body px-4">
 
                   <form wire:submit='submit_order'>
 
-                      <div class="form-group mt-2">
+                      <div class="form-group">
                           <label for="brand" class="modal-input-label">Brand</label>
                           <select id='brand' wire:model.live='add_order.brandID'
-                              class="modal-input-field form-select mt-2">
-                              <option selected>--- select brand ---</option>
+                              class="modal-input-field form-select">
+                              <option selected>Choose a Brand</option>
                               @foreach ($add_order->brands() as $brand)
                                   <option value="{{ $brand->brand_id }}">{{ $brand->brand_name }}</option>
                               @endforeach
@@ -31,9 +31,8 @@
 
                       <div class="mt-2">
                           <label for="product" class="modal-input-label">Product</label>
-                          <select wire:model="add_order.product" id="product"
-                              class="modal-input-field form-select mt-2">
-                              <option value="">Select a product</option>
+                          <select wire:model="add_order.product" id="product" class="modal-input-field form-select">
+                              <option value="">Choose a product</option>
                               @foreach ($add_order->products() as $product)
                                   <option value="{{ $product->product_id }}">{{ $product->product_name }}</option>
                               @endforeach
@@ -44,26 +43,21 @@
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
 
+                      <div class=" mt-3 d-flex gap-3 text-center">
+                          <label for="retail" class="modal-input-label">Order Type: </label>
+                          <div class="d-flex flex-column">
+                              <label for="retail" class="modal-input-label">
+                                  <input id="retail" type="radio" wire:model.live='add_order.type_order'
+                                      class='form-radio' value='1' />
+                                  Retail <span class="text-secondary"> (per kilograms)</span>
+                              </label>
 
-
-
-
-
-                      <div class=" mt-2 d-flex gap-3">
-
-
-                          <label for="retail" class="modal-input-label">
-                              <input id="retail" type="radio" wire:model.live='add_order.type_order'
-                                  class='form-radio' value='1' />
-                              retail
-                          </label>
-
-                          <label for="wholesale" class="modal-input-label">
-                              <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
-                                  class='form-radio' value='2' />
-                              wholesale
-                          </label>
-
+                              <label for="wholesale" class="modal-input-label">
+                                  <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
+                                      class='form-radio' value='2' />
+                                  Wholesale <span class="text-secondary"> (per bags)</span>
+                              </label>
+                          </div>
                       </div>
 
                       @error('add_order.type_order')
@@ -71,9 +65,8 @@
                       @enderror
 
 
-                      <div class="form-floating mt-2">
+                      <div class="mt-2">
                           <label for="due_date" class="modal-input-label">Due Date</label>
-
                           <input wire:model='add_order.deliver_date' type="date"
                               class="modal-input-field form-control" placeholder="..." id="due_date">
                       </div>
@@ -85,8 +78,9 @@
                           @if ($toggle_input == 1)
                               <div class="mt-2">
                                   <label for="Kilo" class="modal-input-label">Kilo</label>
-                                  <input type="text" class="modal-input-field form-control " placeholder="..."
-                                      id="Kilo" wire:model='add_order.order_amount' pattern="^\d+(\.\d{1,2})?$"
+                                  <input type="text" class="modal-input-field form-control "
+                                      placeholder="Enter order per Kilograms" id="Kilo"
+                                      wire:model='add_order.order_amount' pattern="^\d+(\.\d{1,2})?$"
                                       title="Please enter a valid number with up to two decimal places.">
                               </div>
                               @error('add_order.order_amount')
@@ -96,7 +90,8 @@
                               <div class="mt-2">
                                   <label for="qty" class="modal-input-label">Quantity</label>
                                   <input wire:model='add_order.order_amount' type="number"
-                                      class="modal-input-field form-control" placeholder="..." id="qty">
+                                      class="modal-input-field form-control" placeholder="Enter Quantity"
+                                      id="qty">
                               </div>
                               @error('add_order.order_amount')
                                   <span class="text-danger">{{ $message }}</span>
@@ -107,20 +102,20 @@
 
 
                       <div class="mt-2">
+                          <label for="recipient" class="modal-input-label">For</label>
                           <input wire:model='add_order.recipient' type="text" class="modal-input-field form-control"
-                              placeholder="..." id="recipient">
-                          <label for="recipient">For</label>
+                              placeholder="Enter recipient" id="recipient">
                       </div>
                       @error('add_order.recipient')
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
 
-
-
-                      <div class="form-group mt-2">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" type="button" class="btn btn-primary">Proceed Order</button>
-
+                      <div class="form-group mt-4 text-center">
+                          <button type="submit" class="btn btn-primary py-3 px-5" style="font-size: 12px">
+                              <i class="fa-sharp fa-solid fa-plus"></i> Proceed Order</button></button>
+                          </button>
+                          <button type="button" class="btn text-decoration-underline px-5" data-bs-dismiss="modal"
+                              style="font-size: 12px">Cancel</button>
                       </div>
 
 

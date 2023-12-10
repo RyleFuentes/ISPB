@@ -196,6 +196,10 @@ input[type="file"] {
     display: none;
 }
 
+.btn{
+    padding: 8px 18px !important;
+}
+
 .custom-file-input {
     display: inline-block;
     padding: 10px 15px;
