@@ -241,6 +241,18 @@ td .btn {
     cursor: pointer;
 }
 
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(217, 217, 217, 0.5);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: filter 0.2s ease; 
+}
+
+.profile-icon:hover {
+    filter: brightness(0.8); 
+}
 @media (max-width: 768px) {
     #sidebar-wrapper {
         width: 0rem;

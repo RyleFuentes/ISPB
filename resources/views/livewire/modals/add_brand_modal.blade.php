@@ -29,6 +29,11 @@
                                         class="col rounded d-flex flex-column justify-content-center align-items-center mt-3 mt-sm-0">
                                         <img src="{{ $add_brands_form->brand_image->temporaryUrl() }}"
                                             class="image-fluid rounded sm" alt="preview" width="250" height="250">
+
+                                        <label for="brand_image" class="custom-file-input bg-primary">Change Uploaded Photo</label>
+                                        <input type="file" accept="image/png, image/jpeg" id='brand_image'
+                                            class="form-control" placeholder="..."
+                                            wire:model='add_brands_form.brand_image'>
                                     </div>
                                 @else
                                     <div
