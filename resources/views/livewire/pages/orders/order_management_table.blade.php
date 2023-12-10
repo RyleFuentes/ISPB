@@ -8,8 +8,7 @@
                     <i class="fa fa-plus me-2 text-light"></i>Add Order
                 </button>
 
-                <div class="d-flex g-2">
-
+                @if ($pending_orders->count() >= 1)
                     <form action="" class="form">
                         <div class="d-flex justify-content-center align-items-center">
                             <input wire:model.live='search' placeholder="Search" id="search" type="search"
@@ -18,18 +17,6 @@
                                 <i class="ms-3 fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
-                    </form>
-
-                </div>
-
-
-                @if ($pending_orders->count() >= 1)
-                    <form class="d-flex mt-2">
-                        <input wire:model.live='search' class="form-control me-2" type="search" placeholder="Search"
-                            aria-label="Search" style="border-bottom-color: #6c3ca4;">
-                        <button class="btn btn-primary me-3" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
                     </form>
                 @endif
             </div>
