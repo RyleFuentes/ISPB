@@ -48,12 +48,32 @@
                                 <td>{{ $supplier->supplier_email }}</td>
                                 <td>
 
+                                    <div wire:loading class="d-flex">
+                                        <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                          </div>
 
-                                    <button wire:loading.attr='disabled'wire:click='sendOrderEmail({{ $supplier->id }})'
-                                        class="btn btn-sm btn-primary">send order email <i
-                                            class="bi bi-send-plus"></i></button>
-                                    <button wire:loading.attr='disabled' wire:click='editSupplier({{ $supplier->id }})'class="btn btn-sm btn-warning">edit</button>
-                                    <button wire:loading.attr='disabled' wire:click='deleteConfirm({{ $supplier->id }})'class="btn btn-sm btn-danger">delete</button>
+                                          <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                          </div>
+
+                                          <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                          </div>
+                                    </div>
+                                    <div wire:loading.remove>
+
+                                        <button id="sendOrderEmailButton" wire:loading.attr="disabled" wire:target="sendOrderEmail" wire:click="sendOrderEmail({{ $supplier->id }})" class="btn btn-sm btn-primary">send order email <i class="bi bi-send-plus"></i></button>
+                                        <button  class="btn btn-warning" wire:click='editSupplier({{ $supplier->id }})' wire:loading.attr='disabled'>edit</button>
+                                        <button  class="btn btn-danger" wire:click='deleteConfirm({{ $supplier->id }})' wire:loading.attr='disabled'> update</button>
+                                    </div>
+
+                                    
+
+                                    {{-- <button id="editSupplierButton" wire:loading.attr="disabled" wire:target="editSupplier" wire:click="editSupplier({{ $supplier->id }})"
+                                        class="btn btn-sm btn-warning">edit</button>
+                                    <button id="deleteConfirmButton" wire:loading.attr="disabled" wire:target="deleteConfirm" wire:click="deleteConfirm({{ $supplier->id }})"
+                                        class="btn btn-sm btn-danger">delete</button> --}}
                                 </td>
                             @endif
                         </tr>
