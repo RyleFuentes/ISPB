@@ -9,7 +9,7 @@
         <div>
             <div class=" row g-3">
 
-                <div class="col col-md-4 col-xl-3">
+                <div class="col col-md-4">
                     <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">SALES</div>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="col col-md-4 col-xl-3">
+                <div class="col col-md-4">
                     <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">PRODUCTS</div>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="col col-md-4 col-xl-3">
+                <div class="col col-md-4">
                     <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">ORDERS</div>
@@ -41,18 +41,6 @@
                                 <i class="fa fa-shopping-bag me-2"></i><span>486</span>
                             </h2>
                             <p class="m-b-0 fw-bold">Total Orders: 351</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col col-md-4 col-xl-3">
-                    <div class="card bg-c-green order-card shadow">
-                        <div class="card-block">
-                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
-                            <h2 class="text-right">
-                                <i class="fa fa-tag me-2"></i><span>486</span>
-                            </h2>
-                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
                         </div>
                     </div>
                 </div>
