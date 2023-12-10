@@ -27,4 +27,5 @@ class Order extends Model
         return $this->belongsTo(Product::class, 'productID', 'product_id');
     }
 
+    
 }

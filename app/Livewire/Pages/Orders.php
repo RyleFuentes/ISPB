@@ -11,6 +11,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\App;
 use Dompdf\Options;
 use Auth;
@@ -28,6 +29,7 @@ class Orders extends Component
     public $product_quantity;
     public $change_page = 1;
     public $toggle_input;
+    public $paginate_number = 10;
 
     //! lifecycle hook for when add_order->brandID is updated/changed
     public function updatedAddOrderBrandID()
@@ -134,12 +136,23 @@ class Orders extends Component
         }
     }
 
+    public function pdf()
+    {
+        $pdf = Pdf::loadView('test_pdf');
+        return $pdf->download('invoice.pdf');
+    }
+
+    #[Computed()]
+    public function completedOrders()
+    {
+        return Order::whereIn('status', [1, 2])->latest()->paginate(10);
+    }
+
     public function render()
     {
        
         $pending_orders = Order::where('status', 0)->paginate(10);
-        $completed_orders = Order::whereIn('status', [1, 2])->latest()->paginate(10);
-        $data = compact( 'pending_orders', 'completed_orders');
+        $data = compact( 'pending_orders');
 
 
 
