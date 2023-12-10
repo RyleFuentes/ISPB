@@ -1,9 +1,6 @@
 <div class="bg-white rounded shadow-sm container p-3">
     @include('livewire.messages.message')
     <h3>Order history</h3>
-
-    <button class="btn btn-sm btn-primary" wire:click='pdf'><i class="bi bi-filetype-pdf"></i></button>
-
     <table class="table table-striped table-hover">
         <thead>
             <tr class="fw-semibold">

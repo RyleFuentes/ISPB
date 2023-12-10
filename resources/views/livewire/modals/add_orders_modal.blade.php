@@ -5,7 +5,9 @@
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content rounded-4">
 
-              @include('livewire.messages.modal_message')
+              <div class="my-3 p-3">
+                @include('livewire.messages.modal_message')
+              </div>
               <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Add Order</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

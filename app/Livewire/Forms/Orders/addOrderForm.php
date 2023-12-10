@@ -72,9 +72,9 @@ class addOrderForm extends Form
         if ($validated['type_order'] === '1') {
 
             if ($product->kilo < $product->pendingOrderKilo + $validated['order_amount']) {
-                session()->flash('error', 'You have exceeded the amount of kilo to order');
+                session()->flash('modal_error', 'You have exceeded the amount of kilo to order');
             } elseif ($product->kilo < $validated['order_amount']) {
-                session()->flash('error', "Can't exceed current order amount for this product");
+                session()->flash('modal_error', "Can't exceed current order amount for this product");
             } else {
 
 
@@ -91,9 +91,9 @@ class addOrderForm extends Form
             }
         } else {
             if ($product->total_quantity < $product->pendingOrderQuantity + $validated['order_amount']) {
-                session()->flash('error_modal', 'The quantity requested exceeds the existing records');
+                session()->flash('modal_error', 'The quantity requested exceeds the existing records');
             } elseif ($product->total_quantity < $validated['order_amount']) {
-                session()->flash('error_modal', 'Cannot exceed current order quantity for this product');
+                session()->flash('modal_error', 'Cannot exceed current order quantity for this product');
             } else {
                 $product->orders()->create([
                     'order_quantity' => $validated['order_amount'],

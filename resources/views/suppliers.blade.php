@@ -28,20 +28,20 @@
                                 <td>
                                     <input wire:model='name' type="text" class="form-control">
                                     @error('name')
-                                        <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </td>
                                 <td>
                                     <input wire:model='email' type="email" class="form-control">
                                     @error('email')
-                                        <span class="text-danger">{{$message}}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </td>
                                 <td>
 
 
-                                   <button class="btn btn-warning" wire:click='updateSupplier'>update</button>
-                                   <button class="btn btn-primary" wire:click='cancel_edit'>cancel</button>
+                                    <button class="btn btn-warning" wire:click='updateSupplier'>update</button>
+                                    <button class="btn btn-primary" wire:click='cancel_edit'>cancel</button>
                                 </td>
                             @else
                                 <td>{{ $supplier->supplier_name }}</td>
@@ -49,13 +49,11 @@
                                 <td>
 
 
-                                    <button wire:loading.attr='disabled'
-                                        wire:click='sendOrderEmail({{ $supplier->id }})'
+                                    <button wire:loading.attr='disabled'wire:click='sendOrderEmail({{ $supplier->id }})'
                                         class="btn btn-sm btn-primary">send order email <i
                                             class="bi bi-send-plus"></i></button>
-                                    <button wire:loading.attr='disabled' wire:click='editSupplier({{ $supplier->id }})'
-                                        class="btn btn-sm btn-warning">edit</button>
-                                    <button wire:loading.attr='disabled' wire:click='deleteConfirm({{$supplier->id}})' class="btn btn-sm btn-danger">delete</button>
+                                    <button wire:loading.attr='disabled' wire:click='editSupplier({{ $supplier->id }})'class="btn btn-sm btn-warning">edit</button>
+                                    <button wire:loading.attr='disabled' wire:click='deleteConfirm({{ $supplier->id }})'class="btn btn-sm btn-danger">delete</button>
                                 </td>
                             @endif
                         </tr>
@@ -66,7 +64,7 @@
 
 
             <div class="mt-3 p-3">
-                {{$this->suppliers()->links()}}
+                {{ $this->suppliers()->links() }}
             </div>
 
         @endif
