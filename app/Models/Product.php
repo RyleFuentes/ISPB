@@ -23,6 +23,11 @@ class Product extends Model
         return $this->batch->sum('quantity');
     }
 
+    public static function TotalProducts()
+    {
+        return self::count();
+    }
+
     public function getPendingOrderQuantityAttribute()
     {
         // Sum the order quantities for pending orders of the specific product

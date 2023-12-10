@@ -14,9 +14,9 @@
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">SALES</div>
                             <h2 class="text-right">
-                                <i class="fa fa-tag me-2"></i><span>486</span>
+                                <i class="fa fa-tag me-2"></i><span>{{$completed_orders}}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Total Sales: 351</p>
+                            <p class="m-b-0 fw-bold">Total Sales:  <span class="text-success"> ₱ {{$total_sales}}</span></p>
                         </div>
                     </div>
                 </div>
@@ -26,9 +26,9 @@
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">PRODUCTS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-box me-2"></i><span>486</span>
+                                <i class="fa fa-box me-2"></i><span>{{$total_products}}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Products Left: 351</p>
+                            <p class="m-b-0 fw-bold">Products with batches: {{$products_with_batches}}</p>
                         </div>
                     </div>
                 </div>
@@ -36,11 +36,11 @@
                 <div class="col col-md-4">
                     <div class="card bg-c-green order-card shadow">
                         <div class="card-block">
-                            <div class="m-b-20 fw-bold text-primary">ORDERS</div>
+                            <div class="m-b-20 fw-bold text-primary">BRANDS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-shopping-bag me-2"></i><span>486</span>
+                                <i class="fa fa-shopping-bag me-2"></i><span>{{$total_brands}}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Total Orders: 351</p>
+                            <p class="m-b-0 fw-bold">Brands with products: {{$brands_with_products}}</p>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,12 @@ class Order extends Model
     ];
     protected $primaryKey = 'order_id';
     
+    public static function calculateTotalSales()
+    {
+        return self::where('status', 1)->sum('total_price');
+    }
+
+  
 
     public function product()
     {
