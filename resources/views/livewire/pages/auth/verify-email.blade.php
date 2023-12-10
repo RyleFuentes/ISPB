@@ -7,18 +7,25 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
-{
+new #[Layout('layouts.guest')] class extends Component {
     /**
      * Send an email verification notification to the user.
      */
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirect(
-                session('url.intended', RouteServiceProvider::HOME),
-                navigate: true
-            );
+            if (Auth::user()->role == 2) {
+                Auth::guard('web')->logout();
+
+                Session::invalidate();
+                Session::regenerateToken();
+                $this->redirect('/', navigate: true);
+                session()->flash('success', "You have successfully verified your account, please wait for admin's confirmation to continue");
+            }
+            else {
+                # code...
+                $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
+            }
 
             return;
         }
@@ -51,11 +58,26 @@ new #[Layout('layouts.guest')] class extends Component
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <x-primary-button wire:click="sendVerification">
+        <x-primary-button wire:loading.remove wire:click="sendVerification">
             {{ __('Resend Verification Email') }}
         </x-primary-button>
+        <div wire:loading class="flex gap-2">
+            <div  class="spinner-grow text-dark mt-3" role="status">
+                
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div  class="spinner-grow text-primary mt-3" role="status">
+                
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div  class="spinner-grow text-warning mt-3" role="status">
+                
+                <span class="visually-hidden">Loading...</span>
+              </div>
+        </div>
 
-        <button wire:click="logout" type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button wire:click="logout" type="submit"
+            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             {{ __('Log Out') }}
         </button>
     </div>

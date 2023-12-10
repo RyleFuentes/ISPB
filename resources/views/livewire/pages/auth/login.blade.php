@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component 
-{
+new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
 
     /**
@@ -18,15 +17,32 @@ new #[Layout('layouts.guest')] class extends Component
         $this->validate();
 
         $this->form->authenticate();
-
         Session::regenerate();
+        if (Auth::user()->role == 2 && Auth::user()->hasVerifiedEmail()) {
+            Auth::guard('web')->logout();
 
-        $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
+            Session::invalidate();
+            Session::regenerateToken();
+
+            $this->redirect('/', navigate: true);
+            session()->flash('error', "Wait for admin's confirmation to continue");
+        } elseif (!Auth::user()->hasVerifiedEmail()) {
+            $this->redirect(RouteServiceProvider::EMAILVERIF, navigate: true);
+        } elseif (Auth::user()->role == 1) {
+            $this->redirect('products', navigate: true);
+            session()->flash('success', 'welcome ' . Auth::user()->name);
+        } else {
+            # code...
+
+            $this->redirect(RouteServiceProvider::HOME, navigate: true);
+        }
     }
 };
 ?>
 
 <div>
+
+    @include('livewire.messages.message')
     <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 mb-4">
         <a href="/" wire:navigate>
             <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
@@ -67,9 +83,24 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex items-center justify-center flex-column">
-            <x-primary-button class="flex items-center justify-center ms-3 mt-3 bg-primary w-100 rounded-pill">
+            <x-primary-button wire:loading.remove class="flex items-center justify-center ms-3 mt-3 bg-primary w-100 rounded-pill">
                 {{ __('Log in') }}
             </x-primary-button>
+
+            <div wire:loading class="flex gap-2">
+                <div class="spinner-grow text-dark mt-3" role="status">
+
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-primary mt-3" role="status">
+
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning mt-3" role="status">
+
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
 
         <div class="flex items-center justify-center mt-4 flex-column">
