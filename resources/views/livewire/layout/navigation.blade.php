@@ -31,9 +31,9 @@ new class extends Component {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (auth()->user()?->profile?->profile_image !== null)
-                            <div class="profile-icon me-3 border ">
+                            <div class="profile-icon me-3 border">
                                 <img src="{{ Storage::url(auth()->user()->profile->profile_image) }}"
-                                    class="img-fluid rounded-circle" alt="preview" width="100" height="100">
+                                    class="img rounded-circle" alt="preview" style="object-fit: cover; width: 100%; height: 100%;">
                             </div>
                         @else
                             <div class="profile-icon me-3 border d-flex justify-content-center align-items-center">
@@ -53,7 +53,7 @@ new class extends Component {
                             @if (auth()->user()?->profile?->profile_image !== null)
                                 <div class="profile-dropdown border border-dark mb-2">
                                     <img src="{{ Storage::url(auth()->user()->profile->profile_image) }}"
-                                        class="img-fluid rounded-circle" alt="preview" width="100" height="100">
+                                        class="img-fluid rounded-circle" alt="preview" style="object-fit: cover; width: 100%; height: 100%;">
                                 </div>
                             @else
                                 <div
