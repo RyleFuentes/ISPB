@@ -200,6 +200,10 @@ input[type="file"] {
     padding: 8px 18px !important;
 }
 
+.cancel:hover{
+    color: #212529 !important;
+}
+
 .custom-file-input {
     display: inline-block;
     padding: 10px 15px;
