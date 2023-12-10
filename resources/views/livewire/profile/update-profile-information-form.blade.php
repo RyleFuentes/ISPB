@@ -52,9 +52,7 @@ new class extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $path = session('url.intended', RouteServiceProvider::HOME);
-
-            $this->redirect($path);
+            return back()->with('success', 'you have successfully updated your email');
 
             return;
         }
