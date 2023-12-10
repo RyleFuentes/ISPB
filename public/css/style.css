@@ -200,10 +200,6 @@ input[type="file"] {
     display: none;
 }
 
-.btn {
-    padding: 8px 18px !important;
-}
-
 .cancel:hover {
     color: #212529 !important;
 }

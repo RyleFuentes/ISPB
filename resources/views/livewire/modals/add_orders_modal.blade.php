@@ -114,7 +114,7 @@
 
                           <button type="button" class="cancel fw-semibold text-secondary text-decoration-underline px-5"
                               data-bs-dismiss="modal" style="font-size: 13px">Cancel</button>
-                          <button type="submit" class="fw-semibold btn btn-primary py-3 px-5" style="font-size: 13px">
+                          <button type="submit" class="fw-semibold btn btn-primary" style="font-size: 13px">
                               <i class="fa-sharp fa-solid fa-plus"></i> Proceed Order</button></button>
                           </button>
                       </div>
