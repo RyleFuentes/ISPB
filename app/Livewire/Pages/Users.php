@@ -9,6 +9,7 @@ use Livewire\Attributes\Title;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.app')]
 #[Title('Users')]
@@ -58,15 +59,19 @@ class Users extends Component
     public function accept_confirm($id)
     {
         $this->user_to_accept = $id;
-        $this->alert('info', 'Are you sure you want to add this account?', [
-            'position' => 'top',
+        $this->alert('warning', 'User admission', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'text' => 'are you sure you want to accept this user?',
             'showConfirmButton' => true,
-            'confirmButtonText' => 'Yes',
             'onConfirmed' => 'add_account',
+            'confirmButtonText' => 'delete',
             'showCancelButton' => true,
-            'cancelButtonText' => 'Cancel',
-            'timer' => null,
-        ]);
+            'onDismissed' => '',
+            'cancelButtonText' => 'cancel',
+           ]);
     }
 
     public function add_account()
@@ -81,18 +86,23 @@ class Users extends Component
     }
 
 
+
     public function delete_confirm(User $user)
     {
         $this->user_to_delete = $user->id;
-
-        $this->alert('warning', 'Are you sure you want to delete?', [
-            'position' => 'top',
+        $this->alert('warning', 'WARNING', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
             'showConfirmButton' => true,
-            'confirmButtonText' => 'Yes',
             'onConfirmed' => 'delete_user',
+            'showDenyButton' => false,
+            'onDenied' => '',
             'showCancelButton' => true,
-            'cancelButtonText' => 'Cancel',
-            'timer' => null,
+            'onDismissed' => '',
+            'confirmButtonText' => 'delete',
+            'text' => 'Are you sure you want to delete this item?',
+            'timerProgressBar' => true,
         ]);
     }
 
@@ -104,6 +114,26 @@ class Users extends Component
             session()->flash('success', 'You have successfully deleted the user');
             $this->updatePendingUserCount();
         }
+
+        $this->dispatch('deleted');
+    }
+
+    #[On('deleted')]
+    public function delete_message()
+    {
+        $this->alert('success', 'Successfull', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'text' => 'You have successfully deleted the user',
+            'showConfirmButton' => false,
+            'onConfirmed' => '',
+            'confirmButtonText' => 'delete',
+            'showCancelButton' => false,
+            'onDismissed' => '',
+            'cancelButtonText' => 'cancel',
+           ]);
     }
 
 

@@ -20,6 +20,7 @@ class Dashboard extends Component
     public $total_sales, $completed_orders;
     public $total_products, $products_with_batches;
     public $total_brands, $brands_with_products;
+    public $least_stocks;
 
     public function mount()
     {
@@ -29,8 +30,25 @@ class Dashboard extends Component
         $this->total_brands = $this->totalBrands();
         $this->brands_with_products = $this->brandsWithProducts();
         $this->products_with_batches = $this->productsWithBatches();
+        $this->least_stocks = $this->leastStocks();
     }
 
+    public function leastStocks()
+    {
+        // Get all products and sort them by total_quantity in ascending order
+        $products = Product::all()->sortBy('total_quantity');
+
+        $least_prod = [];
+        foreach ($products as $product) {
+            if ($product->total_quantity < 20) {
+                $least_prod[] = $product;
+            }
+        }
+        // Take the top 5 products with the least stocks
+        return $least_prod;
+
+       
+    }
     public function productsWithBatches()
     {
         return Product::has('batch')->count();
@@ -44,7 +62,7 @@ class Dashboard extends Component
         return Brand::has('products')->count();
     }
 
-   
+
 
     public function render()
     {

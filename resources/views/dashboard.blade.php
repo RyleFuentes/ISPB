@@ -14,9 +14,10 @@
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">SALES</div>
                             <h2 class="text-right">
-                                <i class="fa fa-tag me-2"></i><span>{{$completed_orders}}</span>
+                                <i class="fa fa-tag me-2"></i><span>{{ $completed_orders }}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Total Sales:  <span class="text-success"> ₱ {{$total_sales}}</span></p>
+                            <p class="m-b-0 fw-bold">Total Sales: <span class="text-success"> ₱
+                                    {{ $total_sales }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -26,9 +27,9 @@
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">PRODUCTS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-box me-2"></i><span>{{$total_products}}</span>
+                                <i class="fa fa-box me-2"></i><span>{{ $total_products }}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Products with batches: {{$products_with_batches}}</p>
+                            <p class="m-b-0 fw-bold">Products with batches: {{ $products_with_batches }}</p>
                         </div>
                     </div>
                 </div>
@@ -38,9 +39,9 @@
                         <div class="card-block">
                             <div class="m-b-20 fw-bold text-primary">BRANDS</div>
                             <h2 class="text-right">
-                                <i class="fa fa-shopping-bag me-2"></i><span>{{$total_brands}}</span>
+                                <i class="fa fa-shopping-bag me-2"></i><span>{{ $total_brands }}</span>
                             </h2>
-                            <p class="m-b-0 fw-bold">Brands with products: {{$brands_with_products}}</p>
+                            <p class="m-b-0 fw-bold">Brands with products: {{ $brands_with_products }}</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +56,17 @@
 
                 <div class="col col-md-4">
                     <div class="card shadow p-3" style="height: 50vh">
-                        <p>It's me!</p>
+                        <div class="m-b-20 fw-bold text-primary">LOW STOCKS</div>
+                        @if ($least_stocks ?? null)
+                            @foreach ($least_stocks as $item)
+                                <div class="mt-3">
+                                    <span class="text-danger">{{ $item->product_name }} ({{$item->total_quantity}} bags left)</span>
+                                </div>
+                            @endforeach
+                        @else
+                            All stocks are in safe levels
+                        @endif
+
                     </div>
                 </div>
             </div>
