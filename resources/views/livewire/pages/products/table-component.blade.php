@@ -74,8 +74,7 @@
 
                         <td>
                             <div class="dropstart">
-                                <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <button class="action" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu" style="width: 250px; font-size: 13px">

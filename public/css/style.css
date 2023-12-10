@@ -214,12 +214,14 @@ input[type="file"] {
     cursor: pointer;
 }
 
-tr {
-    font-size: 12px;
+th {
+    font-size: 14px;
     font-weight: 600;
 }
 
 td {
+    font-size: 13px;
+    font-weight: 600;
     margin: 0;
 }
 
@@ -260,8 +262,16 @@ td .btn {
     filter: brightness(0.8);
 }
 
-.dropdown-toggle::after {
-    content: none;
+.action {
+    width: 25px;
+    height: 25px;
+    background: rgba(217, 217, 217, 1.5);
+    border-radius: 40px;
+    transition: filter 0.3s ease-in-out;
+}
+
+.action:hover {
+    filter: brightness(0.9);
 }
 
 .dropdown-content {

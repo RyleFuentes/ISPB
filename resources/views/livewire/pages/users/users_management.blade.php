@@ -10,13 +10,13 @@
     </div>
 
     <div style="margin: 20px auto; width: 100%;">
-        <table class="table table-striped table-hover ">
+        <table class="table table-striped ">
             <thead>
-                <tr class=" fw-semibold">
-                    <td scope="col" class="text-secondary ">Name</td>
-                    <td scope="col" class="text-secondary ">Email</td>
-                    <td scope="col" class="text-secondary ">Role</td>
-                    <td scope="col" class="text-secondary ">Actions</td>
+                <tr class="fw-semibold">
+                    <th scope="col" class="text-secondary ">Name</td>
+                    <th scope="col" class="text-secondary ">Email</td>
+                    <th scope="col" class="text-secondary ">Role</td>
+                    <th scope="col" class="text-secondary ">Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -65,15 +65,15 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if ($user->role == 0)
-                                        <span class="text-danger">Admin</span>
+                                        <span class="badge bg-danger">Admin</span>
                                     @else
-                                        <span class="text-warning">Inventory Clerk</span>
+                                        <span class="badge bg-warning">Inventory Clerk</span>
                                     @endif
                                 </td>
                                 <td>
 
                                     <div class="dropstart">
-                                        <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
+                                        <button class="action" type="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
@@ -83,8 +83,8 @@
                                                 Edit User
                                             </li>
                                             @if ($user->role != 0)
-                                                <li
-                                                    wire:click='delete_confirm({{ $user->id }})'class="mt-2" style="cursor: pointer">
+                                                <li wire:click='delete_confirm({{ $user->id }})'class="mt-2"
+                                                    style="cursor: pointer">
                                                     <i class="fas fa-trash"></i>
                                                     Delete User
                                                 </li>
