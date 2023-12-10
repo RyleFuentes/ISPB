@@ -42,8 +42,14 @@
 
         </tbody>
 
+
+       
     </table>
 
+
+
+   
+    
     <div class="mt-3 p-3">
         {{ $completed_orders->links() }}
     </div>

@@ -24,6 +24,7 @@ class Orders extends Component
     public $product_quantity;
     public $change_page = 1;
     public $toggle_input;
+    public $paginate_number = 10;
 
     //! lifecycle hook for when add_order->brandID is updated/changed
     public function updatedAddOrderBrandID()
