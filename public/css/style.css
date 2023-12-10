@@ -196,11 +196,11 @@ input[type="file"] {
     display: none;
 }
 
-.btn{
+.btn {
     padding: 8px 18px !important;
 }
 
-.cancel:hover{
+.cancel:hover {
     color: #212529 !important;
 }
 
@@ -211,6 +211,33 @@ input[type="file"] {
     font-weight: bold;
     color: #fff;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+tr {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+td {
+    margin: 0;
+}
+
+td .btn {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.dropdown-menu {
+    font-weight: medium;
+}
+
+.dropdown-menu li:hover {
+    background-color: #c4c4c4 !important;
+}
+
+.dropdown-menu li {
+    padding-left: 10px;
     cursor: pointer;
 }
 

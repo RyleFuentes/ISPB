@@ -6,12 +6,12 @@
         <thead>
             <tr class="fw-semibold">
 
-                <td scope="col" class="text-secondary">Ordered Product</td>
-                <td scope="col" class="text-secondary">Delivery Date</td>
-                <td scope="col" class="text-secondary">Amount</td>
-                <td scope="col" class="text-secondary">Total Price</td>
-                <td scope="col" class="text-secondary">Status</td>
-  
+                <td scope="col" class="text-dark">Ordered Product</td>
+                <td scope="col" class="text-dark">Delivery Date</td>
+                <td scope="col" class="text-dark">Amount</td>
+                <td scope="col" class="text-dark">Total Price</td>
+                <td scope="col" class="text-dark">Status</td>
+
             </tr>
         </thead>
         <tbody>
@@ -22,19 +22,19 @@
                         <td>{{ $order->product->product_name }}</td>
                         <td>{{ $order->due_date }}</td>
                         @if ($order->order_type === 1)
-                            <td>{{ $order->order_kilo }} <i class="bi bi-basket2-fill text-primary"></i></td>
+                            <td>{{ $order->order_kilo }} kg <i class="bi bi-basket2-fill text-primary"></i></td>
                         @else
-                            <td>{{ $order->order_quantity }} <i class="bi bi-handbag-fill text-primary"></i></td>
+                            <td>{{ $order->order_quantity }} bags<i class="bi bi-handbag-fill text-primary"></i></td>
                         @endif
                         <td>₱ {{ $order->total_price }}</td>
                         <td>
                             @if ($order->status === 1)
-                                <span class="text-success">Completed</span>
+                                <span class="badge text-bg-success">Completed</span>
                             @elseif($order->status === 2)
-                                <span class="text-warning">Cancelled</span>
+                                <span class="badge text-bg-danger">Cancelled</span>
                             @endif
                         </td>
-                        
+
                     </tr>
                 @endif
             @endforeach

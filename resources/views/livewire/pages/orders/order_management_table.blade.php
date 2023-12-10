@@ -30,13 +30,13 @@
                     <thead>
                         <tr class="fw-semibold">
 
-                            <td scope="col" class="text-secondary">Ordered Product</td>
-                            <td scope="col" class="text-secondary">Delivery Date</td>
-                            <td scope="col" class="text-secondary">Amount</td>
-                            <td scope="col" class="text-secondary">Total Price</td>
-                            <td scope="col" class="text-secondary">Recipient</td>
-                            <td scope="col" class="text-secondary">Status</td>
-                            <td scope="col" class="text-secondary">Actions</td>
+                            <td scope="col" class="text-dark">Ordered Product</td>
+                            <td scope="col" class="text-dark">Delivery Date</td>
+                            <td scope="col" class="text-dark">Amount</td>
+                            <td scope="col" class="text-dark">Total Price</td>
+                            <td scope="col" class="text-dark">Recipient</td>
+                            <td scope="col" class="text-dark">Status</td>
+                            <td scope="col" class="text-dark">Actions</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,11 +57,26 @@
                                     <td>₱ {{ $order->total_price }}</td>
                                     <td>{{ $order->recipient }}</td>
                                     <td><span class="badge text-bg-warning">Pending</span></td>
-                                    <td>
-                                        <button wire:click.prevent='completeOrder({{ $order->order_id }})'
-                                            class="btn btn-primary btn-sm">Complete order</button>
-                                        <button wire:click.prevent='cancelOrder({{ $order->order_id }})'
-                                            class="btn btn-danger btn-sm">Cancel</button>
+                                    <td class="font-size: 12px">
+
+                                        <div class="dropstart">
+                                            <button class="dropdown-toggle action" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
+                                                <li wire:click.prevent='completeOrder({{ $order->order_id }})'>
+                                                    <i class="fa-solid fa-check"></i>
+                                                    Complete order
+                                                </li>
+                                                <li wire:click.prevent='cancelOrder({{ $order->order_id }})'
+                                                    class="mt-2">
+                                                    <i class="fa-solid fa-ban"></i>
+                                                    Cancel
+                                                </li>
+                                            </ul>
+                                        </div>
+
                                     </td>
                                 </tr>
                             @endif

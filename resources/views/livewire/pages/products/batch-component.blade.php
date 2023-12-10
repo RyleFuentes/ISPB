@@ -36,8 +36,7 @@
                     <th>Product</th>
                     <th>Quantity (bags) </th>
                     <th>Expiration Date</th>
-
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -64,8 +63,8 @@
 
                             <td>
                                 <button wire:click='update_batch_form({{ $batch->batch_id }})'
-                                    class="btn">update</button>
-                                <button wire:click='cancel_edit' class="btn">cancel</button>
+                                    class="btn btn-primary">Update</button>
+                                <button wire:click='cancel_edit' class="btn btn-secondary">Cancel</button>
                             </td>
                         </tr>
                     @else
@@ -77,11 +76,26 @@
 
 
                             <td>
-                                <button wire:click='set_edit_batch({{ $batch->batch_id }})' class="btn"><i
-                                        class="bi bi-pencil-fill text-success"></i></button>
-                                <button wire:click='delete_batch({{ $batch->batch_id }})' class="btn"><i
-                                        class="bi bi-trash3-fill text-danger"></i></button>
+                                <div class="dropstart">
+                                    <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
+                                        <li wire:click='set_edit_batch({{ $batch->batch_id }})'>
+                                            <i class="fas fa-edit"></i>
+                                            Edit Batch
+                                        </li>
+                                        <li wire:click='delete_batch({{ $batch->batch_id }})' class="mt-2"
+                                            style="cursor: pointer">
+                                            <i class="fas fa-trash"></i>
+                                            Delete Batch
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
+
+
                         </tr>
                     @endif
                 @endforeach

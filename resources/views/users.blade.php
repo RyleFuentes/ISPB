@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-3">
+    <div>
         <div class="max-w-7xl mx-auto lg:px-2">
             <div>
                 @if ($pending_user_mode == true)
-                    <div class="p-3 d-flex justify-content-end">
+                    <div class="px-3 d-flex justify-content-end">
                         <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='pending_user_mode_off'>
                             User Management
                         </button>
@@ -17,7 +17,7 @@
                     </div>
                     @include('livewire.pages.users.pending_user_management')
                     @else
-                    <div class="p-3 d-flex justify-content-end">
+                    <div class="px-3 d-flex justify-content-end">
                         <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='pending_user_mode_on'>
                             <span class="badge text-bg-light">{{ $pending_user_count }}</span> Pending Users
                         </button>

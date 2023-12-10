@@ -1,5 +1,5 @@
-<div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
-    <div class="mb-4 ms-auto">
+<div class="card d-flex justify-content-center align-items-center table-responsive mt-2 shadow-lg">
+    <div class="ms-auto">
         <form class="d-flex mt-2">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                 style="border-bottom-color: #6c3ca4;">
@@ -71,20 +71,28 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a wire:click='edit_user({{ $user->id }})' class="mx-1 text-primary"
-                                        style="cursor: pointer">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    @if ($user->role == 0)
-                                        <a class="text-secondary mx-1" style="cursor: pointer">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    @else
-                                        <a wire:click='delete_confirm({{ $user->id }})' class="text-danger mx-1"
-                                            style="cursor: pointer">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    @endif
+
+                                    <div class="dropstart">
+                                        <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
+                                            <li wire:click='edit_user({{ $user->id }})'>
+                                                <i class="fas fa-edit"></i>
+                                                Edit User
+                                            </li>
+                                            @if ($user->role != 0)
+                                                <li
+                                                    wire:click='delete_confirm({{ $user->id }})'class="mt-2" style="cursor: pointer">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete User
+                                                </li>
+                                            @endif
+
+                                        </ul>
+                                    </div>
+
                                 </td>
                             </tr>
                         @endif

@@ -32,10 +32,9 @@
                     <th>Product</th>
                     <th>Quantity (bags) </th>
                     <th>Kilos </th>
-                    <th>retail price</th>
-                    <th>wholesale price</th>
-
-                    <th></th>
+                    <th>Retail price</th>
+                    <th>Wholesale price</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -74,8 +73,17 @@
 
 
                         <td>
-                            <button wire:click='view_product_info({{ $product->product_id }})' class="btn"><i
-                                    class="bi bi-eye-fill text-primary"></i> Product Batches</button>
+                            <div class="dropstart">
+                                <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
+                                    <li wire:click='view_product_info({{ $product->product_id }})'>
+                                        <i class="fa-solid fa-eye"></i> View Product Batches
+                                    </li>
+                                </ul>
+                            </div>
 
                         </td>
                     </tr>
