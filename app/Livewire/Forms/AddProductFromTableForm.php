@@ -24,7 +24,7 @@ class AddProductFromTableForm extends Form
     public $retail;
     #[Rule('required|numeric')]
     public $wholesale;
-    #[Rule('date|required')]
+    #[Rule('required|date|after_or_equal:today')]
     public $expiration_date;
 
     public function store()

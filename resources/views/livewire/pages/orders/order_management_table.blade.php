@@ -8,17 +8,7 @@
                     <i class="fa fa-plus me-2 text-light"></i>Add Order
                 </button>
 
-                @if ($pending_orders->count() >= 1)
-                    <form action="" class="form">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <input wire:model.live='search' placeholder="Search" id="search" type="search"
-                                class="form-control border-secondary rounded-3">
-                            <button class="">
-                                <i class="ms-3 fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </div>
-                    </form>
-                @endif
+              
             </div>
         </div>
 

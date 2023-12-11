@@ -67,7 +67,7 @@ class Users extends Component
             'text' => 'are you sure you want to accept this user?',
             'showConfirmButton' => true,
             'onConfirmed' => 'add_account',
-            'confirmButtonText' => 'delete',
+            'confirmButtonText' => 'Yes',
             'showCancelButton' => true,
             'onDismissed' => '',
             'cancelButtonText' => 'cancel',

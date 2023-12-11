@@ -61,11 +61,11 @@
                     @enderror
 
                     <div class="form-floating mt-2">
-                        <input type="date" class="form-control" placeholder="..." id="exp_date"
+                        <input type="date" class="modal-input-field form-control" placeholder="..." id="exp_date"
                             wire:model='product_form.expiration_date'>
                         <label for="exp_date">Expiration Date</label>
                     </div>
-                    @error('product_form.wholesale_price')
+                    @error('product_form.expiration_date')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <div class="form-group mt-4">

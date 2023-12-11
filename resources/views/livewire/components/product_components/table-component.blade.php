@@ -101,5 +101,4 @@
     </div>
     @include('livewire.modals.add_product_from_table')
 
-
 </div>

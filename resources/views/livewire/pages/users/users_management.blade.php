@@ -1,13 +1,5 @@
 <div class="card d-flex justify-content-center align-items-center table-responsive mt-2 shadow-lg">
-    <div class="ms-auto">
-        <form class="d-flex mt-2">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                style="border-bottom-color: #6c3ca4;">
-            <button class="btn btn-primary me-3" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    </div>
+    
 
     <div style="margin: 20px auto; width: 100%;">
         <table class="table table-striped table-hover ">

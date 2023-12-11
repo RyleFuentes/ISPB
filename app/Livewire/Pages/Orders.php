@@ -166,15 +166,23 @@ class Orders extends Component
     {
         $user = Auth::user();
 
-        $completedOrders = $this->showCompleted
-        ? Order::where('status', 1)->latest()->get()
-        : collect();
+        if($this->showCompleted == false && $this->showCancelled == false)
+        {
+                $allOrders = Order::whereIn('status', [1, 2])->get();
+        }
+        else
+        {
 
-        $cancelledOrders = $this->showCancelled
-            ? Order::where('status', 2)->latest()->get()
+            $completedOrders = $this->showCompleted
+            ? Order::where('status', 1)->latest()->get()
             : collect();
-
-        $allOrders = $completedOrders->merge($cancelledOrders);
+    
+            $cancelledOrders = $this->showCancelled
+                ? Order::where('status', 2)->latest()->get()
+                : collect();
+    
+            $allOrders = $completedOrders->merge($cancelledOrders);
+        }
 
 
         $pdf = new \FPDF();
@@ -204,7 +212,7 @@ class Orders extends Component
         $pdf->SetX($xPosition); // Set X-position to center for the table
         $pdf->Cell(30, 10, 'Order ID', 1);
         $pdf->Cell(60, 10, 'Product Name', 1);
-        $pdf->Cell(30, 10, 'Quantity', 1);
+        $pdf->Cell(30, 10, 'Amount', 1);
         $pdf->Cell(40, 10, 'Status', 1);
         $pdf->Cell(30, 10, 'Recipient', 1);
         $pdf->Ln();
@@ -214,7 +222,15 @@ class Orders extends Component
             $pdf->SetX($xPosition); // Set X-position to center for each row
             $pdf->Cell(30, 10, $order->order_id, 1);
             $pdf->Cell(60, 10, $order->product->product_name, 1);
-            $pdf->Cell(30, 10, $order->order_quantity, 1);
+            if($order->order_type == 1)
+            {
+                $pdf->Cell(30, 10, $order->order_kilo.' kg', 1);
+            }
+            else
+            {
+
+                $pdf->Cell(30, 10, $order->order_quantity.' bags', 1);
+            }
 
             // Display "Completed" for status 1 and "Cancelled" for status 2
             $statusText = ($order->status == 1) ? 'Completed' : (($order->status == 2) ? 'Cancelled' : '');

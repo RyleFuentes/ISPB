@@ -27,7 +27,7 @@ class addOrderForm extends Form
 
     public $total_price;
 
-    #[Rule('required|date', as: 'Delivery Date')]
+    #[Rule('required|date|after_or_equal:today', as: 'Delivery Date')]
     public $deliver_date;
 
     #[Rule('required', as :'Brand')]

@@ -20,6 +20,11 @@
 
             <div class="p-3">
                 <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
+                data-bs-target="#generateProductReport">
+                    Generate Report
+                </button>
+
+                <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
                     data-bs-target="#addProductTable">
                     <i class="fa-sharp fa-solid fa-circle-plus"></i> Add Product</button>
             </div>
@@ -98,6 +103,8 @@
         </div>
     </div>
     @include('livewire.modals.add_product_from_table')
+    
+    @include('livewire.pages.products.generate_report_modal')
 
 
 </div>

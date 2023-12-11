@@ -14,7 +14,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.2",
-        "livewire/volt": "^1.0",
+        "livewire/volt": "^1.6",
         "realrashid/sweet-alert": "^7.1",
         "setasign/fpdf": "^1.8"
     },

@@ -23,7 +23,7 @@ class AddProductsForm extends Form
     #[Rule('required|numeric', as:'Wholesale Price')]
     public $wholesale_price;
 
-    #[Rule('required|date', as:'Expiration Date')]
+    #[Rule('required|date|after_or_equal:today', as:'Expiration Date')]
     public $expiration_date;
 
     public function add_form($brand_id)
