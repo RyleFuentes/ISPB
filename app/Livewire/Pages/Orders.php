@@ -17,8 +17,7 @@ class Orders extends Component
 {
 
     use WithPagination;
-
-
+    
     public $products;
     public addOrderForm $add_order;
     public $product_quantity;
@@ -42,8 +41,6 @@ class Orders extends Component
             $this->toggle_input = 2;
         }
     }
-
-
 
     public function submit_order()
     {
