@@ -245,12 +245,16 @@ class Orders extends Component
     
         $pdfContent = $pdf->Output('S');
 
+        $filename = 'Order_History_Report_' . date('Ymd') . '_' . uniqid() . '.pdf';
+
         return response()->stream(
-            fn () => print($pdfContent),
+            function () use ($pdfContent) {
+                print($pdfContent);
+            },
             200,
             [
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="Order_History_Report.pdf"',
+                'Content-Disposition' => 'inline; filename="' . $filename . '"',
             ]
         );
     }
