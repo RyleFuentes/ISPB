@@ -16,7 +16,7 @@
                 <span>Users</span>
             </a>
 
-            <a class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('suppliers*') ? 'active' : '' }}"
+            <a  class="item text-secondary mb-3 p-3 mx-2 {{ request()->is('suppliers*') ? 'active' : '' }}"
                 href="{{ route('suppliers') }}">
                 <i class="fas fa-users me-1"></i>
                 <span>Suppliers</span>
