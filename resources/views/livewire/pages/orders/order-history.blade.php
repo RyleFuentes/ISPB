@@ -6,12 +6,20 @@
         <button  :class="filter ? 'btn-warning ': 'btn-dark'" x-on:click="filter = !filter" class="btn btn-sm  btn-sm"> <i class="bi bi-funnel"></i> Filter </button>
         
         <div x-transition x-show="filter" class="m-3 p-3">
+            <div class="d-flex flex-col">
+                <span>Start date:{{$start}}</span> 
+                <span>End date: {{$end}} </span> 
+            </div>
             <div>
+
                 <label for="start" class="mt-2">Start Date</label>
-                <input id="start" class="form-control" type="date">
+                <input wire:model.live='start' id="start" class="form-control" type="date">
+
+                
 
                 <label for="end" class="mt-2">End Date</label>
-                <input id="end" class="form-control" type="date">
+                <input wire:model.live='end' id="end" class="form-control" type="date">
+
             </div>
 
 
@@ -23,22 +31,24 @@
                 <td x-show="filter"></td>
                 <td scope="col" class="text-dark">
                     Ordered Product
-                    <select x-transition x-show="filter" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
+                    <select wire:model.live='prod_id' x-transition x-show="filter" class="form-select" aria-label="Default select example">
+                        <option value selected >Select Ordered Products</option>
+                        @foreach ($products as $item)
+                            <option value="{{$item->product_id}}">{{$item->product_name}}</option>
+                        @endforeach
+                        
+                    </select>
                 </td>
                 <td scope="col" class="text-dark">Delivery Date</td>
                 <td scope="col" class="text-dark">
                     Recipient
                     
                     <div  x-transition x-show="filter">
-                        <select  class="form-select" aria-label="Default select example">
+                        <select   class="form-select" aria-label="Default select example">
                             <option selected>Recipient :)</option>
-                            <option value="1">Completed</option>
-                            <option value="2">Cancelled</option>
+                            {{-- @foreach ($recipients as $item)
+                                <option value="">{{$item->recipient}}</option>
+                            @endforeach --}}
 
                         </select>
                     </div>
@@ -88,18 +98,10 @@
         </tbody>
     </table>
 
-    <div class="mt-3 p-3 w-50">
-        <label for="paginate_number">Per Page</label>
-        <select id='paginate_number' wire:model.live='paginate_number' class="form-select"
-            aria-label="Default select example">
-            <option value="10" selected>10</option>
-            <option value="20">20</option>
-            <option value="50">30</option>
-            <option value="100">40</option>
-        </select>
-    </div>
+  
 
     <div class="mt-3 p-3">
         {{ $orders->links() }}
     </div>
 </div>
+

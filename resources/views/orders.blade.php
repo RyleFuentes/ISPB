@@ -25,7 +25,7 @@
                     </button>
                 </div>
 
-                @include('livewire.pages.orders.order_history_table')
+                <livewire:pages.orders.order-history :orders="$orders" />
             @endif
         </div>
     </div>

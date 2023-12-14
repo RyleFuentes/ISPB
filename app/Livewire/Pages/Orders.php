@@ -127,11 +127,7 @@ class Orders extends Component
         }
     }
 
-    public function pdf()
-    {
-        $pdf = Pdf::loadView('test_pdf');
-        return $pdf->download('invoice.pdf');
-    }
+
 
     #[Computed]
     public function completedOrders()
