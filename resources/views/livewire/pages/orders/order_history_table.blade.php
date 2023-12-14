@@ -10,12 +10,25 @@
                 <td scope="col" class="text-dark">Recipient</td>
                 <td scope="col" class="text-dark">Amount</td>
                 <td scope="col" class="text-dark">Total Price</td>
-                <td scope="col" class="text-dark">Status</td>
+                <td scope="col" class="text-dark d-flex gap-3">
+                   <div>
+                    Status
+                    
+                   </div>
+                   <div>
+                       <select wire:model.live='toggleStatus' class="form-select" aria-label="Default select example">
+                        <option selected>All :)</option>
+                            <option value="1">Completed</option>
+                            <option value="2">Cancelled</option>
+                    
+                        </select>
+                   </div>
+                </td>
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($this->completedOrders() as $order)
+            @foreach ($orders as $order)
                 @if ($order->status === 1 || $order->status === 2)
                     <tr wire:key='{{$order->order_id}}'>
 
@@ -53,6 +66,6 @@
     </div>
 
     <div class="mt-3 p-3">
-        {{ $this->completedOrders()->links() }}
+        {{ $orders->links() }}
     </div>
 </div>

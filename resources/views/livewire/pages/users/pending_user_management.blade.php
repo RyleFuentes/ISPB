@@ -1,36 +1,29 @@
 <div>
     @if ($pending_user_count > 0)
         <div class="card d-flex justify-content-center align-items-center table-responsive mt-5 shadow-lg">
-            <div class="mb-4 ms-auto">
-                <form class="d-flex mt-2">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        style="border-bottom-color: #6c3ca4;">
-                    <button class="btn btn-primary me-3" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-
-
             <table class="table">
                 <thead>
-                    <tr class="text-center fs-6">
-                        <td scope="col" class="text-primary">Name</td>
-                        <td scope="col" class="text-primary">Email</td>
+                    <tr class="text-center">
+                        <td scope="col" class="text-secondary text-center">Name</td>
+                        <td scope="col" class="text-secondary text-center">Email</td>
 
-                        <td scope="col" class="text-primary">Actions</td>
+                        <td scope="col" class="text-secondary text-center">Actions</td>
                     </tr>
                 </thead>
 
                 <tbody class="text-center">
                     @foreach ($pending_users as $item)
                         <tr wire:key='{{ $item->id }}'>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->email }}</td>
+                            <td class="text-center">
                                 <button wire:click='accept_confirm({{ $item->id }})'
-                                    class="btn btn-outline-success"><i class="bi bi-check2-circle"></i></button>
-                                <button wire:click='delete_confirm({{$item->id}})' class="btn btn-outline-danger"><i class="bi bi-trash"></i></i></button>
+                                    class="btn btn-primary px-3"><i class="fas fa-check"></i>
+                                    Approve User
+                                </button>
+                                <button wire:click='delete_confirm({{$item->id}})' class="btn btn-danger px-3"><i class="fas fa-trash"></i></i>
+                                    Cancel
+                                </button>
                             </td>
                         </tr>
                     @endforeach

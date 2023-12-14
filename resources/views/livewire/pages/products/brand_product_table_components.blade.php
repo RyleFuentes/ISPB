@@ -3,7 +3,7 @@
     @include('livewire.modals.add_product_modal')
     <div class="d-flex mb-5 justify-content-between">
         <h3 class="fs-30 fw-50">{{ $brand->brand_name }}</h3>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProduct">Add new
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add new
             product</button>
     </div>
     <table class="table table-striped">

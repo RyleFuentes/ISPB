@@ -15,14 +15,13 @@ use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\App;
 use Dompdf\Options;
 use Auth;
+use Livewire\Attributes\On;
 
 #[Layout('layouts.app')]
 #[Title('Orders')]
 class Orders extends Component
 {
-
     use WithPagination;
-
 
     public $products;
     public addOrderForm $add_order;
@@ -39,17 +38,12 @@ class Orders extends Component
 
     public function updatedAddOrderTypeOrder()
     {
-        if($this->add_order->type_order == 1)
-        {
+        if ($this->add_order->type_order == 1) {
             $this->toggle_input = 1;
-        }
-        else
-        {
+        } else {
             $this->toggle_input = 2;
         }
     }
-
-
 
     public function submit_order()
     {
@@ -59,20 +53,19 @@ class Orders extends Component
     public function completeOrder(Order $order)
     {
         if ($order->status === 0) {
-            if ($order->order_type === 1) 
-            {
+            if ($order->order_type === 1) {
                 $newKilo = $order->product->kilo - $order->order_kilo;
                 $order->product->update([
-                    'kilo' => $newKilo
+                    'kilo' => $newKilo,
                 ]);
-                
-            } 
-            else 
-            {
+            } else {
                 $product = $order->product;
                 $order_qty = $order->order_quantity;
 
-                $batches = $product->batch()->orderBy('expiration_date', 'asc')->get();
+                $batches = $product
+                    ->batch()
+                    ->orderBy('expiration_date', 'asc')
+                    ->get();
                 $remaining_qty = $order_qty;
 
                 foreach ($batches as $batch) {
@@ -112,7 +105,6 @@ class Orders extends Component
         }
     }
 
-
     public function toggle_on()
     {
         $this->change_page = 2;
@@ -125,7 +117,6 @@ class Orders extends Component
 
     public function updateProducts()
     {
-
         if ($this->add_order->brandID) {
             // get the products for the selected brand
             $this->products = Product::where('brandID', $this->add_order->brandID)->get();
@@ -142,48 +133,68 @@ class Orders extends Component
         return $pdf->download('invoice.pdf');
     }
 
-    #[Computed()]
+    #[Computed]
     public function completedOrders()
     {
-        return Order::whereIn('status', [1, 2])->latest()->paginate(10);
+        return Order::whereIn('status', [1, 2])
+            ->latest()
+            ->paginate(10);
     }
 
-    public function render()
+
+    public $toggleStatus;
+
+    public function updatedToggleStatus()
     {
-       
-        $pending_orders = Order::where('status', 0)->paginate(10);
-        $data = compact( 'pending_orders');
-
-
-
-        return view('orders', $data);
+        if ($this->toggleStatus == 1) {
+            $this->dispatch('search-completed');
+            $this->showCancelled = false;
+            $this->showCompleted = true;
+        } elseif ($this->toggleStatus == 2) {
+            $this->dispatch('search-cancelled');
+            $this->showCompleted = false;
+            $this->showCancelled = true;
+        }
     }
 
+    #[On('search-completed')]
+    #[Computed]
+    public function sortCompleted()
+    {
+        return Order::where('status', 1)->paginate(10);
+    }
+
+    #[On('search-cancelled')]
+    #[Computed()]
+    public function sortCancelled()
+    {
+        return Order::where('status', 2)->paginate(10);
+    }
+
+    
     public $showCompleted = false;
     public $showCancelled = false;
-
     public function generatePdf()
     {
         $user = Auth::user();
 
-        if($this->showCompleted == false && $this->showCancelled == false)
-        {
-                $allOrders = Order::whereIn('status', [1, 2])->get();
-        }
-        else
-        {
-
+        if ($this->showCompleted == false && $this->showCancelled == false) {
+            $allOrders = Order::whereIn('status', [1, 2])->get();
+        } else {
             $completedOrders = $this->showCompleted
-            ? Order::where('status', 1)->latest()->get()
-            : collect();
-    
-            $cancelledOrders = $this->showCancelled
-                ? Order::where('status', 2)->latest()->get()
+                ? Order::where('status', 1)
+                    ->latest()
+                    ->get()
                 : collect();
-    
+
+            $cancelledOrders = $this->showCancelled
+                ? Order::where('status', 2)
+                    ->latest()
+                    ->get()
+                : collect();
+
             $allOrders = $completedOrders->merge($cancelledOrders);
         }
-
 
         $pdf = new \FPDF();
         $pdf->AddPage();
@@ -196,15 +207,15 @@ class Orders extends Component
         $xPosition = ($pageWidth - 45) / 2;
         $yPosition = $pdf->GetY();
         $pdf->Image($imagePath, $xPosition, $yPosition, 45, 0, 'PNG');
-        
+
         $pdf->Ln(25);
-        $pdf->Cell(0, 10, 'Inventory System for Poultry Business', 0, 1, 'C'); 
+        $pdf->Cell(0, 10, 'Inventory System for Poultry Business', 0, 1, 'C');
         //$pdf->Ln(10);
         $pdf->Cell(0, 10, now()->format('F j, Y'), 0, 1, 'C');
 
         $pdf->Ln(10); // Add some space before displaying orders
         $pdf->Cell(0, 10, 'Order History:', 0, 1, 'L');
-        
+
         // Calculate the X-position to center the table
         $tableWidth = 190; // Total width of the table cells (sum of individual cell widths)
         $xPosition = ($pageWidth - $tableWidth) / 2;
@@ -222,18 +233,14 @@ class Orders extends Component
             $pdf->SetX($xPosition); // Set X-position to center for each row
             $pdf->Cell(30, 10, $order->order_id, 1);
             $pdf->Cell(60, 10, $order->product->product_name, 1);
-            if($order->order_type == 1)
-            {
-                $pdf->Cell(30, 10, $order->order_kilo.' kg', 1);
-            }
-            else
-            {
-
-                $pdf->Cell(30, 10, $order->order_quantity.' bags', 1);
+            if ($order->order_type == 1) {
+                $pdf->Cell(30, 10, $order->order_kilo . ' kg', 1);
+            } else {
+                $pdf->Cell(30, 10, $order->order_quantity . ' bags', 1);
             }
 
             // Display "Completed" for status 1 and "Cancelled" for status 2
-            $statusText = ($order->status == 1) ? 'Completed' : (($order->status == 2) ? 'Cancelled' : '');
+            $statusText = $order->status == 1 ? 'Completed' : ($order->status == 2 ? 'Cancelled' : '');
 
             $pdf->Cell(40, 10, $statusText, 1);
             $pdf->Cell(30, 10, $order->recipient, 1); // Display recipient
@@ -242,16 +249,35 @@ class Orders extends Component
 
         $pdf->Ln(10); // Add some space between the title and user's name
         $pdf->Cell(0, 10, 'Prepared by: ' . $user->name, 0, 1, 'R');
-    
+
         $pdfContent = $pdf->Output('S');
 
-        return response()->stream(
-            fn () => print($pdfContent),
-            200,
-            [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="Order_History_Report.pdf"',
-            ]
-        );
+        return response()->stream(fn() => print $pdfContent, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="Order_History_Report.pdf"',
+        ]);
+    }
+
+    public function render()
+    {
+        $pending_orders = Order::where('status', 0)->paginate(10);
+        $data = compact('pending_orders');
+
+        if ($this->toggleStatus == 1) {
+            $sortOrders = $this->sortCompleted();
+            $data['orders'] = $sortOrders;
+        } 
+        elseif($this->toggleStatus == 2)
+        {
+            $cancelledOrder = $this->sortCancelled();
+            $data['orders'] = $cancelledOrder;
+        }
+        else {
+            $orders = $this->completedOrders();
+
+            $data['orders'] = $orders;
+        }
+
+        return view('orders', $data);
     }
 }

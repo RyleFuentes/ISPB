@@ -76,23 +76,15 @@
 
 
                             <td>
-                                <div class="dropstart">
-                                    <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
-                                        <li wire:click='set_edit_batch({{ $batch->batch_id }})'>
-                                            <i class="fas fa-edit"></i>
-                                            Edit Batch
-                                        </li>
-                                        <li wire:click='delete_batch({{ $batch->batch_id }})' class="mt-2"
-                                            style="cursor: pointer">
-                                            <i class="fas fa-trash"></i>
-                                            Delete Batch
-                                        </li>
-                                    </ul>
-                                </div>
+                                <button class="btn btn-primary px-3" wire:click='set_edit_batch({{ $batch->batch_id }})'>
+                                    <i class="fas fa-edit"></i>
+                                    Edit Batch
+                                </button>
+                                <button class="btn btn-danger px-3" wire:click='delete_batch({{ $batch->batch_id }})' class="mt-2"
+                                    style="cursor: pointer">
+                                    <i class="fas fa-trash"></i>
+                                    Delete Batch
+                                </button>
                             </td>
 
 

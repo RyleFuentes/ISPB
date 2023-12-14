@@ -39,6 +39,11 @@ $(document).ready(function () {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-        var today = new Date().toISOString().split('T')[0];
-        document.getElementById('exp_date').min = today;
+        var exp_date = new Date().toISOString().split('T')[0];
+        document.getElementById('exp_date').min = exp_date;
+    });
+
+document.addEventListener('DOMContentLoaded', function() {
+        var due_date = new Date().toISOString().split('T')[0];
+        document.getElementById('due_date').min = due_date;
     });

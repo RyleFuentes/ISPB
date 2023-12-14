@@ -22,11 +22,8 @@
                                     @error('edit_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                    <td><input wire:model='edit_email' type="email" class="form-control"
-                                            value="{{ $user->email }}"></td>
-                                    @error('edit_email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <td>{{$user->email}}</td>
+                                   
                                     <td>
                                         <select class="form-select" aria-label="Default select example"
                                             wire:model='edit_role'>
@@ -57,33 +54,24 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if ($user->role == 0)
-                                        <span class="text-danger">Admin</span>
+                                        <span class="badge bg-danger">Admin</span>
                                     @else
-                                        <span class="text-warning">Inventory Clerk</span>
+                                        <span class="badge bg-warning">Inventory Clerk</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td style="font-size: 12px">
 
-                                    <div class="dropstart">
-                                        <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    <button class="btn btn-primary px-3" wire:click='edit_user({{ $user->id }})'>
+                                        <i class="fas fa-edit"></i>
+                                        Edit User
+                                    </li>
+                                    @if ($user->role != 0)
+                                        <button
+                                            wire:click='delete_confirm({{ $user->id }})'class="btn btn-danger ms-2 px-3">
+                                            <i class="fas fa-trash"></i>
+                                            Delete User
                                         </button>
-                                        <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
-                                            <li wire:click='edit_user({{ $user->id }})'>
-                                                <i class="fas fa-edit"></i>
-                                                Edit User
-                                            </li>
-                                            @if ($user->role != 0)
-                                                <li
-                                                    wire:click='delete_confirm({{ $user->id }})'class="mt-2" style="cursor: pointer">
-                                                    <i class="fas fa-trash"></i>
-                                                    Delete User
-                                                </li>
-                                            @endif
-
-                                        </ul>
-                                    </div>
+                                    @endif
 
                                 </td>
                             </tr>

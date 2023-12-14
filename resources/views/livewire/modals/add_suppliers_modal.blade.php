@@ -12,16 +12,17 @@
         </div>
         <div class="modal-body">
           <form wire:submit='add_supplier'>
-            <div class="form-floating mt-2">
-                <input wire:model='form.name' type="text" id="name" placeholder="..." class="form-control">
-                <label for="name">Supplier Name</label>
+            <div class="mt-2">
+                <label for="name" class="modal-input-label">Supplier Name</label>
+                <input wire:model='form.name' type="text" id="name" placeholder="Enter Supplier" class="modal-input-field form-control">
             </div>
             @error('form.name')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-            <div class="form-floating mt-2">
-                <input wire:model='form.email' type="email" id="email" placeholder="..." class="form-control">
-                <label  for="email">Supplier Email</label>
+            <div class="mt-2">
+              <label  for="email" class="modal-input-label">Supplier Email</label>
+
+                <input wire:model='form.email' type="email" id="email" placeholder="Enter Supplier Email" class="modal-input-field form-control">
             </div>
             @error('form.email')
                 <span class="text-danger">{{$message}}</span>

@@ -19,9 +19,8 @@
             </div>
 
             <div class="p-3">
-                <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
-                data-bs-target="#generateProductReport">
-                    Generate Report
+                <button class="btn btn-primary rounded-circle fs-5 shadow me-2 btn-sm" wire:click='generateProductPdf'>
+                    <i class="bi bi-filetype-pdf"></i>
                 </button>
 
                 <button class="btn btn-primary rounded-3 py-2 px-3 me-2 btn-sm" data-bs-toggle="modal"
@@ -75,21 +74,11 @@
 
                         <td>₱ {{ $product->retail_price }}</td>
                         <td>₱ {{ $product->wholesale_price }}</td>
-
-
                         <td>
-                            <div class="dropstart">
-                                <button class="dropdown-toggle action" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
-                                    <li wire:click='view_product_info({{ $product->product_id }})'>
-                                        <i class="fa-solid fa-eye"></i> View Product Batches
-                                    </li>
-                                </ul>
-                            </div>
 
+                            <button class="btn btn-primary" wire:click='view_product_info({{ $product->product_id }})'>
+                                <i class="fa-solid fa-eye"></i> View Product Batches
+                            </button>
                         </td>
                     </tr>
                 @endforeach

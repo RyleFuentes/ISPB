@@ -314,24 +314,6 @@ class Products extends Component
     {
         $user = Auth::user();
 
-        // if($this->showCompleted == false && $this->showCancelled == false)
-        // {
-        //         $allOrders = Order::whereIn('status', [1, 2])->get();
-        // }
-        // else
-        // {
-
-        //     $completedOrders = $this->showCompleted
-        //     ? Order::where('status', 1)->latest()->get()
-        //     : collect();
-    
-        //     $cancelledOrders = $this->showCancelled
-        //         ? Order::where('status', 2)->latest()->get()
-        //         : collect();
-    
-        //     $allOrders = $completedOrders->merge($cancelledOrders);
-        // }
-
         $allProducts = Product::all();
         //$data['products'] = $products;
 
@@ -353,21 +335,22 @@ class Products extends Component
         $pdf->Cell(0, 10, now()->format('F j, Y'), 0, 1, 'C');
 
         $pdf->Ln(10); // Add some space before displaying orders
-        $pdf->Cell(0, 10, 'Product Reports:', 0, 1, 'L');
+        $pdf->Cell(0, 10, 'Product Reports', 0, 1, 'L');
         
         // Calculate the X-position to center the table
-        $tableWidth = 160; // Total width of the table cells (sum of individual cell widths)
+        $tableWidth = 170; // Total width of the table cells (sum of individual cell widths)
         $xPosition = ($pageWidth - $tableWidth) / 2;
 
         $pdf->SetX($xPosition); // Set X-position to center for the table
 
         // Adjusted cell widths to match the total table width
-        $pdf->Cell(30, 10, 'Product ID', 1);
-        $pdf->Cell(60, 10, 'Product Name', 1);
-        $pdf->Cell(30, 10, 'Quantity', 1);
-        $pdf->Cell(40, 10, 'Kilo', 1);
-        // $pdf->Cell(30, 10, 'Retail Price', 1);
-        // $pdf->Cell(30, 10, 'Wholesale Price', 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(35, 10, 'Product Name', 1);
+        $pdf->Cell(25, 10, 'Brand', 1);
+        $pdf->Cell(25, 10, 'Quantity', 1);
+        $pdf->Cell(25, 10, 'Kilo', 1);
+        $pdf->Cell(30, 10, 'Retail Price', 1);
+        $pdf->Cell(30, 10, 'Wholesale Price', 1);
         $pdf->Ln();
 
         // Add table rows
@@ -375,15 +358,16 @@ class Products extends Component
             $pdf->SetX($xPosition); // Set X-position to center for each row
 
             // Adjusted cell widths to match the total table width
-            $pdf->Cell(30, 10, $product->product_id, 1);
-            $pdf->Cell(60, 10, $product->product_name, 1);
-            $pdf->Cell(30, 10, $product->quantity, 1); // Assuming $product->amount is correct
-            $pdf->Cell(40, 10, $product->kilo, 1);
-            // $pdf->Cell(30, 10, $product->retail_price, 1);
-            // $pdf->Cell(30, 10, $product->wholesale_price, 1);
+            $pdf->Cell(35, 10, $product->product_name, 1);
+            $pdf->Cell(25, 10, $product->brand->brand_name, 1);
+            $pdf->Cell(25, 10, $product->total_quantity, 1); // Assuming $product->amount is correct
+            $pdf->Cell(25, 10, $product->kilo, 1);
+            $pdf->Cell(30, 10, $product->retail_price, 1);
+            $pdf->Cell(30, 10, $product->wholesale_price, 1);
             $pdf->Ln();
         }
 
+        $pdf->SetFont('Arial', 'B', 16);
         $pdf->Ln(10); // Add some space between the title and user's name
         $pdf->Cell(0, 10, 'Prepared by: ' . $user->name, 0, 1, 'R');
     

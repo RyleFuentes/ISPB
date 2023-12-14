@@ -49,23 +49,15 @@
                                     <td><span class="badge text-bg-warning">Pending</span></td>
                                     <td class="font-size: 12px">
 
-                                        <div class="dropstart">
-                                            <button class="dropdown-toggle action" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" style="width: 250px; font-size: 13px">
-                                                <li wire:click.prevent='completeOrder({{ $order->order_id }})'>
-                                                    <i class="fa-solid fa-check"></i>
-                                                    Complete order
-                                                </li>
-                                                <li wire:click.prevent='cancelOrder({{ $order->order_id }})'
-                                                    class="mt-2">
-                                                    <i class="fa-solid fa-ban"></i>
-                                                    Cancel
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <button wire:click.prevent='completeOrder({{ $order->order_id }})' class="btn btn-primary">
+                                            <i class="fa-solid fa-check"></i>
+                                            Complete order
+                                        </button>
+                                        <button wire:click.prevent='cancelOrder({{ $order->order_id }})'
+                                            class="btn btn-danger">
+                                            <i class="fa-solid fa-ban"></i>
+                                            Cancel
+                                        </button>
 
                                     </td>
                                 </tr>
