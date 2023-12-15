@@ -16,10 +16,7 @@
                 @include('livewire.pages.orders.order_management_table')
             @else
                 <div class="p-3 d-flex justify-content-end">
-                    <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='generatePdf'>
-                        <i class="bi bi-filetype-pdf"></i>
-                    </button>
-
+                    
                     <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='toggle_off'>
                         Orders Page
                     </button>

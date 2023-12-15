@@ -3,28 +3,39 @@
     <h3>Order history</h3>
 
     <div>
-        <button  :class="filter ? 'btn-warning ': 'btn-dark'" x-on:click="filter = !filter" class="btn btn-sm  btn-sm"> <i class="bi bi-funnel"></i> Filter </button>
+        <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='generatePdf'>
+            <i class="bi bi-filetype-pdf"></i>
+        </button>
+
+        <button  :class="filter ? 'btn-warning ': 'btn-primary'" x-on:click="filter = !filter" class="btn btn-sm  btn-sm"> <i class="bi bi-funnel"></i> Filter </button>
         
         <div x-transition x-show="filter" class="m-3 p-3">
-            <div class="d-flex flex-col">
-                <span>Start date:{{$start}}</span> 
-                <span>End date: {{$end}} </span> 
-            </div>
-            <div>
 
-                <label for="start" class="mt-2">Start Date</label>
-                <input wire:model.live='start' id="start" class="form-control" type="date">
+            <h5 class="my-0">Orders Created at until:
+                @if(isset($start) && isset($end))
+                    {{ $start }} to {{ $end }}
+                @endif
+            </h5>
+            <div class="row">
+
+                <div class="col">
+                    <label for="start" class="mt-2">Start Date</label>
+                    <input wire:model.live='start' id="start" class="form-control" type="date">
+                </div>
 
                 
 
-                <label for="end" class="mt-2">End Date</label>
-                <input wire:model.live='end' id="end" class="form-control" type="date">
+                <div class="col">
+                    <label for="end" class="mt-2">End Date</label>
+                    <input wire:model.live='end' id="end" class="form-control" type="date">
+                </div>
 
             </div>
 
 
         </div>
     </div>
+    
     <table class="table table-striped table-hover">
         <thead>
             <tr class="fw-semibold">
@@ -42,16 +53,6 @@
                 <td scope="col" class="text-dark">Delivery Date</td>
                 <td scope="col" class="text-dark">
                     Recipient
-                    
-                    <div  x-transition x-show="filter">
-                        <select   class="form-select" aria-label="Default select example">
-                            <option selected>Recipient :)</option>
-                            {{-- @foreach ($recipients as $item)
-                                <option value="">{{$item->recipient}}</option>
-                            @endforeach --}}
-
-                        </select>
-                    </div>
                 </td>
                 <td scope="col" class="text-dark">Amount</td>
                 <td scope="col" class="text-dark">Total Price</td>
@@ -71,10 +72,11 @@
             </tr>
         </thead>
         <tbody>
+            
             @foreach ($orders as $order)
                 @if ($order->status === 1 || $order->status === 2)
                     <tr wire:key='{{ $order->order_id }}'>
-                        <td x-show="filter" ><input class="form-control" type="checkbox"></td>
+                        <td x-show="filter" ><input class="form-control" wire:click='checkedItem({{$order->order_id}})'type="checkbox"></td>
                         <td>{{ $order->product->product_name }}</td>
                         <td>{{ $order->due_date }}</td>
                         <td>{{ $order->recipient }}</td>

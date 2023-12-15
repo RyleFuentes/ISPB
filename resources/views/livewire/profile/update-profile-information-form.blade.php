@@ -11,6 +11,8 @@ new class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public $contact;
+    public  $address;
 
     /**
      * Mount the component.
@@ -19,6 +21,8 @@ new class extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->contact = Auth::user()->profile->contact_info ?? '';
+        $this->address = Auth::user()->profile->address ?? '' ;
     }
 
     /**
@@ -31,6 +35,8 @@ new class extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'contact' => ['required','numeric'],
+            'address' => ['required'],
         ]);
 
         $user->fill($validated);
@@ -40,7 +46,13 @@ new class extends Component
         }
 
         $user->save();
-        $this->dispatch('profile-updated', name: $user->name);
+
+        $user->profile()->update([
+            'contact_info' => $validated['contact'],
+            'address' => $validated['address'] 
+    ]);
+        $this->redirect('/profile', navigate:true);
+        session()->flash('success', "You have successfully updated your profile image");
     }
 
     /**
@@ -77,6 +89,18 @@ new class extends Component
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-input-label for="contact" :value="__('Contact number')" />
+            <x-text-input wire:model="contact" id="contact" name="contact" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('contact')" />
+        </div>
+
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input wire:model="address" id="address" name="address" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
         <div>
