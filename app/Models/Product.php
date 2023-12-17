@@ -15,9 +15,39 @@ class Product extends Model
 
     ];
 
- 
 
-    
+    public function deductKilo($orderQuantity)
+    {
+        // $remaining_kilo = $this->kilo_amount - $orderQuantity;
+
+        $remainingKilos = max(0, $this->kilo_amount - $orderQuantity);
+        $bagsToDeduct = floor(($this->kilo_amount - $remainingKilos) / 50);
+
+        if ($orderQuantity > 50) {
+
+            $nearestBatch = $this->nearest_batch;
+            if ($nearestBatch) {
+                $batchQty = max(0, $nearestBatch->quantity - $bagsToDeduct);
+                $nearestBatch->update(['quantity' => $batchQty]);
+            }
+        }
+
+        $this->kilo_amount = $remainingKilos;
+
+        // // Update the total_quantity attribute
+        // $this->kilo_amount = max(0, $newTotalQuantity);
+        $this->save();
+    }
+
+    public function getNearestBatchAttribute()
+    {
+        return $this->batch()
+            ->where('expiration_date', '>', now()) // Only consider batches with future expiration dates
+            ->orderBy('expiration_date', 'asc')    // Order by expiration date in ascending order
+            ->first();
+    }
+
+
 
     public function getTotalQuantityAttribute()
     {
@@ -25,6 +55,10 @@ class Product extends Model
         return $this->batch->sum('quantity');
     }
 
+    public function getKiloAmountAttribute()
+    {
+        return $this->total_quantity * 50;
+    }
     public static function TotalProducts()
     {
         return self::count();

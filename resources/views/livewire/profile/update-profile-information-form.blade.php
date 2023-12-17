@@ -93,13 +93,13 @@ new class extends Component
 
         <div>
             <x-input-label for="contact" :value="__('Contact number')" />
-            <x-text-input wire:model="contact" id="contact" name="contact" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-text-input wire:model="contact" id="contact" name="contact" type="text" placeholder="contact info..." class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('contact')" />
         </div>
 
         <div>
             <x-input-label for="address" :value="__('Address')" />
-            <x-text-input wire:model="address" id="address" name="address" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-text-input wire:model="address" id="address" name="address" type="text" placeholder="address..." class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 

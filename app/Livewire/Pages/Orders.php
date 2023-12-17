@@ -54,10 +54,9 @@ class Orders extends Component
     {
         if ($order->status === 0) {
             if ($order->order_type === 1) {
-                $newKilo = $order->product->kilo - $order->order_kilo;
-                $order->product->update([
-                    'kilo' => $newKilo,
-                ]);
+                // $order->deductKilo($order
+                $order->product->deductKilo($order->order_kilo);
+                
             } else {
                 $product = $order->product;
                 $order_qty = $order->order_quantity;

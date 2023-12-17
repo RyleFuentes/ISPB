@@ -49,25 +49,8 @@
                         <td>{{ $product->brand->brand_name }}</td>
                         <td>{{ $product->product_name }}</td>
                         <td>{{ $product->total_quantity }}</td>
+                        <td>{{ $product->kilo_amount }} kg</td>
 
-                        @if ($edit_kilo == true && $kilo_id == $product->product_id)
-                            <td>
-
-                                <input type="text" wire:model='kilo_val' class="form-control">
-                                @error('kilo_val')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                                <button wire:click='update_kilo' class="btn">save</button>
-                                <button wire:click='unset_edit_kilo' class="btn btn-sm">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-
-
-                            </td>
-                        @else
-                            <td>{{ $product->kilo }} <button wire:click='set_edit_kilo({{ $product->product_id }})'
-                                    class="btn btn-sm"><i class="bi bi-vector-pen text-primary"></i></button></td>
-                        @endif
 
 
 
@@ -92,7 +75,7 @@
         </div>
     </div>
     @include('livewire.modals.add_product_from_table')
-    
+
     @include('livewire.pages.products.generate_report_modal')
 
 

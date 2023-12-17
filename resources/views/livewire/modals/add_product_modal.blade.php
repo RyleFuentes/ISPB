@@ -28,7 +28,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="form-floating mt-2">
+                    {{-- <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="kilo"
                             wire:model='product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
                             title="Please enter a valid number with up to two decimal places.">
@@ -36,7 +36,7 @@
                     </div>
                     @error('product_form.kilo')
                         <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    @enderror --}}
 
 
 

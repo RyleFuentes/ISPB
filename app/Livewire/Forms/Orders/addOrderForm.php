@@ -71,9 +71,9 @@ class addOrderForm extends Form
 
         if ($validated['type_order'] === '1') {
 
-            if ($product->kilo < $product->pendingOrderKilo + $validated['order_amount']) {
+            if ($product->kilo_amount < $product->pendingOrderKilo + $validated['order_amount']) {
                 session()->flash('modal_error', 'You have exceeded the amount of kilo to order');
-            } elseif ($product->kilo < $validated['order_amount']) {
+            } elseif ($product->kilo_amount < $validated['order_amount']) {
                 session()->flash('modal_error', "Can't exceed current order amount for this product");
             } else {
 

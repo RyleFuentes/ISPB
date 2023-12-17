@@ -14,9 +14,6 @@ class AddProductsForm extends Form
     #[Rule('required', as:'Quantity')]
     public $quantity;
 
-    #[Rule('required|numeric', as:'Kilo')]
-    public $kilo;
-
 
     #[Rule('required|numeric', as:'Retail Price')]
     public $retail_price;
@@ -33,7 +30,6 @@ class AddProductsForm extends Form
 
         $store = $brand->products()->create([
             'product_name' => $validated['prod_name'],
-            'kilo' => $validated['kilo'],
             'retail_price' => $validated['retail_price'],
             'wholesale_price' => $validated['wholesale_price'],
         ]);
@@ -49,7 +45,7 @@ class AddProductsForm extends Form
         {
 
             session()->flash('success', "You have successfully added a new product");
-            $this->reset('prod_name', 'quantity', 'retail_price', 'wholesale_price', 'expiration_date');
+            $this->reset();
         }
     }
 

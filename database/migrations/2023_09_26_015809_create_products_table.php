@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('brandID');
             $table->foreign('brandID')->references('brand_id')->on('brand')->onDelete('cascade');
             $table->string('product_name');
-            $table->decimal('kilo');
             $table->decimal('retail_price');
             $table->decimal('wholesale_price');
             $table->timestamps();
