@@ -60,12 +60,16 @@
                         <div class="m-b-20 fw-bold text-primary">LOW STOCKS</div>
                         @if ($least_stocks ?? null)
                             @foreach ($least_stocks as $item)
-                                <div class="mt-3">
-                                    <span class="text-danger">{{ $item->product_name }} ({{$item->total_quantity}} bags left)</span>
+                                <div class="mt-3 bg-danger p-3 rounded text-light fw-bold d-flex justify-content-between">
+                                    <span class="">{{ $item->product_name }}</span>
+                                    <span>({{$item->total_quantity}} bags left)</span>
                                 </div>
                             @endforeach
                         @else
-                            All stocks are in safe levels
+                            
+                            <div class="mt-3 bg-primary p-3 rounded text-light fw-bold d-flex justify-content-between">
+                                <span class="">All stocks are in safe levels</span>
+                            </div>
                         @endif
 
                     </div>
