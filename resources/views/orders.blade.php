@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto lg:px-2">
-        <div>
+        <div class="text-end me-3 mb-3">
             <button x-on:click="toggle = !toggle" class="btn btn-primary btn-sm rounded-pill me-2" x-text="toggle ? 'Orders history' : 'Orders page'" x-transition></button>
         </div>
         <div class="overflow-hidden mt-2 sm:rounded-lg">
