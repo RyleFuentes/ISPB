@@ -15,6 +15,10 @@ class AddProductFromTableForm extends Form
 
     #[Rule('required|min:3|max:40|unique:products,product_name')]
     public $prod_name;
+
+    #[Rule('required|min:3|max:250')]
+    public $prod_description;
+
     #[Rule('required|integer')]
     public $quantity;
 
@@ -33,6 +37,7 @@ class AddProductFromTableForm extends Form
         $brand = Brand::findOrFail($validated['brand']);
         $product = $brand->products()->create([
             'product_name' => $validated['prod_name'],
+            'product_description' => $validated['prod_description'],
             'retail_price' => $validated['retail'],
             'wholesale_price' => $validated['wholesale'],
         ]);
