@@ -15,6 +15,9 @@ class AddBrandsForm extends Form
     #[Rule('required|min:3|max:20')]
     public $brand_name;
 
+    #[Rule('required|min:3|max:250')]
+    public $brand_description;
+
     #[Rule('required|image')]
     public $brand_image;
 

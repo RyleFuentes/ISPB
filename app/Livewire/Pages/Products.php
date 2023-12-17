@@ -300,7 +300,14 @@ class Products extends Component
         
 
         if (strlen($this->search) >= 1) {
-            $results = Product::where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
+            // $results = Product::where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
+            $results = Product::where(function($query) {
+                $query->where('product_name', 'like', '%' . $this->search . '%')
+                      ->orWhereHas('brand', function($brandQuery) {
+                          $brandQuery->where('brand_name', 'like', '%' . $this->search . '%');
+                      });
+            })->paginate(10);
+            
             $data['products'] = $results;
         } else {
             $products = Product::paginate(10);
