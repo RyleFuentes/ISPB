@@ -23,15 +23,20 @@ class AddProductsForm extends Form
     #[Rule('required|date|after_or_equal:today', as:'Expiration Date')]
     public $expiration_date;
 
+    public function calculateKilo($quantity)
+    {
+        return $quantity * 50;
+    }
     public function add_form($brand_id)
     {
         $brand = Brand::findOrFail($brand_id);
         $validated = $this->validate();
-
+        $kilo = $this->calculateKilo($validated['quantity']);
         $store = $brand->products()->create([
             'product_name' => $validated['prod_name'],
             'retail_price' => $validated['retail_price'],
             'wholesale_price' => $validated['wholesale_price'],
+            'kilo' => $kilo
         ]);
         
 

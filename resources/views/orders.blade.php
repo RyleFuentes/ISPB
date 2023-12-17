@@ -1,29 +1,26 @@
-<div>
+<div x-data="{ toggle: false, test: false }">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Orders') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto lg:px-2">
-        <div class="overflow-hidden sm:rounded-lg">
-            @if ($change_page == 1)
-                <div class="p-3 d-flex justify-content-end">
+        <div>
+            <button x-on:click="toggle = !toggle" class="btn btn-primary btn-sm rounded-pill me-2" x-text="toggle ? 'Orders history' : 'Orders page'" x-transition></button>
+        </div>
+        <div class="overflow-hidden mt-2 sm:rounded-lg">
 
-                    <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='toggle_on'>
-                        Orders History
-                    </button>
-                </div>
-                @include('livewire.pages.orders.order_management_table')
-            @else
-                <div class="p-3 d-flex justify-content-end">
-                    
-                    <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='toggle_off'>
-                        Orders Page
-                    </button>
-                </div>
+            <div :class="!toggle ? '' : 'hidden'" x-transition>
+               <livewire:pages.orders.order-management />
 
-                <livewire:pages.orders.order-history :orders="$orders" />
-            @endif
+            </div>
+            <div :class="toggle ? '' : 'hidden'" x-transition>
+
+                <livewire:pages.orders.order-history />
+            </div>
+
+
+
         </div>
     </div>
     @include('livewire.pages.orders.orders-history-generate-report')

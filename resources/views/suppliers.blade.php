@@ -13,8 +13,10 @@
     </div>
 
     <div class="py-12 bg-white shadow-sm rounded">
-        @if (!$this->suppliers())
-            no suppliers at the moment
+        @if ($this->suppliers()->count() < 1)
+            <div class="p-3"> 
+                no suppliers at the moment
+            </div>
         @else
             <table class="table table-striped">
                 <thead>
@@ -69,14 +71,16 @@
                                             wire:click="sendOrderEmail({{ $supplier->id }})"
                                             class="btn btn-sm btn-primary px-3">Send order email <i
                                                 class="bi bi-send-plus"></i></button>
-                                        <button class="btn btn-warning px-4" wire:click='editSupplier({{ $supplier->id }})'
+                                        <button class="btn btn-warning px-4"
+                                            wire:click='editSupplier({{ $supplier->id }})'
                                             wire:loading.attr='disabled'>Edit
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn btn-danger px-4" wire:click='deleteConfirm({{ $supplier->id }})'
+                                        <button class="btn btn-danger px-4"
+                                            wire:click='deleteConfirm({{ $supplier->id }})'
                                             wire:loading.attr='disabled'> Delete
                                             <i class="fas fa-trash"></i>
-                                        
+
                                         </button>
                                     </div>
 

@@ -16,28 +16,30 @@ class Product extends Model
     ];
 
 
-    public function deductKilo($orderQuantity)
-    {
-        // $remaining_kilo = $this->kilo_amount - $orderQuantity;
+    // public function deductKilo($orderQuantity)
+    // {
+    //     // $remaining_kilo = $this->kilo_amount - $orderQuantity;
 
-        $remainingKilos = max(0, $this->kilo_amount - $orderQuantity);
-        $bagsToDeduct = floor(($this->kilo_amount - $remainingKilos) / 50);
+    //     $remainingKilos = max(0, $this->kilo_amount - $orderQuantity);
+    //     $bagsToDeduct = floor(($this->kilo_amount - $remainingKilos) / 50);
 
-        if ($orderQuantity > 50) {
+    //     if ($orderQuantity > 50) {
 
-            $nearestBatch = $this->nearest_batch;
-            if ($nearestBatch) {
-                $batchQty = max(0, $nearestBatch->quantity - $bagsToDeduct);
-                $nearestBatch->update(['quantity' => $batchQty]);
-            }
-        }
+    //         $nearestBatch = $this->nearest_batch;
+    //         if ($nearestBatch) {
+    //             $batchQty = max(0, $nearestBatch->quantity - $bagsToDeduct);
+    //             $nearestBatch->update(['quantity' => $batchQty]);
+    //         }
+    //     }
 
-        $this->kilo_amount = $remainingKilos;
+    //     $this->kilo_amount = $remainingKilos;
 
-        // // Update the total_quantity attribute
-        // $this->kilo_amount = max(0, $newTotalQuantity);
-        $this->save();
-    }
+    //     // // Update the total_quantity attribute
+    //     // $this->kilo_amount = max(0, $newTotalQuantity);
+    //     $this->save();
+    // }
+
+    
 
     public function getNearestBatchAttribute()
     {

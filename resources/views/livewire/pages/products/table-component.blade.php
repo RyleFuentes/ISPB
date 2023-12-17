@@ -49,7 +49,7 @@
                         <td>{{ $product->brand->brand_name }}</td>
                         <td>{{ $product->product_name }}</td>
                         <td>{{ $product->total_quantity }}</td>
-                        <td>{{ $product->kilo_amount }} kg</td>
+                        <td>{{ $product->kilo }} kg</td>
 
 
 

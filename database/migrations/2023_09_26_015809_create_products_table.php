@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->decimal('retail_price');
             $table->decimal('wholesale_price');
+            $table->decimal('kilo', 10, 2);
             $table->timestamps();
         });
     }

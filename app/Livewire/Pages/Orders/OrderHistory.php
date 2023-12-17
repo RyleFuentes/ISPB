@@ -174,6 +174,14 @@ class OrderHistory extends Component
 
     }
 
+    #[On('cancelled')]
+    public function cancelled($update = null)
+    {}
+
+    #[On('order-completed')]
+    public function competed()
+    {}
+
     public function render()
     {
         $pending_orders = Order::where('status', 0)->paginate(10);
