@@ -13,6 +13,10 @@ class AddSupplierForm extends Form
     #[Rule('required|email|unique:users,email')]
     public $email;
 
+    public $agent;
+    public $agent_number;
+    public $supplier_category = [];
+
     public function store()
     {
         $validated = $this->validate();

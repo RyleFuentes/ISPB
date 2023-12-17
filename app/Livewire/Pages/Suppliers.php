@@ -23,6 +23,10 @@ class Suppliers extends Component
 
     public AddSupplierForm $form;
 
+    public $test = [
+        'test'
+    ];
+
     protected $listeners = [
         'confirmedDelete'
     ];
