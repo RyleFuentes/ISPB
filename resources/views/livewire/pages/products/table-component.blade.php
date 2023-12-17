@@ -6,7 +6,7 @@
 
     <div class="rounded mt-3 bg-white shadow-sm">
         <div class="px-4 py-3 d-flex align-items-center justify-content-between">
-            <div class="flex gap-4">
+            <div class="d-flex">
                 <form action="" class="form">
                     <div class="d-flex justify-content-center align-items-center">
                         <input wire:model.live='search' placeholder="Search" id="search" type="search"
@@ -17,8 +17,7 @@
                     </div>
                 </form>
 
-                
-                <button class="btn btn-primary rounded-circle fs-5 shadow me-2 btn-sm" wire:click='generateProductPdf'>
+                <button class="btn btn-primary rounded-circle fs-5 shadow me-2 btn-sm ms-5" wire:click='generateProductPdf'>
                     <i class="bi bi-filetype-pdf"></i>
                 </button>
             </div>
