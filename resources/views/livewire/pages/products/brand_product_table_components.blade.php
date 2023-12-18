@@ -75,10 +75,10 @@
                         <td>{{ $item->retail_price }}</td>
                         <td>{{ $item->wholesale_price }}</td>
                         <td>
-                            <button wire:click='view_product_info({{ $item->product_id }})' class="btn"><i
-                                    class="bi bi-eye-fill text-primary"></i>Product Batches</button>
-                            <button class="btn btn-outline-dark"
-                                wire:click='set_edit({{ $item->product_id }})'>edit</button>
+                            <button wire:click='view_product_info({{ $item->product_id }})' class="btn btn-sm btn-primary text-light"><i
+                                    class="bi bi-eye-fill"></i> Product Batches</button>
+                            <button class="btn btn-warning text-light"
+                                wire:click='set_edit({{ $item->product_id }})'>Edit</button>
                             <button class="btn btn-danger" wire:click='delete_product({{ $item->product_id }})'>
                                 delete
                             </button>
