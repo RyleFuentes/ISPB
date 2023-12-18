@@ -20,11 +20,10 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Scripts -->
 </head>
 
-<body x-data="{ toggle: $persist(false) }" class="font-sans flex">
+<body  class="font-sans flex">
     <div class="flex-none " >
         <livewire:layout.sidebar />
     </div>

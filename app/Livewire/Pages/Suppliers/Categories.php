@@ -24,12 +24,12 @@ class Categories extends Component
         if($update)
         {
             session()->flash('modal_success', "You have successfully added a new category");
-            $this->reset();
         }
         else
         {
             session()->flash('error', "Something went wrong, try again...");
         }
+        $this->reset('name');
     }
     public function render()
     {

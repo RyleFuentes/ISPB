@@ -13,7 +13,9 @@
     </div>
 
     <div class="py-12 bg-white shadow-sm rounded">
-        <livewire:pages.suppliers.categories />
+        <div>
+            <livewire:pages.suppliers.categories />
+        </div>
         
         @if ($this->suppliers()->count() < 1)
             <div class="p-3"> 

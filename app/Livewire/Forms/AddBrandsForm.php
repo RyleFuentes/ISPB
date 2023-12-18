@@ -28,6 +28,6 @@ class AddBrandsForm extends Form
         }
 
         Brand::create($validated);
-        $this->reset('brand_image', 'brand_name');
+        $this->reset();
     }
 }
