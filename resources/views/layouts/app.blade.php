@@ -20,29 +20,33 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Scripts -->
 </head>
 
-<body class="font-sans antialiased">
-    <div class="d-flex" id="wrapper">
+<body x-data="{ toggle: $persist(false) }" class="font-sans flex">
+    <div class="flex-none " >
         <livewire:layout.sidebar />
+    </div>
 
-        <div class="container-fluid min-h-screen bg-gray-100">
-            <livewire:layout.navigation />
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header>
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <div class="flex-auto overflow-y-auto p-3 bg-gray-100">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        
+        <livewire:layout.navigation />
+        
+        <!-- Page Heading -->
+        @if (isset($header))
+            <header>
+                <div class=" py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endif
+
+        <!-- Page Content -->
+        <main >
+            {{ $slot }}
+        </main>
     </div>
 
     <script src="/bootstrap-5.3.2-dist/js/popper.js"></script>

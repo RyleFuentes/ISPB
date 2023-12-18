@@ -1,4 +1,4 @@
-<div class="bg-white border shadow rounded-3 toggled" id="sidebar-wrapper">
+<div class="bg-white  toggled" id="sidebar-wrapper">
     <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase mb-3 border-bottom">
         <img src="images/logo.png" class="img-fluid" width="90">
     </div>

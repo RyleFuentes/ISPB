@@ -13,6 +13,8 @@
     </div>
 
     <div class="py-12 bg-white shadow-sm rounded">
+        <livewire:pages.suppliers.categories />
+        
         @if ($this->suppliers()->count() < 1)
             <div class="p-3"> 
                 no suppliers at the moment
@@ -22,6 +24,8 @@
                 <thead>
                     <th class="text-center">Name</th>
                     <th class="text-center">Email</th>
+                    <td class="text-center">Contact number</td>
+                    <th class="text-center">Categories</th>
                     <th class="text-center">Actions</th>
                 </thead>
                 <tbody>
@@ -47,8 +51,10 @@
                                     <button class="btn btn-danger" wire:click='cancel_edit'>Cancel</button>
                                 </td>
                             @else
-                                <td class="text-center">{{ $supplier->supplier_name }}</td>
+                                <td class="text-center">{{ $supplier->agent_name }}</td>
                                 <td class="text-center">{{ $supplier->supplier_email }}</td>
+                                <td>{{$supplier->contact_info}}</td>
+                               
                                 <td class="text-center">
 
                                     <div wire:loading class="d-flex">

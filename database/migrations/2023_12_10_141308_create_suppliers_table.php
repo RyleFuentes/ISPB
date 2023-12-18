@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Brand::class)->index();
             $table->foreignIdFor(Category::class)->index();
-            $table->string('supplier_name');
+            $table->string('agent_name');
             $table->string('supplier_email');
+            $table->string('contact_info');
             $table->string('description');
-            $table->string('contat_info');
             $table->timestamps();
         });
     }

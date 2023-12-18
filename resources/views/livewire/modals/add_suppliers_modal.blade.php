@@ -15,45 +15,53 @@
                 <form wire:submit='add_supplier'>
 
                     <div class="mt-3">
-                        <x-input-label for="name" :value="__('Supplier Name')" />
-                        <x-text-input wire:model='form.name' type="text" id="name" placeholder="Enter Supplier"
-                            class="mt-1 block w-full" required autofocus autocomplete="name" />
+                        <label for="brands">Brand</label>
+                        <select class="form-select" name="" id="brands" wire:model='form.brand_id'>
+                            <option value="" selected>---Choose a brand---</option>
+                            @foreach ($form->brands() as $item)
+                                <option key="{{$item->brand_id}}" value="{{$item->brand_id}}" >{{$item->brand_name}}</option>
+                            @endforeach
+                        </select>
+
+                        <x-input-error class="mt-2" :messages="$errors->get('form.brand_id')" />
+                    </div>
+
+                   
+                    <div class="mt-3">
+                        <x-input-label for="agent" :value="__('Agent Name')" />
+                        <x-text-input wire:model="form.name" id="contact" name="agent" type="text"
+                            placeholder="John Doe" class="mt-1 block w-full"  autofocus autocomplete="name" />
                         <x-input-error class="mt-2" :messages="$errors->get('form.name')" />
                     </div>
 
                     <div class="mt-3">
                         <x-input-label for="email" :value="__('Supplier Email')" />
                         <x-text-input wire:model="form.email" wire:model='form.email' type="email" id="email"
-                            placeholder="supplier@gmail.com" class="mt-1 block w-full" required autofocus="email" />
+                            placeholder="supplier@gmail.com" class="mt-1 block w-full"  autofocus="email" />
                         <x-input-error class="mt-2" :messages="$errors->get('form.email')" />
                     </div>
 
-                    <div class="mt-3">
-                        <x-input-label for="agent" :value="__('Agent Name')" />
-                        <x-text-input wire:model="agent_name" id="contact" name="agent" type="text"
-                            placeholder="John Doe" class="mt-1 block w-full" required autofocus autocomplete="name" />
-                        <x-input-error class="mt-2" :messages="$errors->get('agent')" />
-                    </div>
 
 
 
                     <div class="mt-3">
                         <x-input-label for="agent_number" :value="__('Agent number (Format: 09*******06)')" />
-                        <x-text-input wire:model="agent_number" pattern="^09[0-9]{9}$" id="contact"
+                        <x-text-input wire:model="form.agent_number" pattern="^09[0-9]{9}$" id="contact"
                             name="agent_number" type="tel" placeholder="09817281106" class="mt-1 block w-full"
-                            required autofocus autocomplete="agent_number" />
-                        <x-input-error class="mt-2" :messages="$errors->get('agent_number')" />
+                             autofocus autocomplete="agent_number" />
+                        <x-input-error class="mt-2" :messages="$errors->get('form.agent_number')" />
                     </div>
 
 
                     <div class="mt-3">
-                      <select multiple="multiple" wire:model='test' class="form-select" id="testSelect" aria-label="Default select example">
-                        <option selected>Choose category for this product</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                        <x-input-label for="desc" :value="__('Supplier Description')" />
+                        <textarea class="form-control" name="desc" wire:model='form.desc' id="desc" cols="30" rows="10"></textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('form.desc')"></x-input-error>
                     </div>
+
+                    
+
+                   
 
             </div>
             <div class="modal-footer">

@@ -11,9 +11,11 @@ class Supplier extends Model
 
     protected $guarded = ['id'];
 
-    public function agents()
+  
+
+    public function brand()
     {
-        return $this->hasMany(Agent::class);
+        return $this->belongsTo(Brand::class, 'brand_brand_id');
     }
 
     public function categories()

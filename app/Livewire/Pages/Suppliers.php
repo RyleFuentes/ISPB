@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Livewire\Forms\AddSupplierForm;
 use App\Mail\OrderEmail;
+use App\Models\Brand;
 use App\Models\Supplier;
 use Livewire\Attributes\Computed;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -177,6 +178,9 @@ class Suppliers extends Component
             'timerProgressBar' => true,
            ]);
     }
+
+    
+    
 
 
     #[Computed()]
