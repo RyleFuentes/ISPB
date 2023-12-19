@@ -28,10 +28,25 @@ new #[Layout('layouts.guest')] class extends Component
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
-        event(new Registered(($user = User::create($validated))));
-        Auth::login($user);
-        $this->redirect('/', navigate: true);
-        session()->flash('success', 'You have successfully registered, an email verification is sent to your email please verify');
+        if(User::count() == 0)
+        {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => $validated['password'],
+                'role' => 0
+        ]);
+        }
+        else {
+            $user = User::create($validated);
+        }
+        // event(new Registered($user));
+        session()->flash('success', 'You have successfully registered, try logging in');
+        // $this->redirect('/', navigate: true);
+        // session()->flash('success', 'You have successfully registered, an email verification is sent to your email please verify');
+        
+        $this->redirect('/', navigate:true);
+    
     }
 }; ?>
 

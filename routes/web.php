@@ -24,7 +24,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::middleware(['auth', 'verified',  ])->group(function() {
-    Route::get('/dashboard', Dashboard::class)->name('dashboard')->middleware('admin');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/products', Products::class)->name('products');
     Route::get('/orders', Orders::class)->name('orders');
     Route::get('/users', Users::class)->name('users')->middleware('admin');

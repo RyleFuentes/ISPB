@@ -5,6 +5,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use Illuminate\Auth\Events\Registered;
 
 new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
@@ -18,24 +19,14 @@ new #[Layout('layouts.guest')] class extends Component {
 
         $this->form->authenticate();
         Session::regenerate();
-        if (Auth::user()->role == 2 && Auth::user()->hasVerifiedEmail()) {
-            Auth::guard('web')->logout();
-
-            Session::invalidate();
-            Session::regenerateToken();
-
-            $this->redirect('/', navigate: true);
-            session()->flash('error', "Wait for admin's confirmation to continue");
-        } elseif (!Auth::user()->hasVerifiedEmail()) {
-            $this->redirect(RouteServiceProvider::EMAILVERIF, navigate: true);
-        } elseif (Auth::user()->role == 1) {
-            $this->redirect('products', navigate: true);
-            session()->flash('success', 'welcome ' . Auth::user()->name);
-        } else {
-            # code...
-
+        if (Auth::user()->hasVerifiedEmail()) {
             $this->redirect(RouteServiceProvider::HOME, navigate: true);
-        }
+            session()->flash('success', "You are logged in, welcome ".Auth::user()->name);
+        } elseif (!Auth::user()->hasVerifiedEmail()) {
+            $user = Auth::user();
+            event( new Registered($user));
+            $this->redirect(RouteServiceProvider::EMAILVERIF, navigate: true);
+        } 
     }
 };
 ?>

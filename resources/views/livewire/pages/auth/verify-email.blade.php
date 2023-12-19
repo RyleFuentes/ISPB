@@ -11,22 +11,11 @@ new #[Layout('layouts.guest')] class extends Component {
     /**
      * Send an email verification notification to the user.
      */
-    public function sendVerification(): void
+    public function sendVerification()
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            if (Auth::user()->role == 2) {
-                Auth::guard('web')->logout();
-
-                Session::invalidate();
-                Session::regenerateToken();
-                $this->redirect('/', navigate: true);
-                session()->flash('success', "You have successfully verified your account, please wait for admin's confirmation to continue");
-            }
-            else {
-                # code...
-                $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
-            }
-
+            $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
+            // session()->flash('Welcome '.Auth::user()->name);
             return;
         }
 
@@ -62,18 +51,18 @@ new #[Layout('layouts.guest')] class extends Component {
             {{ __('Resend Verification Email') }}
         </x-primary-button>
         <div wire:loading class="flex gap-2">
-            <div  class="spinner-grow text-dark mt-3" role="status">
-                
+            <div class="spinner-grow text-dark mt-3" role="status">
+
                 <span class="visually-hidden">Loading...</span>
-              </div>
-              <div  class="spinner-grow text-primary mt-3" role="status">
-                
+            </div>
+            <div class="spinner-grow text-primary mt-3" role="status">
+
                 <span class="visually-hidden">Loading...</span>
-              </div>
-              <div  class="spinner-grow text-warning mt-3" role="status">
-                
+            </div>
+            <div class="spinner-grow text-warning mt-3" role="status">
+
                 <span class="visually-hidden">Loading...</span>
-              </div>
+            </div>
         </div>
 
         <button wire:click="logout" type="submit"

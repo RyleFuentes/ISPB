@@ -19,18 +19,22 @@ class VerifyEmailController extends Controller
     {
       
 
-            if ($request->user()->hasVerifiedEmail() ) {
-                Auth::guard('web')->logout();
-
-                Session::invalidate();
-                Session::regenerateToken();
-                return redirect()->route('login')->with('success', 'You have verified your email');
-            }
-    
-            if ($request->user()->markEmailAsVerified()) {
-                event(new Verified($request->user()));
-            }
-    
+        if ($request->user()->hasVerifiedEmail()) {
             return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
+            // session()->flash('success', 'Your email has been verified!, welcome '.Auth::user()->name);
+
         }
+
+        if ($request->user()->markEmailAsVerified()) {
+            event(new Verified($request->user()));
+        }
+
+        // Check user role
+        if ($request->user()->role != 0 && $request->user()->role != 1) {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'You do not have permission to access this application.');
+        }
+
+        return redirect()->intended(RouteServiceProvider::HOME . '?verified=1');
+    }
 }
