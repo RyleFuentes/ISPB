@@ -11,10 +11,18 @@ class Categories extends Component
     #[Rule('required|min:3')]
     public $name;
 
+    public function deleteCategory(Category $category)
+    {
+        $category->delete();
+        session()->flash('success', "You have successfully deleted this category");
+        $this->dispatch('delete-success');
+    }
+
     public function store()
     {
         $validated = $this->validate();
 
+       
 
 
        $update = Category::create([

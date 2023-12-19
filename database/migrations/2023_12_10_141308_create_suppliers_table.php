@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Brand::class)->index();
-            $table->foreignIdFor(Category::class)->index();
             $table->string('agent_name');
             $table->string('supplier_email');
             $table->string('contact_info');

@@ -1,9 +1,4 @@
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div wire:ignore.self class="modal fade" id="addSuppliersModal" tabindex="-1" aria-labelledby="addSuppliersModalLabel"
-    aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="addSuppliersModal" tabindex="-1" aria-labelledby="addSuppliersModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             @include('livewire.messages.modal_message')
@@ -19,25 +14,26 @@
                         <select class="form-select" name="" id="brands" wire:model='form.brand_id'>
                             <option value="" selected>---Choose a brand---</option>
                             @foreach ($form->brands() as $item)
-                                <option key="{{$item->brand_id}}" value="{{$item->brand_id}}" >{{$item->brand_name}}</option>
+                                <option key="{{ $item->brand_id }}" value="{{ $item->brand_id }}">
+                                    {{ $item->brand_name }}</option>
                             @endforeach
                         </select>
 
                         <x-input-error class="mt-2" :messages="$errors->get('form.brand_id')" />
                     </div>
 
-                   
+
                     <div class="mt-3">
                         <x-input-label for="agent" :value="__('Agent Name')" />
                         <x-text-input wire:model="form.name" id="contact" name="agent" type="text"
-                            placeholder="John Doe" class="mt-1 block w-full"  autofocus autocomplete="name" />
+                            placeholder="John Doe" class="mt-1 block w-full" autofocus autocomplete="name" />
                         <x-input-error class="mt-2" :messages="$errors->get('form.name')" />
                     </div>
 
                     <div class="mt-3">
                         <x-input-label for="email" :value="__('Supplier Email')" />
                         <x-text-input wire:model="form.email" wire:model='form.email' type="email" id="email"
-                            placeholder="supplier@gmail.com" class="mt-1 block w-full"  autofocus="email" />
+                            placeholder="supplier@gmail.com" class="mt-1 block w-full" autofocus="email" />
                         <x-input-error class="mt-2" :messages="$errors->get('form.email')" />
                     </div>
 
@@ -48,7 +44,7 @@
                         <x-input-label for="agent_number" :value="__('Agent number (Format: 09*******06)')" />
                         <x-text-input wire:model="form.agent_number" pattern="^09[0-9]{9}$" id="contact"
                             name="agent_number" type="tel" placeholder="09817281106" class="mt-1 block w-full"
-                             autofocus autocomplete="agent_number" />
+                            autofocus autocomplete="agent_number" />
                         <x-input-error class="mt-2" :messages="$errors->get('form.agent_number')" />
                     </div>
 
@@ -59,19 +55,22 @@
                         <x-input-error class="mt-2" :messages="$errors->get('form.desc')"></x-input-error>
                     </div>
 
-                    
+                    <div class="mt-3 flex flex-col">
+                        @foreach ($this->categories as $item)
+                            <input type="checkbox" name="" id="" class="form-check-input"
+                                wire:model='form.categories' value="{{ $item->id }}">{{ $item->category }}
+                        @endforeach
+                    </div>
+                    <div class="mt-3">
 
-                   
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
+
             </div>
+
         </div>
     </div>
 </div>
-
-
-

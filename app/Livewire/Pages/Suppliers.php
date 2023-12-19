@@ -5,6 +5,7 @@ namespace App\Livewire\Pages;
 use App\Livewire\Forms\AddSupplierForm;
 use App\Mail\OrderEmail;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Supplier;
 use Livewire\Attributes\Computed;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -179,7 +180,10 @@ class Suppliers extends Component
            ]);
     }
 
-    
+    public function add_supplier()
+    {
+        $this->form->store();
+    }
     
 
 
@@ -189,11 +193,14 @@ class Suppliers extends Component
         return Supplier::paginate(10);
     }
 
-    public function add_supplier()
-    {
-        $this->form->store();
-    }
+   
 
+    #[On('delete-success')]
+    #[Computed()]
+    public function categories()
+    {
+        return Category::all();
+    }
     public function render()
     {
         return view('suppliers');

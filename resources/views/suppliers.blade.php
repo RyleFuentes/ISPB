@@ -26,7 +26,7 @@
                 <thead>
                     <th class="text-center">Name</th>
                     <th class="text-center">Email</th>
-                    <td class="text-center">Contact number</td>
+                    <th class="text-center">Contact number</th>
                     <th class="text-center">Categories</th>
                     <th class="text-center">Actions</th>
                 </thead>
@@ -56,6 +56,11 @@
                                 <td class="text-center">{{ $supplier->agent_name }}</td>
                                 <td class="text-center">{{ $supplier->supplier_email }}</td>
                                 <td>{{$supplier->contact_info}}</td>
+                                <td>
+                                    @foreach ($supplier->categories as $item)
+                                        {{$item->category}}
+                                    @endforeach
+                                </td>
                                
                                 <td class="text-center">
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\Supplier;
 use App\Models\Brand;
+use App\Models\Category;
 use Livewire\Attributes\Computed;
 use Livewire\Form;
 use Livewire\Attributes\Rule;
@@ -38,6 +39,7 @@ class AddSupplierForm extends Form
 
     public function store()
     {
+        // dd($this->categories);
     
         $validated = $this->validate();
         $brand = Brand::findOrFail($validated['brand_id']);
@@ -47,17 +49,20 @@ class AddSupplierForm extends Form
             'supplier_email' => $validated['email'],
             'contact_info' => $validated['agent_number'],
             'description' => $validated['desc'],
-            'categories' => $this->categories,
         ]);
-        // $store->categories()->attach($this->category_ids);
+        
+       foreach  ($validated['categories'] as $category)
+       {
+        $store->categories()->attach($category);
+       }
         if($store)
         {
+            session()->flash('modal_success', 'Supplier Added Successfully');
             $this->reset();
-            return back()->with('modal_success','you have added a new supplier');
         }
         else
         {
-            return back()->with('modal_error',"something wen't wrong try again");
+            session()->flash('modal_error', 'Supplier Not Added');
         }
 
        

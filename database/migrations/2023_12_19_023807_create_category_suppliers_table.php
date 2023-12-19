@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Supplier;
+use App\Models\Category;
 return new class extends Migration
 {
     /**
@@ -11,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category_supplier', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
+            $table->foreignIdFor(Category::class)->index();
+            $table->foreignIdFor(Supplier::class)->index();
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category_suppliers');
     }
 };

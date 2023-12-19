@@ -13,6 +13,7 @@ class Category extends Model
 
     public function suppliers()
     {
-        return $this->hasMany(Supplier::class);
+        return $this->belongsToMany(Supplier::class);
     }
+
 }
