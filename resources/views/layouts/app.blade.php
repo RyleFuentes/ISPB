@@ -28,7 +28,7 @@
         <livewire:layout.sidebar />
     </div>
 
-    <div class="flex-auto overflow-y-auto p-3 bg-gray-100">
+    <div class="flex-auto h-screen overflow-y-auto  p-3 bg-gray-100">
 
         
         <livewire:layout.navigation />
@@ -43,7 +43,7 @@
         @endif
 
         <!-- Page Content -->
-        <main >
+        <main>
             {{ $slot }}
         </main>
     </div>
