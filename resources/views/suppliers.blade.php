@@ -1,4 +1,6 @@
 <div>
+    @include('livewire.modals.set-supplier-order-modal')
+    @include('livewire.modals.add_suppliers_modal')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Suppliers') }}
@@ -16,9 +18,9 @@
         <div>
             <livewire:pages.suppliers.categories />
         </div>
-        
+
         @if ($this->suppliers()->count() < 1)
-            <div class="p-3"> 
+            <div class="p-3">
                 no suppliers at the moment
             </div>
         @else
@@ -55,54 +57,30 @@
                             @else
                                 <td class="text-center">{{ $supplier->agent_name }}</td>
                                 <td class="text-center">{{ $supplier->supplier_email }}</td>
-                                <td>{{$supplier->contact_info}}</td>
+                                <td>{{ $supplier->contact_info }}</td>
                                 <td>
                                     @foreach ($supplier->categories as $item)
-                                        {{$item->category}}
+                                        {{ $item->category }}
                                     @endforeach
                                 </td>
-                               
+
                                 <td class="text-center">
 
-                                    <div wire:loading class="d-flex">
-                                        <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
+                                   
+                                    <button  wire:click='set_id({{ $supplier->id }})'
+                                        class="btn btn-sm btn-primary px-3"
+                                        data-bs-toggle="modal" data-bs-target="#SetOrder">Set order<i
+                                            class="bi bi-send-plus"></i></button>
+                                    <button class="btn btn-warning px-4" wire:click='editSupplier({{ $supplier->id }})'
+                                        wire:loading.attr='disabled'>Edit
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger px-4" wire:click='deleteConfirm({{ $supplier->id }})'
+                                        wire:loading.attr='disabled'> Delete
+                                        <i class="fas fa-trash"></i>
 
-                                        <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
+                                    </button>
 
-                                        <div wire:loading class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
-                                    </div>
-                                    <div wire:loading.remove>
-
-                                        <button id="sendOrderEmailButton" wire:loading.attr="disabled"
-                                            wire:target="sendOrderEmail"
-                                            wire:click="sendOrderEmail({{ $supplier->id }})"
-                                            class="btn btn-sm btn-primary px-3">Send order email <i
-                                                class="bi bi-send-plus"></i></button>
-                                        <button class="btn btn-warning px-4"
-                                            wire:click='editSupplier({{ $supplier->id }})'
-                                            wire:loading.attr='disabled'>Edit
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-danger px-4"
-                                            wire:click='deleteConfirm({{ $supplier->id }})'
-                                            wire:loading.attr='disabled'> Delete
-                                            <i class="fas fa-trash"></i>
-
-                                        </button>
-                                    </div>
-
-
-
-                                    {{-- <button id="editSupplierButton" wire:loading.attr="disabled" wire:target="editSupplier" wire:click="editSupplier({{ $supplier->id }})"
-                                        class="btn btn-sm btn-warning">edit</button>
-                                    <button id="deleteConfirmButton" wire:loading.attr="disabled" wire:target="deleteConfirm" wire:click="deleteConfirm({{ $supplier->id }})"
-                                        class="btn btn-sm btn-danger">delete</button> --}}
                                 </td>
                             @endif
                         </tr>
@@ -118,9 +96,10 @@
 
         @endif
 
-
+        
     </div>
 
 
-    @include('livewire.modals.add_suppliers_modal')
+    
+    
 </div>
