@@ -22,10 +22,11 @@ class addOrderForm extends Form
 
     // ];
 
-
+    
     #[Rule('required|numeric|min:50')]
     public $delivery_fee;
 
+    #[Rule('required', as: 'Mode of Delivery')]
     public $mode_order;
     #[Rule('required', as: 'Order Type')]
     public $type_order;
