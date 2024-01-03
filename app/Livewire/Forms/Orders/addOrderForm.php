@@ -23,7 +23,7 @@ class addOrderForm extends Form
     // ];
 
 
-    #[Rule('required|numeric|min:50')]
+    #[Rule('nullable|sometimes|numeric|min:50')]
     public $delivery_fee;
 
     public $mode_order;
@@ -69,6 +69,10 @@ class addOrderForm extends Form
         if ($type === '1') {
             return $product->retail_price * $qty;
         } elseif ($type === '2') {
+            if($this->mode_order = 1)
+            {
+                return ($product->wholesale_price * $qty) + $this->delivery_fee;
+            }
             return $product->wholesale_price * $qty;
         }
 

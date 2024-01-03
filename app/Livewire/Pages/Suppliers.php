@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Livewire\Forms\addOrderSupplierForm;
 use App\Livewire\Forms\AddSupplierForm;
 use App\Mail\OrderEmail;
 use App\Models\Brand;
@@ -92,7 +93,7 @@ class Suppliers extends Component
     public function editSupplier(Supplier $supplier)
     {
         $this->edit_id = $supplier->id;
-        $this->name = $supplier->supplier_name;
+        $this->name = $supplier->agent_name;
         $this->email = $supplier->supplier_email;
         
     }
@@ -136,6 +137,19 @@ class Suppliers extends Component
     public function cancel_edit()
     {
         $this->reset('edit_id');
+    }
+
+    public addOrderSupplierForm $set_order;
+    public function add_order()
+    {
+        $this->set_order->store($this->id);
+    }
+
+    public $id;
+    public function set_id(Supplier $supplier)
+    {
+        $this->id = $supplier->id;
+   
     }
 
     public function sendOrderEmail(Supplier $supplier)

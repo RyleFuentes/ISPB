@@ -18,6 +18,11 @@ class Supplier extends Model
         return $this->belongsTo(Brand::class, 'brand_brand_id');
     }
 
+    public function supplier_orders()
+    {
+        return $this->hasMany(SupplierOrder::class);
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
