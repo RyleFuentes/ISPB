@@ -12,6 +12,19 @@ use Livewire\Attributes\Computed;
 class addOrderForm extends Form
 {
 
+    // public $orders_array = [
+    //     'type_order' =>  '',
+    //     'product' => '',
+    //     'recipient' => '',
+    //     'order_amount' => '',
+    //     'deliver_date' => '',
+    //     'brandID' => ''
+
+    // ];
+
+
+    public $mode_order;
+  
 
     #[Rule('required', as: 'Order Type')]
     public $type_order;

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('productID')->references('product_id')->on('products')->onDelete('cascade');
             $table->integer('order_quantity')->nullable(true);
             $table->decimal('order_kilo')->nullable(true);
+            $table->smallInteger('mode_of_delivery')->default(0);
             $table->tinyInteger('order_type'); //? 1 == retail orders ; 2 == wholesale orders
             $table->decimal('total_price', 10, 3);
             $table->date('due_date');

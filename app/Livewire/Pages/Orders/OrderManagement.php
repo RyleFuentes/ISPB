@@ -21,6 +21,12 @@ class OrderManagement extends Component
     public $toggle_input;
     public $paginate_number = 10;
 
+
+    public function updatedAddOrderModeOrder()
+    {
+        dd('updated');
+    }
+    
     //! lifecycle hook for when add_order->brandID is updated/changed
     public function updatedAddOrderBrandID()
     {

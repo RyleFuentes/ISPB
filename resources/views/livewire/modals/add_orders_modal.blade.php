@@ -5,9 +5,9 @@
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content rounded-4">
 
-              <div class="my-3 p-3">
+              
                 @include('livewire.messages.modal_message')
-              </div>
+           
               <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Add Order</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -15,6 +15,14 @@
               <div class="modal-body px-4">
 
                   <form wire:submit='submit_order'>
+
+                    <label for="mode" class="modal-input-label">Mode of Delivery</label>
+                    <div class="form-group mt-2">
+                        <select wire:model.live='add_order.mode_order' name="" id="mode" class="modal-input-field">
+                            <option value="0" selected>Delivery</option>
+                            <option value="1">Pick up</option>
+                        </select>
+                    </div>
 
                       <div class="form-group">
                           <label for="brand" class="modal-input-label">Brand</label>

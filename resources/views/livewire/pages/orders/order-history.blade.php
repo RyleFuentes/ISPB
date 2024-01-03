@@ -66,7 +66,7 @@
                 @foreach ($orders as $order)
                     @if ($order->status === 1 || $order->status === 2)
                         <tr wire:key='{{ $order->order_id }}'>
-                            <td x-show="filter" ><input class="form-control" wire:click='checkedItem({{$order->order_id}})'type="checkbox"></td>
+                            <td x-show="filter" ><input class="form-check-input" wire:click='checkedItem({{$order->order_id}})'type="checkbox"></td>
                             <td>{{ $order->product->product_name }}</td>
                             <td>{{ $order->due_date }}</td>
                             <td>{{ $order->recipient }}</td>
