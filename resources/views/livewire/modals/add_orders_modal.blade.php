@@ -19,6 +19,7 @@
                     <label for="mode" class="modal-input-label">Mode of Delivery</label>
                     <div class="form-group mt-2">
                         <select wire:model.live='add_order.mode_order' name="" id="mode" class="modal-input-field">
+                            <option selected>-- Select --</option>    
                             <option value="0" selected>Delivery</option>
                             <option value="1">Pick up</option>
                         </select>
@@ -53,9 +54,9 @@
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
 
-                      <div class=" mt-3 d-flex gap-3 text-center">
+                      <div class="mt-3 gap-3">
                           <label for="retail" class="modal-input-label">Order Type: </label>
-                          <div class="d-flex flex-column">
+                          <div class="d-flex justify-evenly gap-2">
                               <label for="retail" class="modal-input-label">
                                   <input id="retail" type="radio" wire:model.live='add_order.type_order'
                                       class='form-radio' value='1' />
