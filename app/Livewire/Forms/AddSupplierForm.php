@@ -10,8 +10,9 @@ use Livewire\Form;
 use Livewire\Attributes\Rule;
 class AddSupplierForm extends Form
 {
-    #[Rule('required|min:3|max:30', as:'Supplier Name')]
+    #[Rule('required|min:3|max:30|regex:/^[^\d]/', as:'Supplier Name')]
     public $name;
+    
     #[Rule('required|email|unique:users,email', as:'Email')]
     public $email;
 
@@ -26,8 +27,9 @@ class AddSupplierForm extends Form
     public $desc;
     // public $supplier_category = [];
 
-    #[Rule('required')]
+    #[Rule('required', as:'Categories')]
     public $categories = [];
+
 
    
 

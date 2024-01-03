@@ -55,13 +55,16 @@
                         <x-input-error class="mt-2" :messages="$errors->get('form.desc')"></x-input-error>
                     </div>
 
-                    <div class="mt-3 gap-4">
+                    <div class="mt-3">
+                        <x-input-label for="desc" :value="__('Category')" />
                         @foreach ($this->categories as $item)
                             <input type="checkbox" name="" id="" class="form-check-input overflow-y-auto"
                                 wire:model='form.categories' value="{{ $item->id }}"> {{ $item->category }}
                         @endforeach
+                        <x-input-error class="mt-2" :messages="$errors->get('form.categories')"></x-input-error>
                     </div>
-                    <div class="mt-3">
+
+                    <div class="mt-3 flex justify-end gap-2">
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>

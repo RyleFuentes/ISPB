@@ -60,7 +60,7 @@
                                 <td>{{ $supplier->contact_info }}</td>
                                 <td>
                                     @foreach ($supplier->categories as $item)
-                                        {{ $item->category }}
+                                        <div class="rounded-pill bg-primary badge">{{ $item->category }}</div>
                                     @endforeach
                                 </td>
 
