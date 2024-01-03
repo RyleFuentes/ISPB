@@ -20,12 +20,9 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
 
-
-          
-        
-          <div class="p-3 mt-3">
+          <div class="mt-3 flex justify-content-end gap-2">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="submit" class="btn btn-primary">Save</button>
           </div>
 
         </form>

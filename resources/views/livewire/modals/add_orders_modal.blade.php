@@ -55,10 +55,10 @@
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
 
-                      <div class=" mt-3 d-flex gap-3 text-center">
+                      <div class="mt-3 gap-3">
                           <label for="retail" class="modal-input-label">Order Type: </label>
                           <div class="d-flex flex-column">
-                              @if ($add_order->mode_order == 1)
+                              @if ($add_order->mode_order == 2)
                                   <label for="retail" class="modal-input-label">
                                       <input id="retail" type="radio" wire:model.live='add_order.type_order'
                                           class='form-radio' value='1' />
