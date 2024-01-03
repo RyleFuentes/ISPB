@@ -17,16 +17,20 @@
                   <form wire:submit='submit_order'>
 
                       <label for="mode" class="modal-input-label">Mode of Delivery</label>
-                      <div class="form-group mt-2">
+                      <div class="form-group">
                           <select wire:model.live='add_order.mode_order' name="" id="mode"
-                              class="modal-input-field">
+                              wire:model.live='add_order.mode_order'
+                              class="modal-input-field form-select">
                               <option value="" selected>Choose the mode of order</option>
                               <option value="1">Delivery</option>
                               <option value="2">Pick up</option>
                           </select>
                       </div>
+                      @error('add_order.mode_order')
+                          <span class="text-danger">{{ $message }}</span>
+                      @enderror
 
-                      <div class="form-group">
+                      <div class="form-group mt-2">
                           <label for="brand" class="modal-input-label">Brand</label>
                           <select id='brand' wire:model.live='add_order.brandID'
                               class="modal-input-field form-select">
@@ -57,7 +61,7 @@
 
                       <div class="mt-3 gap-3">
                           <label for="retail" class="modal-input-label">Order Type: </label>
-                          <div class="d-flex flex-column">
+                          <div class="flex gap-4">
                               @if ($add_order->mode_order == 2)
                                   <label for="retail" class="modal-input-label">
                                       <input id="retail" type="radio" wire:model.live='add_order.type_order'
@@ -66,12 +70,13 @@
                                   </label>
                               @endif
 
-                              <label for="wholesale" class="modal-input-label">
-                                  <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
-                                      class='form-radio' value='2' />
-                                  Wholesale <span class="text-secondary"> (per bags)</span>
-                              </label>
-
+                              @if ($add_order->mode_order == 1 || $add_order->mode_order == 2)
+                                <label for="wholesale" class="modal-input-label">
+                                    <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
+                                        class='form-radio' value='2' />
+                                    Wholesale <span class="text-secondary"> (per bags)</span>
+                                </label>
+                              @endif
 
                           </div>
                       </div>
