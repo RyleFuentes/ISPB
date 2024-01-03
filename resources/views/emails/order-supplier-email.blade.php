@@ -30,6 +30,8 @@
             <p class="fw-semibold px-3 ">Good day {{ $supplier->supplier_name }} this email is to inform you that a new set of orders will be
                 sent to you for the next following days.</p>
         </div>
+
+        <livewire:actions.email-order-btn />
     </div>
 
     <script src="/bootstrap-5.3.2-dist/js/popper.js"></script>
