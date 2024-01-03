@@ -22,10 +22,11 @@ class OrderManagement extends Component
     public $paginate_number = 10;
 
 
-    public function updatedAddOrderModeOrder()
-    {
-        dd('updated');
-    }
+
+    // public function updatedAddOrderModeOrder()
+    // {
+    //     dd($this->add_order->mode_order);
+    // }
     
     //! lifecycle hook for when add_order->brandID is updated/changed
     public function updatedAddOrderBrandID()

@@ -34,8 +34,7 @@
                 <tr>
                     <th>Brand</th>
                     <th>Product</th>
-                    <th>Quantity (bags) </th>
-                    <th>Kilos </th>
+                    <th>Quantity </th>
                     <th>Retail price</th>
                     <th>Wholesale price</th>
                     <th>Actions</th>
@@ -48,13 +47,7 @@
                     <tr wire:key='{{ $product->product_id }}'>
                         <td>{{ $product->brand->brand_name }}</td>
                         <td>{{ $product->product_name }}</td>
-                        <td>{{ $product->total_quantity }}</td>
-                        <td>{{ $product->kilo }} kg</td>
-
-
-
-
-
+                        <td>{{ $product->total_quantity }} <span class="text-green-700">bags</span></td>
                         <td>₱ {{ $product->retail_price }}</td>
                         <td>₱ {{ $product->wholesale_price }}</td>
                         <td>

@@ -23,9 +23,10 @@ class addOrderForm extends Form
     // ];
 
 
-    public $mode_order;
-  
+    #[Rule('required|numeric|min:50')]
+    public $delivery_fee;
 
+    public $mode_order;
     #[Rule('required', as: 'Order Type')]
     public $type_order;
     #[Rule('required', as:'Product')]
@@ -96,8 +97,11 @@ class addOrderForm extends Form
                     'due_date' => $validated['deliver_date'],
                     'recipient' => $validated['recipient'],
                     'total_price' => $this->total_price,
-                    'order_type' => $validated['type_order']
+                    'order_type' => $validated['type_order'],
+                    'mode_of_delivery' => $this->mode_order
                 ]);
+
+                // $product->orders()->create($validated)
 
                 session()->flash('modal_success', 'You have added a retail order');
                 $this->reset();
@@ -113,7 +117,8 @@ class addOrderForm extends Form
                     'due_date' => $validated['deliver_date'],
                     'recipient' => $validated['recipient'],
                     'total_price' => $this->total_price,
-                    'order_type' => $validated['type_order']
+                    'order_type' => $validated['type_order'],
+                    'mode_of_delivery' => $this->mode_order
                 ]);
 
                 session()->flash('modal_success', 'You have added a wholesale order');

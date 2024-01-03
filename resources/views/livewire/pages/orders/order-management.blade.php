@@ -21,6 +21,7 @@
                         <tr class="fw-semibold">
 
                             <td scope="col" class="text-dark">Ordered Product</td>
+                            <td scope="col" class="text-dark">Mode of Order</td>
                             <td scope="col" class="text-dark">Delivery Date</td>
                             <td scope="col" class="text-dark">Amount</td>
                             <td scope="col" class="text-dark">Total Price</td>
@@ -35,6 +36,14 @@
                                 <tr>
 
                                     <td>{{ $order->product->product_name }}</td>
+                                    <td>
+                                        @if ($order->mode_of_delivery == 0)
+                                            <span class="rounded bg-orange-300">Delivery</span>
+                                        @else
+                                            <span class="rounded bg-green-300">Pickup</span>
+                                            
+                                        @endif
+                                    </td>
                                     <td>{{ $order->due_date }}</td>
                                     @if ($order->order_type === 1)
                                         <td>{{ $order->order_kilo }} <i class="bi bi-basket2-fill text-primary"></i>
