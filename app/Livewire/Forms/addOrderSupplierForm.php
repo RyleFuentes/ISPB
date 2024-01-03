@@ -31,7 +31,7 @@ class addOrderSupplierForm extends Form
             'delivery_date' => $validated['deliver_date'],
         ]);
 
-        // Mail::to($supplier->supplier_email)->send(new OrderEmail($store));
+        Mail::to($supplier->supplier_email)->send(new OrderEmail($supplier));
 
         if($store)
         {

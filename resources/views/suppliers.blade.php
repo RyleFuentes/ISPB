@@ -26,7 +26,7 @@
 
         <div :class="page == 1 ? '' : 'hidden'">
 
-            <livewire:pages.suppliers.categories />
+            <div><livewire:pages.suppliers.categories /></div>
 
             @if ($this->suppliers()->count() < 1)
                 <div class="p-3">
@@ -72,7 +72,7 @@
                                     </td>
                                     <td class="text-center">
 
-                                        <button wire:click='test'
+                                        <button wire:click='set_id({{ $supplier->id }})'
                                             class="btn btn-sm btn-primary px-3" data-bs-toggle="modal"
                                             data-bs-target="#SetOrder">Set order<i class="bi bi-send-plus"></i></button>
                                         <button class="btn btn-warning px-4"
@@ -126,4 +126,4 @@
 
 
 
-</div>
+
