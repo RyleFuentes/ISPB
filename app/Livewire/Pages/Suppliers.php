@@ -8,6 +8,7 @@ use App\Mail\OrderEmail;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Supplier;
+use App\Models\SupplierOrder;
 use Livewire\Attributes\Computed;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -217,6 +218,7 @@ class Suppliers extends Component
     }
     public function render()
     {
-        return view('suppliers');
+        $orders = SupplierOrder::paginate(10);
+        return view('suppliers', compact('orders'));
     }
 }

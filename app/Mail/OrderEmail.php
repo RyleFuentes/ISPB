@@ -16,7 +16,7 @@ class OrderEmail extends Mailable
     public Supplier $supplier;
     /**
      * Create a new message instance.
-     */
+    */
     public function __construct(Supplier $supplier)
     {
         $this->supplier = $supplier;

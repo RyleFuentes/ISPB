@@ -13,7 +13,7 @@ class error_msg extends Component
      */
 
     
-    public function __construct(public string $value, public string $message)
+    public function __construct( public string $message)
     {
         
     }
