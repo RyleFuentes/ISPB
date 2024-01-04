@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Supplier::class)->index();
             $table->string('prod_name');
             $table->string('quantity');
+            $table->tinyInteger('status')->default(0); //? 0 = waiting for confirmation / 1 = pending / 2 = completed / 3 = cancelled
             $table->date('delivery_date');
             $table->timestamps();
         });

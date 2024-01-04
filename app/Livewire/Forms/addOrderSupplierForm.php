@@ -29,6 +29,7 @@ class addOrderSupplierForm extends Form
             'prod_name' => $validated['prod_name'],
             'quantity' => $validated['quantity'],
             'delivery_date' => $validated['deliver_date'],
+            
         ]);
 
         Mail::to($supplier->supplier_email)->send(new OrderEmail($supplier));

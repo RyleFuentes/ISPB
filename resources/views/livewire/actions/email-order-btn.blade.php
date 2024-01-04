@@ -1,4 +1,3 @@
 <div>
-    
-    <button wire:click='test' type="button" class="btn btn-primary">Confirm</button>
+    <button wire:click='confirm_order({{$supp_id}})' type="button" class="btn btn-primary">Confirm</button>
 </div>

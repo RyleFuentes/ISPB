@@ -27,19 +27,23 @@
     <div class="container">
         <div class="mb-4 text-sm text-gray-600 card shadow-lg mt-5 p-5 text-center">
             <i class="fs-2 fas fa-user"></i>
-            <p class="fw-semibold px-3 ">Good day {{ $supplier->agent_name }} this email is to inform you that a new set of orders will be
-                sent to you for the next following days.</p>
+            <p class="fw-semibold px-3 ">Good day {{ $supplier->agent_name }}, this email is to inform you that Khim Ebram's Poultry 
+            would like to order the following items: </p>
 
                 <ul>
-                    @foreach ($orders as $order)
-                        <li>{{$order->prod_name}}</li>
-                        <li>{{$order->quantity}}</li>
-                        <li>{{$order->delivery_date}}</li>
+                    @foreach ($supplier->supplier_orders  as $order)
+                        @if ($order->status == 0)
+                            <div wire:key='{{$order->id}}' class="bg-white mt-2 border-none shadow-md p-2">
+                                <li>{{$order->prod_name}}</li>
+                                <li>{{$order->quantity}}</li>
+                                <li>{{$order->delivery_date}}</li>
+                            </div>
+                        @endif
                     @endforeach
                 </ul>
         </div>
 
-        <livewire:actions.email-order-btn />
+        <livewire:actions.email-order-btn :id="$supplier->id"/>
     </div>
 
     <script src="/bootstrap-5.3.2-dist/js/popper.js"></script>
