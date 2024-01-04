@@ -29,7 +29,12 @@ Route::middleware(['auth', 'verified',  ])->group(function() {
     Route::get('/orders', Orders::class)->name('orders');
     Route::get('/users', Users::class)->name('users')->middleware('admin');
     Route::get('/suppliers', Suppliers::class)->name('suppliers')->middleware('admin');
+    
 });
 
+
+Route::get('/order-confirmed', function(){
+    return view('emails.email-confirmation');
+})->name('order-confirmed');
 
 require __DIR__.'/auth.php';

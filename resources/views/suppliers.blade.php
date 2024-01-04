@@ -105,6 +105,7 @@
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Delivery Date</th>
+                <th></th>
             </thead>
 
             <tbody>
@@ -114,7 +115,9 @@
                         <td>{{ $order->prod_name }}</td>
                         <td>{{ $order->quantity }} <span class="text-green-500">bags</span></td>
                         <td>{{ $order->delivery_date }}</td>
-
+                        <td>
+                            <button ><i class="bi bi-x-octagon-fill text-danger"></i></button>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

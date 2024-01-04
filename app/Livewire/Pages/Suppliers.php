@@ -25,8 +25,30 @@ class Suppliers extends Component
     use LivewireAlert;
     use WithPagination;
 
-    public AddSupplierForm $form;
+    public function mount()
+    {
 
+        $categories = Category::all();
+        if($categories->count() < 1)
+        {
+            $category_array = [
+                'fish',
+                'dog',
+                'cat',
+                'pig',
+                'chick',
+            ];
+           foreach($category_array as $category)
+           {
+            Category::create([
+                'category' => $category
+            ]);
+           }
+        }
+    }
+
+
+    public AddSupplierForm $form;
     public $test = [
         'test'
     ];

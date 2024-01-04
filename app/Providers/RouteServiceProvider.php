@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/dashboard';
     public const PENDING = '/pending';
     public const EMAILVERIF ='/verify-email';
+    public const ORDERCONFIRM = '/order-confirmed';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
