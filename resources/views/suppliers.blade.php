@@ -9,7 +9,7 @@
     </x-slot>
 
 
-    <div class="mb-3 d-flex justify-content-end">
+    <div class="d-flex justify-content-end">
         <button class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#addSuppliersModal">
             <i class="fas fa-plus"></i>
             Add Suppliers</button>
