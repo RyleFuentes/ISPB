@@ -33,7 +33,7 @@ class addOrderForm extends Form
     #[Rule('required', as:'Product')]
     public $product;
 
-    #[Rule('required|min:3|max:30', as:'Recipient')]
+    #[Rule('required|min:3|max:30|regex:/^[^\d]/', as:'Recipient')]
     public $recipient;
 
     #[Rule('required', as:'Order Amount')]

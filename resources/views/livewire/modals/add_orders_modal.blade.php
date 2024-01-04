@@ -54,7 +54,6 @@
                               @endforeach
                           </select>
                       </div>
-
                       @error('add_order.product')
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
@@ -80,7 +79,6 @@
 
                           </div>
                       </div>
-
                       @error('add_order.type_order')
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
