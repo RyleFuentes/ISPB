@@ -40,7 +40,7 @@
 
                         <div class="mt-3">
                             <x-input-label for="agent_number" :value="__('Contact Number')" />
-                            <x-text-input wire:model="form.agent_number" pattern="^09[0-9]{9}$" id="contact"
+                            <x-text-input wire:model="form.agent_number" id="contact"
                                 name="agent_number" type="tel" placeholder=" (Format: 09*******06)" class="mt-1 block w-full"
                                 autofocus autocomplete="agent_number" />
                             <x-input-error class="mt-2" :messages="$errors->get('form.agent_number')" />
