@@ -1,4 +1,4 @@
-<div>
+<div x-data="{ page: 1 }">
     @include('livewire.modals.set-supplier-order-modal')
     @include('livewire.modals.add_suppliers_modal')
     <x-slot name="header">
@@ -14,92 +14,116 @@
             Add Suppliers</button>
     </div>
 
-    <div class="py-12 bg-white shadow-sm rounded">
-        <div>
-            <livewire:pages.suppliers.categories />
+    <div class="py-12 p-3 bg-white shadow-sm rounded ">
+
+        <div class="p-2 m-3 bg-black text-white w-fit rounded-pill">
+            <button x-on:click="page = 1" class="btn  rounded-pill"
+                :class="page == 1 ? 'btn-light' : 'text-white'">Suppliers</button>
+            <button x-on:click="page = 2" class="btn rounded-pill"
+                :class="page == 2 ? 'btn-light' : 'text-white'">Supplier orders</button>
         </div>
 
-        @if ($this->suppliers()->count() < 1)
-            <div class="p-3">
-                no suppliers at the moment
-            </div>
-        @else
-            <table class="table table-striped">
-                <thead>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Email</th>
-                    <th class="text-center">Contact number</th>
-                    <th class="text-center">Categories</th>
-                    <th class="text-center">Actions</th>
-                </thead>
-                <tbody>
-                    @foreach ($this->suppliers() as $supplier)
-                        <tr wire:key='{{ $supplier->id }}' cl>
-                            @if ($edit_id && $edit_id == $supplier->id)
-                                <td>
-                                    <input wire:model='name' type="text" class="modal-input-field form-control">
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </td>
-                                <td>
-                                    <input wire:model='email' type="email" class="modal-input-field form-control">
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </td>
-                                <td>
 
+        <div :class="page == 1 ? '' : 'hidden'">
 
-                                    <button class="btn btn-warning" wire:click='updateSupplier'>Update</button>
-                                    <button class="btn btn-danger" wire:click='cancel_edit'>Cancel</button>
-                                </td>
-                            @else
-                                <td class="text-center">{{ $supplier->agent_name }}</td>
-                                <td class="text-center">{{ $supplier->supplier_email }}</td>
-                                <td>{{ $supplier->contact_info }}</td>
-                                <td>
-                                    @foreach ($supplier->categories as $item)
-                                        <div class="rounded-pill bg-primary badge">{{ $item->category }}</div>
-                                    @endforeach
-                                </td>
+            <div><livewire:pages.suppliers.categories /></div>
 
-                                <td class="text-center">
+            @if ($this->suppliers()->count() < 1)
+                <div class="p-3">
+                    no suppliers at the moment
+                </div>
+            @else
+                <table class="table table-striped">
+                    <thead>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Contact number</th>
+                        <th class="text-center">Categories</th>
+                        <th class="text-center">Actions</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($this->suppliers() as $supplier)
+                            <tr wire:key='{{ $supplier->id }}' cl>
+                                @if ($edit_id && $edit_id == $supplier->id)
+                                    <td>
+                                        <input wire:model='name' type="text" class="modal-input-field form-control">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <input wire:model='email' type="email" class="modal-input-field form-control">
+                                        @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning" wire:click='updateSupplier'>Update</button>
+                                        <button class="btn btn-danger" wire:click='cancel_edit'>Cancel</button>
+                                    </td>
+                                @else
+                                    <td class="text-center">{{ $supplier->agent_name }}</td>
+                                    <td class="text-center">{{ $supplier->supplier_email }}</td>
+                                    <td>{{ $supplier->contact_info }}</td>
+                                    <td>
+                                        @foreach ($supplier->categories as $item)
+                                            {{ $item->category }}
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center">
 
-                                   
-                                    <button  wire:click='set_id({{ $supplier->id }})'
-                                        class="btn btn-sm btn-primary px-3"
-                                        data-bs-toggle="modal" data-bs-target="#SetOrder">Set order<i
-                                            class="bi bi-send-plus"></i></button>
-                                    <button class="btn btn-warning px-4" wire:click='editSupplier({{ $supplier->id }})'
-                                        wire:loading.attr='disabled'>Edit
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-danger px-4" wire:click='deleteConfirm({{ $supplier->id }})'
-                                        wire:loading.attr='disabled'> Delete
-                                        <i class="fas fa-trash"></i>
-
-                                    </button>
-
-                                </td>
-                            @endif
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-
-
-            <div class="mt-3 p-3">
-                {{ $this->suppliers()->links() }}
-            </div>
-
-        @endif
-
-        
+                                        <button wire:click='set_id({{ $supplier->id }})'
+                                            class="btn btn-sm btn-primary px-3" data-bs-toggle="modal"
+                                            data-bs-target="#SetOrder">Set order<i class="bi bi-send-plus"></i></button>
+                                        <button class="btn btn-warning px-4"
+                                            wire:click='editSupplier({{ $supplier->id }})'
+                                            wire:loading.attr='disabled'>Edit
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-danger px-4"
+                                            wire:click='deleteConfirm({{ $supplier->id }})'
+                                            wire:loading.attr='disabled'> Delete
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="mt-3 p-3">
+                    {{ $this->suppliers()->links() }}
+                </div>
+            @endif
+        </div>
     </div>
 
+    <div :class="page == 2 ? '' : 'hidden'">
+        <table class="table table-striped">
+            <thead>
+                <th>Supplier</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Delivery Date</th>
+            </thead>
 
-    
-    
+            <tbody>
+                @foreach ($orders as $order)
+                    <tr wire:key='{{$order->id}}'>
+                        <td>{{$order->supplier->agent_name}}</td>
+                        <td>{{ $order->prod_name }}</td>
+                        <td>{{ $order->quantity }} <span class="text-green-500">bags</span></td>
+                        <td>{{ $order->delivery_date }}</td>
+
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
 </div>
+
+
+
+
+

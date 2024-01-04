@@ -14,12 +14,15 @@ class OrderEmail extends Mailable
     use Queueable, SerializesModels;
 
     public Supplier $supplier;
+    
+    public $orders;
     /**
      * Create a new message instance.
      */
     public function __construct(Supplier $supplier)
     {
         $this->supplier = $supplier;
+        $this->orders = $supplier->supplier_orders();
     }
 
     /**
