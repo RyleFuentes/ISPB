@@ -16,7 +16,7 @@
 
     <div class="py-12 p-3 bg-white shadow-sm rounded ">
 
-        <div class="p-2 m-3 bg-black text-white w-fit rounded-pill">
+        <div class="p-2 m-3 bg-purple-800 text-white w-fit rounded-pill">
             <button x-on:click="page = 1" class="btn  rounded-pill"
                 :class="page == 1 ? 'btn-light' : 'text-white'">Suppliers</button>
             <button x-on:click="page = 2" class="btn rounded-pill"
@@ -65,9 +65,9 @@
                                     <td class="text-center">{{ $supplier->agent_name }}</td>
                                     <td class="text-center">{{ $supplier->supplier_email }}</td>
                                     <td>{{ $supplier->contact_info }}</td>
-                                    <td>
+                                    <td class="">
                                         @foreach ($supplier->categories as $item)
-                                            {{ $item->category }}
+                                            <span class="badge bg-primary rounded-pill uppercase">{{ $item->category }}</span>
                                         @endforeach
                                     </td>
                                     <td class="text-center">

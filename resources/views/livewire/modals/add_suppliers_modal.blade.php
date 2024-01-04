@@ -51,7 +51,7 @@
 
                     <div class="mt-3">
                         <x-input-label for="desc" :value="__('Supplier Description')" />
-                        <textarea class="form-control" name="desc" wire:model='form.desc' id="desc" cols="30" rows="3"></textarea>
+                        <textarea class="form-control" name="desc" wire:model='form.desc' id="desc" cols="30" rows="2"></textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('form.desc')"></x-input-error>
                     </div>
 
@@ -59,7 +59,7 @@
                         <x-input-label for="desc" :value="__('Category')" />
                         @foreach ($this->categories as $item)
                             <input type="checkbox" name="" id="" class="form-check-input overflow-y-auto"
-                                wire:model='form.categories' value="{{ $item->id }}"> {{ $item->category }}
+                                wire:model='form.categories' value="{{ $item->id }}"><span class="uppercase pe-3"> {{ $item->category }}</span>
                         @endforeach
                         <x-input-error class="mt-2" :messages="$errors->get('form.categories')"></x-input-error>
                     </div>

@@ -7,7 +7,7 @@
         @foreach ($categories as $item)
             <div  wire:key='{{$item->id}}' class="flex gap-1 mt-3 shadow-md border border-1  transition-all ease-in-out hover:cursor-pointer bg-white p-3 rounded-pill ">
                 <button class="text-danger" wire:click='deleteCategory({{$item->id}})'><i class="bi bi-x-circle"></i></button>
-                {{$item->category}}
+                <span class="uppercase font-bold">{{$item->category}}</span>
             </div>
         @endforeach
     </div>
