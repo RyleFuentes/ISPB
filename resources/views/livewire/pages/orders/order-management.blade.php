@@ -8,7 +8,7 @@
                     <i class="fa fa-plus me-2 text-light"></i>Add Order
                 </button>
 
-              
+
             </div>
         </div>
 
@@ -38,10 +38,9 @@
                                     <td>{{ $order->product->product_name }}</td>
                                     <td>
                                         @if ($order->mode_of_delivery == 0)
-                                            <span class="rounded bg-orange-300">Delivery</span>
+                                            <span class="badge text-bg-info">Delivery</span>
                                         @else
-                                            <span class="rounded bg-green-300">Pickup</span>
-                                            
+                                            <span class="badge text-bg-success">Pickup</span>
                                         @endif
                                     </td>
                                     <td>{{ $order->due_date }}</td>
@@ -58,7 +57,8 @@
                                     <td><span class="badge text-bg-warning">Pending</span></td>
                                     <td class="font-size: 12px">
 
-                                        <button wire:click.prevent='completeOrder({{ $order->order_id }})' class="btn btn-primary">
+                                        <button wire:click.prevent='completeOrder({{ $order->order_id }})'
+                                            class="btn btn-primary">
                                             <i class="fa-solid fa-check"></i>
                                             Complete order
                                         </button>
