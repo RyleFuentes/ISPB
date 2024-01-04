@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form wire:submit.prevent='add_product'>
                     <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="product_name"
+                        <input type="text" class="modal-input-field form-control" placeholder="..." id="product_name"
                             wire:model='product_form.prod_name'>
                         <label for="product_name">Product Name</label>
                     </div>
@@ -19,8 +19,17 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
+                    <div class="mt-2">
+                        <label for="product_description" class="modal-input-label">Product Description</label>
+                        <textarea class="modal-input-field form-control" placeholder="Leave a product description" id="product_description"
+                            wire:model='product_form.prod_description'></textarea>
+                    </div>
+                    @error('product_form.prod_description')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
                     <div class="form-floating mt-2">
-                        <input type="number" class="form-control" placeholder="..." id="quantity"
+                        <input type="number" class="modal-input-field form-control" placeholder="..." id="quantity"
                             wire:model='product_form.quantity'>
                         <label for="quantity">Quantity</label>
                     </div>
@@ -28,7 +37,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    {{-- <div class="form-floating mt-2">
+                    <!-- <div class="form-floating mt-2">
                         <input type="text" class="form-control" placeholder="..." id="kilo"
                             wire:model='product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
                             title="Please enter a valid number with up to two decimal places.">
@@ -36,12 +45,12 @@
                     </div>
                     @error('product_form.kilo')
                         <span class="text-danger">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror -->
 
 
 
                     <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="retail"
+                        <input type="text" class="modal-input-field form-control" placeholder="..." id="retail"
                             wire:model='product_form.retail_price' pattern="^\d+(\.\d{1,2})?$"
                             title="Please enter a valid number with up to two decimal places.">
                         <label for="retail">Retail Price</label>
@@ -51,7 +60,7 @@
                     @enderror
 
                     <div class="form-floating mt-2">
-                        <input type="text" class="form-control" placeholder="..." id="wholesale"
+                        <input type="text" class="modal-input-field form-control" placeholder="..." id="wholesale"
                             wire:model='product_form.wholesale_price' pattern="^\d+(\.\d{1,2})?$"
                             title="Please enter a valid number with up to two decimal places.">
                         <label for="wholesale">Wholesale price</label>
