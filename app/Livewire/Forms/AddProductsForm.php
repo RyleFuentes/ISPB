@@ -11,6 +11,10 @@ class AddProductsForm extends Form
 {
     #[Rule('required|min:3|max:20|unique:products,product_name', as:'Product name')]
     public $prod_name;
+    
+    #[Rule('required|min:3|max:250')]
+    public $prod_description;
+
     #[Rule('required', as:'Quantity')]
     public $quantity;
 
@@ -34,6 +38,7 @@ class AddProductsForm extends Form
         $kilo = $this->calculateKilo($validated['quantity']);
         $store = $brand->products()->create([
             'product_name' => $validated['prod_name'],
+            'product_description' => $validated['prod_description'],
             'retail_price' => $validated['retail_price'],
             'wholesale_price' => $validated['wholesale_price'],
             'kilo' => $kilo

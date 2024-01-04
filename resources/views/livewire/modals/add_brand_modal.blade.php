@@ -19,6 +19,15 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
 
+                        <div class="mt-3">
+                            <label for="brand_description" class="modal-input-label">Brand Description</label>
+                            <textarea class="modal-input-field form-control" placeholder="Leave a brand description" id="brand_description"
+                                wire:model='add_brands_form.brand_description'></textarea>
+                        </div>
+                        @error('add_brands_form.brand_description')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
                         <div class="form-group mt-3">
                             <label for="brand_image" class="modal-input-label">Brand Image</label>
 
@@ -30,10 +39,16 @@
                                         <img src="{{ $add_brands_form->brand_image->temporaryUrl() }}"
                                             class="image-fluid rounded sm" alt="preview" width="250" height="250">
 
-                                        <label for="brand_image" class="custom-file-input bg-primary">Change Uploaded Photo</label>
+                                        <label for="brand_image" class="custom-file-input btn btn-primary mt-3">Change Uploaded Photo</label>
                                         <input type="file" accept="image/png, image/jpeg" id='brand_image'
                                             class="form-control" placeholder="..."
                                             wire:model='add_brands_form.brand_image'>
+
+                                        <!-- This one is experimental for change upload image -->
+                                        <!-- <label for="brand_image" class="custom-file-input position-absolute btn btn-outline-primary">Change Uploaded Photo</label>
+                                        <input type="file" accept="image/png, image/jpeg" id='brand_image'
+                                            class="form-control" placeholder="..."
+                                            wire:model='add_brands_form.brand_image'> -->
                                     </div>
                                 @else
                                     <div
