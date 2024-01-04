@@ -8,9 +8,6 @@
             <div wire:key='{{ $item->id }}'
                 class="flex gap-1 mt-3 shadow-md border border-1 border-secondary px-3 py-2 transition-all ease-in-out hover:cursor-pointer badge text-bg-light">
                 <span class="uppercase font-bold text-primary">{{ $item->category }}</span>
-
-                <button class="text-primary ms-2" wire:click='deleteCategory({{ $item->id }})'><i
-                        class="bi bi-x-circle"></i></button>
             </div>
         @endforeach
     </div>
