@@ -12,7 +12,7 @@
     <div class="mb-3 d-flex justify-content-end">
         <button class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#addSuppliersModal">
             <i class="fas fa-plus"></i>
-            Add Suppliers</button>
+            Add Supplier</button>
     </div>
 
     <div class="py-12 p-3 bg-white shadow-sm rounded ">
@@ -21,7 +21,7 @@
             <button x-on:click="page = 1" class="btn  rounded-pill"
                 :class="page == 1 ? 'btn-light' : 'text-white'">Suppliers</button>
             <button x-on:click="page = 2" class="btn rounded-pill"
-                :class="page == 2 ? 'btn-light' : 'text-white'">Supplier orders</button>
+                :class="page == 2 ? 'btn-light' : 'text-white'">Supplier Orders</button>
         </div>
 
 
@@ -30,7 +30,7 @@
             <div><livewire:pages.suppliers.categories /></div>
 
             @if ($this->suppliers()->count() < 1)
-                <div class="p-3">
+                <div class="border border-5 border-end-0 border-start-0 border-primary rounded-0 bg-primary alert bg-opacity-50 w-75 fw-bold text-center mx-auto text-white" role="alert">
                     No Suppliers available at the moment...
                 </div>
             @else
