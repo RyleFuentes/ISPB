@@ -182,6 +182,7 @@ class OrderHistory extends Component
     public function competed()
     {}
 
+    #[On('complete-kilo')]
     public function render()
     {
         $pending_orders = Order::where('status', 0)->paginate(10);

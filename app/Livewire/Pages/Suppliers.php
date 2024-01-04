@@ -47,6 +47,14 @@ class Suppliers extends Component
         }
     }
 
+    public function cancel_order(SupplierOrder $order)
+    {
+        $order->update([
+            'status' => 1
+        ]);
+
+        session()->flash('success', 'You have sucessfully cancelled the order');
+    }
 
     public AddSupplierForm $form;
     public $test = [

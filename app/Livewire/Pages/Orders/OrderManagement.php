@@ -54,7 +54,7 @@ class OrderManagement extends Component
             if ($order->order_type === 1) {
                 // $order->deductKilo($order
                 $order->product->deductKilo($order->order_kilo);
-                
+                $this->dispatch('complete-kilo');
             } else {
                 $product = $order->product;
                 $order_qty = $order->order_quantity;
@@ -126,6 +126,7 @@ class OrderManagement extends Component
 
 
    
+ 
     public function render()
     {
 

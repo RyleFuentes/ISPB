@@ -1,6 +1,7 @@
 <div x-data="{ page: 1 }">
     @include('livewire.modals.set-supplier-order-modal')
     @include('livewire.modals.add_suppliers_modal')
+    @include('livewire.messages.message')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Suppliers') }}
@@ -110,18 +111,26 @@
 
             <tbody>
                 @foreach ($orders as $order)
-                    <tr wire:key='{{$order->id}}'>
+                    <tr  wire:key='{{$order->id}}' @if ($order->status == 1)
+                        class="table-danger"
+                    @endif>
                         <td>{{$order->supplier->agent_name}}</td>
                         <td>{{ $order->prod_name }}</td>
                         <td>{{ $order->quantity }} <span class="text-green-500">bags</span></td>
                         <td>{{ $order->delivery_date }}</td>
-                        <td>
-                            <button ><i class="bi bi-x-octagon-fill text-danger"></i></button>
-                        </td>
+                        @if ($order->status != 1)
+                            <td>
+                                <button wire:click='cancel_order({{$order}})'><i class="bi bi-x-octagon-fill text-danger"></i></button>
+                            </td>
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        {{$orders->links()}}
     </div>
 
 </div>
