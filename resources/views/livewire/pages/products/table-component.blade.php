@@ -16,10 +16,6 @@
                         </button>
                     </div>
                 </form>
-
-                <button class="btn btn-primary rounded-circle fs-5 shadow me-2 btn-sm ms-5" wire:click='generateProductPdf'>
-                    <i class="bi bi-filetype-pdf"></i>
-                </button>
             </div>
 
             <div class="p-3">
