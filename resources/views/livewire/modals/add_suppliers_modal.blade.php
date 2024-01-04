@@ -3,7 +3,7 @@
         <div class="modal-content">
             @include('livewire.messages.modal_message')
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Suppliers</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Supplier</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body overflow-hidden">
@@ -12,7 +12,7 @@
                     <div class="mt-3">
                         <label for="brands">Brand</label>
                         <select class="form-select" name="" id="brands" wire:model='form.brand_id'>
-                            <option value="" selected>---Choose a brand---</option>
+                            <option value="" selected>--- Choose a Brand ---</option>
                             @foreach ($form->brands() as $item)
                                 <option key="{{ $item->brand_id }}" value="{{ $item->brand_id }}">
                                     {{ $item->brand_name }}</option>
@@ -30,22 +30,21 @@
                         <x-input-error class="mt-2" :messages="$errors->get('form.name')" />
                     </div>
 
-                    <div class="mt-3">
-                        <x-input-label for="email" :value="__('Supplier Email')" />
-                        <x-text-input wire:model="form.email" wire:model='form.email' type="email" id="email"
-                            placeholder="supplier@gmail.com" class="mt-1 block w-full" autofocus="email" />
-                        <x-input-error class="mt-2" :messages="$errors->get('form.email')" />
-                    </div>
+                    <div class="flex gap-2">
+                        <div class="mt-3">
+                            <x-input-label for="email" :value="__('Supplier Email')" />
+                            <x-text-input wire:model="form.email" wire:model='form.email' type="email" id="email"
+                                placeholder="supplier@gmail.com" class="mt-1 block w-full" autofocus="email" />
+                            <x-input-error class="mt-2" :messages="$errors->get('form.email')" />
+                        </div>
 
-
-
-
-                    <div class="mt-3">
-                        <x-input-label for="agent_number" :value="__('Agent number (Format: 09*******06)')" />
-                        <x-text-input wire:model="form.agent_number" pattern="^09[0-9]{9}$" id="contact"
-                            name="agent_number" type="tel" placeholder="09817281106" class="mt-1 block w-full"
-                            autofocus autocomplete="agent_number" />
-                        <x-input-error class="mt-2" :messages="$errors->get('form.agent_number')" />
+                        <div class="mt-3">
+                            <x-input-label for="agent_number" :value="__('Contact Number')" />
+                            <x-text-input wire:model="form.agent_number" pattern="^09[0-9]{9}$" id="contact"
+                                name="agent_number" type="tel" placeholder=" (Format: 09*******06)" class="mt-1 block w-full"
+                                autofocus autocomplete="agent_number" />
+                            <x-input-error class="mt-2" :messages="$errors->get('form.agent_number')" />
+                        </div>
                     </div>
 
 

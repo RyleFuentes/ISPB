@@ -31,7 +31,7 @@
 
             @if ($this->suppliers()->count() < 1)
                 <div class="p-3">
-                    no suppliers at the moment
+                    No Suppliers available at the moment...
                 </div>
             @else
                 <table class="table table-striped">
