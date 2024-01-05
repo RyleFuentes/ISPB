@@ -19,8 +19,7 @@
                       <label for="mode" class="modal-input-label">Mode of Delivery</label>
                       <div class="form-group">
                           <select wire:model.live='add_order.mode_order' name="" id="mode"
-                              wire:model.live='add_order.mode_order'
-                              class="modal-input-field form-select">
+                              wire:model.live='add_order.mode_order' class="modal-input-field form-select">
                               <option value="" selected>Choose the mode of order</option>
                               <option value="1">Delivery</option>
                               <option value="2">Pick up</option>
@@ -60,24 +59,22 @@
 
                       <div class="mt-3 gap-3">
                           <label for="retail" class="modal-input-label">Order Type: </label>
-                          <br>
-                          <div class="d-flex justify-content-around">
-                            @if ($add_order->mode_order == 2)
-                                
-                                <label for="retail" class="modal-input-label">
-                                    <input id="retail" type="radio" wire:model.live='add_order.type_order'
-                                        class='form-radio' value='1' />
-                                    Retail <span class="text-secondary"> (per kilograms)</span>
-                                </label>
-                            @endif
+                          <div class="flex gap-4">
+                              @if ($add_order->mode_order == 2)
+                                  <label for="retail" class="modal-input-label">
+                                      <input id="retail" type="radio" wire:model.live='add_order.type_order'
+                                          class='form-radio' value='1' />
+                                      Retail <span class="text-secondary"> (per kilograms)</span>
+                                  </label>
+                              @endif
 
-                             
-                                <label for="wholesale" class="modal-input-label">
-                                    <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
-                                        class='form-radio' value='2' />
-                                    Wholesale <span class="text-secondary"> (per bags)</span>
-                                </label>
-                             
+                              @if ($add_order->mode_order == 1 || $add_order->mode_order == 2)
+                                  <label for="wholesale" class="modal-input-label">
+                                      <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
+                                          class='form-radio' value='2' />
+                                      Wholesale <span class="text-secondary"> (per bags)</span>
+                                  </label>
+                              @endif
 
                           </div>
                       </div>
@@ -90,15 +87,14 @@
                           <div class="mt-2">
                               <label for="delivery_fee">Delivery fee</label>
                               <input type="text" class="modal-input-field form-control "
-                                      placeholder="Enter delivery fee" id="delivery_fee"
-                                      wire:model='add_order.delivery_fee' pattern="^\d+(\.\d{1,2})?$"
-                                      title="Please enter a valid number with up to two decimal places.">
-                            </div>
+                                  placeholder="Enter delivery fee" id="delivery_fee" wire:model='add_order.delivery_fee'
+                                  pattern="^\d+(\.\d{1,2})?$"
+                                  title="Please enter a valid number with up to two decimal places.">
+                          </div>
 
-                            @error('add_order.delivery_fee')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                          
+                          @error('add_order.delivery_fee')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
                       @endif
 
 
