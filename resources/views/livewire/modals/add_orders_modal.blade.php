@@ -58,24 +58,26 @@
                           <span class="text-danger">{{ $message }}</span>
                       @enderror
 
-                      <div class="mt-3 gap-3">
+                      <div class="mt-3">
                           <label for="retail" class="modal-input-label">Order Type: </label>
-                          <div class="flex gap-4">
-                              @if ($add_order->mode_order == 2)
-                                  <label for="retail" class="modal-input-label">
-                                      <input id="retail" type="radio" wire:model.live='add_order.type_order'
-                                          class='form-radio' value='1' />
-                                      Retail <span class="text-secondary"> (per kilograms)</span>
-                                  </label>
-                              @endif
+                          <br>
+                          <div class="d-flex justify-content-around">
+                            @if ($add_order->mode_order == 2)
+                                
+                                <label for="retail" class="modal-input-label">
+                                    <input id="retail" type="radio" wire:model.live='add_order.type_order'
+                                        class='form-radio' value='1' />
+                                    Retail <span class="text-secondary"> (per kilograms)</span>
+                                </label>
+                            @endif
 
-                              @if ($add_order->mode_order == 1 || $add_order->mode_order == 2)
+                             
                                 <label for="wholesale" class="modal-input-label">
                                     <input id="wholesale" type="radio" wire:model.live='add_order.type_order'
                                         class='form-radio' value='2' />
                                     Wholesale <span class="text-secondary"> (per bags)</span>
                                 </label>
-                              @endif
+                             
 
                           </div>
                       </div>

@@ -14,7 +14,10 @@
 
         <div style="margin: 20px auto; width: 100%;">
             @if ($pending_orders->count() < 1)
-                <p class="p-3">There are no pending orders at the moment </p>
+                <!-- <p class="p-3">There are no pending orders at the moment </p> -->
+                <div class="border border-5 border-end-0 border-start-0 border-primary rounded-0 bg-primary alert bg-opacity-50 w-75 fw-bold text-center mx-auto text-white" role="alert">
+                    There are no pending orders at the moment...
+                </div>
             @else
                 <table class="table table-striped table-hover">
                     <thead>

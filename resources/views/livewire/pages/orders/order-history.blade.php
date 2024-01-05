@@ -1,7 +1,7 @@
 <div x-transition x-data = "{filter: false}" class="bg-white rounded shadow-sm container p-3">
     @include('livewire.messages.message')
 
-    @if ($orders->count() > 0)
+   
     <div>
         <div>
             <button class="btn btn-primary btn-sm rounded-pill me-2" wire:click='generatePdf'>
@@ -89,9 +89,7 @@
             </tbody>
         </table>
     </div>
-    @else
-        No orders to show at the moment...
-    @endif
+  
     
 
   

@@ -4,7 +4,7 @@
       <div class="modal-content">
         @include('livewire.messages.modal_message')
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="SetOrderLabel">SET order</h1>
+          <h1 class="modal-title fs-5" id="SetOrderLabel">Set Order</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -31,7 +31,7 @@
 
             <div class="mt-2 form-group">
                 <label for="delivery">Delivery date: </label>
-                <input wire:model='set_order.deliver_date' type="date" id="delivery" class="form-control">
+                <input wire:model='set_order.deliver_date' type="date" pattern="\d{4}-\d{2}-\d{2}" id="delivery" class="form-control">
                 @error('set_order.deliver_date')
                 <x-error_msg :message="$message" />
                     
@@ -40,7 +40,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Set Order</button>
 
             </form>
         </div>

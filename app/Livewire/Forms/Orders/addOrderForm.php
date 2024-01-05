@@ -42,12 +42,35 @@ class addOrderForm extends Form
 
     public $total_price;
 
-    #[Rule('required|date|after_or_equal:today', as: 'Delivery Date')]
+    #[Rule('required|date|after:today', as: 'Delivery Date')]
     public $deliver_date;
 
     #[Rule('required', as :'Brand')]
     public $brandID;
 
+    protected $messages = [
+        'delivery_fee.numeric' => 'The delivery fee must be a number.',
+        'delivery_fee.min' => 'The delivery fee must be at least :min.',
+        
+        'mode_order.required' => 'The mode of order is required.',
+        
+        'type_order.required' => 'The order type is required.',
+        
+        'product.required' => 'The product is required.',
+        
+        'recipient.required' => 'The recipient is required.',
+        'recipient.min' => 'The :attribute must be at least :min characters.',
+        'recipient.max' => 'The :attribute may not be greater than :max characters.',
+        'recipient.regex' => 'The :attribute must not start with a number.',
+        
+        'order_amount.required' => 'The quantity is required.',
+        
+        'deliver_date.required' => 'The delivery date is required.',
+        'deliver_date.date' => 'Invalid date format for :attribute.',
+        'deliver_date.after' => 'The delivery date must be a date after today.',
+        
+        'brandID.required' => 'The brand is required.',
+    ];
     
 
     #[Computed()]

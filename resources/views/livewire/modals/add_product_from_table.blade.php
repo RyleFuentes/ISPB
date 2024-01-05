@@ -34,15 +34,6 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="mt-2">
-                        <label for="product_description" class="modal-input-label">Product Description</label>
-                        <textarea class="modal-input-field form-control" placeholder="Leave a product description" id="product_description"
-                            wire:model='table_product_form.prod_description'></textarea>
-                    </div>
-                    @error('table_product_form.prod_description')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-
                     <div class=" mt-2">
                         <label for="quantity" class="modal-input-label">Quantity</label>
 
@@ -53,7 +44,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class=" mt-2">
+                    {{-- <div class=" mt-2">
                         <label for="kilo" class="modal-input-label">Kilo</label>
                         <input type="text" class="modal-input-field form-control" placeholder="Enter Kilo"
                             id="kilo" wire:model='table_product_form.kilo' pattern="^\d+(\.\d{1,2})?$"
@@ -61,7 +52,7 @@
                     </div>
                     @error('table_product_form.kilo')
                         <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    @enderror --}}
 
                     <div class="mt-2">
                         <label for="retail" class="modal-input-label">Retail Price</label>
@@ -73,16 +64,17 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class=" mt-2">
-                        <label for="wholesale" class="modal-input-label">Wholesale price</label>
-                        <input type="text" class="modal-input-field form-control" placeholder="Enter Wholesale Price"
-                            id="wholesale" wire:model='table_product_form.wholesale' pattern="^\d+(\.\d{1,2})?$"
-                            title="Please enter a valid number with up to two decimal places.">
-
+                        <div class=" mt-2">
+                            <label for="wholesale" class="modal-input-label">Wholesale price</label>
+                            <input type="text" class="modal-input-field form-control" placeholder="Enter Wholesale Price"
+                                id="wholesale" wire:model='table_product_form.wholesale' pattern="^\d+(\.\d{1,2})?$"
+                                title="Please enter a valid number with up to two decimal places.">
+                            @error('table_product_form.wholesale')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                    @error('table_product_form.wholesale')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    
 
                     <div class="mt-2">
                         <label for="exp_date" class="modal-input-label">Expiration Date</label>

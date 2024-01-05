@@ -20,7 +20,7 @@ class AddSupplierForm extends Form
     public $brand_id;
     // public $agent;
 
-    #[Rule('required', as:'Agent number')]
+    #[Rule('required|regex:/^09\d{9}$/|min:11', as:'Agent number')]
     public $agent_number;
 
     #[Rule('required|min:5|max:30', as:'Description')]
@@ -30,7 +30,28 @@ class AddSupplierForm extends Form
     #[Rule('required', as:'Categories')]
     public $categories = [];
 
+    protected $messages = [
+        'name.required' => 'The supplier name is required.',
+        'name.min' => 'The supplier name must be at least :min characters.',
+        'name.max' => 'The supplier name may not be greater than :max characters.',
+        'name.regex' => 'The supplier name must not start with a number.',
 
+        'email.required' => 'The email address is required.',
+        'email.email' => 'Invalid email format.',
+        'email.unique' => 'The email address has already been taken.',
+
+        'brand_id.required' => 'The brand is required.',
+
+        'agent_number.required' => 'The contact number is required.',
+        'agent_number.regex' => 'The contact number format is invalid.',
+        'agent_number.min' => 'The contact number should atleast contain 11 numbers.',
+
+        'desc.required' => 'The description is required.',
+        'desc.min' => 'The description must be at least :min characters.',
+        'desc.max' => 'The description may not be greater than :max characters.',
+
+        'categories.required' => 'At least one category is required.',
+    ];
    
 
     #[Computed()]
